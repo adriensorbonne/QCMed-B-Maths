@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QCM B – Cours de mathématiques</title>
+<style>
+:root{--bg:#f5f9ff;--surface:#fff;--ink:#0b1e3d;--muted:#4a5f82;--line:#cfe0f7;--accent:#1456d6;--accent-ink:#fff;--soft:#e4eeff;--ok:#0d7a4a;--ko:#b3261e;--hd:rgba(245,249,255,.92);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--surface:#070d1a;--ink:#e8f0ff;--muted:#8fa6cc;--line:#16294d;--accent:#4d8dff;--accent-ink:#000;--soft:#0c1a38;--ok:#4cd694;--ko:#ff8a80;--hd:rgba(0,0,0,.92);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000;--surface:#070d1a;--ink:#e8f0ff;--muted:#8fa6cc;--line:#16294d;--accent:#4d8dff;--accent-ink:#000;--soft:#0c1a38;--ok:#4cd694;--ko:#ff8a80;--hd:rgba(0,0,0,.92);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{overflow-wrap:break-word;-webkit-text-size-adjust:100%;margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--hd);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{max-width:1040px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:-.02em;margin-right:auto}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:4px}
+nav button,.theme{font:inherit;font-size:.95rem;border:1px solid transparent;background:none;color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer}
+nav button[aria-current="page"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+nav button:hover:not([aria-current]),.theme:hover{background:var(--soft)}
+.theme{border-color:var(--line)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+main{max-width:1040px;margin:auto;padding:28px 16px 64px}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 12px}
+h2{font-size:1.5rem;margin:0 0 12px;letter-spacing:-.02em}
+h3{font-size:1.1rem;margin:22px 0 6px;color:var(--accent)}
+p{margin:0 0 12px;max-width:68ch}
+.lead{font-size:1.15rem;color:var(--muted)}
+.hero{display:grid;gap:24px;grid-template-columns:1.1fr 1fr;align-items:center;margin-bottom:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.machine{text-align:center}
+.machine .row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px 0;min-height:44px;font-size:1.6rem}
+.box{border:2px solid var(--accent);border-radius:8px;padding:6px 12px;font-size:1rem;font-weight:700;color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.cta{font:inherit;background:var(--accent);color:var(--accent-ink);border:0;padding:11px 20px;border-radius:10px;font-weight:600;cursor:pointer;margin:6px 8px 0 0}
+.cta.alt{background:var(--soft);color:var(--ink)}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start}
+.toc{display:flex;flex-direction:column;gap:6px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px)}
+.toc button{font:inherit;text-align:left;background:var(--surface);border:1px solid var(--line);color:var(--ink);padding:10px 12px;border-radius:10px;cursor:pointer;line-height:1.35}
+.toc button[aria-current="true"]{border-color:var(--accent);background:var(--soft);font-weight:600}
+.toc small{display:block;color:var(--muted);font-weight:400}
+.formula{background:var(--soft);border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-weight:600}
+.cross{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--accent);border-radius:10px;max-width:360px;margin:14px 0;overflow:hidden}
+.cross div{padding:14px;text-align:center;border:1px solid var(--line);font-weight:600}
+.cross .q{background:var(--soft);color:var(--accent)}
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:28px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;background:var(--soft);color:var(--accent);font-weight:600}
+.tag.soon{color:var(--muted)}
+ul{padding-left:1.2em;max-width:68ch}
+li{margin-bottom:6px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr))}
+.grid li{list-style:none;margin:0}
+.grid ul{padding:0;margin:8px 0 0}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opts button{font:inherit;text-align:left;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:10px 14px;border-radius:10px;cursor:pointer}
+.opts button:hover:not(:disabled){border-color:var(--accent)}
+.opts button.good{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--bg))}
+.opts button.bad{border-color:var(--ko);background:color-mix(in srgb,var(--ko) 15%,var(--bg))}
+.expl{margin-top:12px;padding:10px 14px;background:var(--soft);border-radius:10px;font-size:.95rem}
+.score{position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:5;display:flex;justify-content:space-between;align-items:center;background:var(--hd);padding:8px 0;margin-bottom:10px;border-bottom:1px solid var(--line)}
+svg.graph{max-width:340px;width:100%;display:block;margin:12px 0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.chip{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:5px 14px;border-radius:999px;cursor:pointer;text-align:left}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.calc{max-width:420px;margin:auto}
+.ci{width:100%;font:inherit;font-size:1.2rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+#co{display:block;text-align:right;font-size:2rem;font-weight:700;margin:10px 0 0;word-break:break-all;min-height:2.6rem;color:var(--accent)}
+#csci{text-align:right;color:var(--muted);font-size:.9rem;min-height:1.4em;margin-bottom:10px}
+.keys{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.keys button{font:inherit;padding:12px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer}
+.keys button:hover{background:var(--soft)}
+.keys button.op{background:var(--soft)}
+.keys button.eq{background:var(--accent);color:var(--accent-ink);font-weight:700}
+#hist{list-style:none;padding:0;max-width:420px;margin:0 auto}
+#hist li{margin-bottom:6px}
+.sets{max-width:380px;margin:14px 0}
+.sets div{border:2px solid var(--accent);border-radius:999px;padding:6px 14px;font-weight:700;display:flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.tocbtn{display:none;width:100%;justify-content:space-between;align-items:center;gap:10px;font:inherit;font-weight:600;text-align:left;background:var(--surface);border:1px solid var(--accent);color:var(--ink);padding:12px 14px;border-radius:12px;cursor:pointer;min-height:48px}
+.opts button,.cta{min-height:44px}
+.ns{display:none}
+.locked header,.locked main{display:none}
+#login{display:none;position:fixed;inset:0;z-index:20;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));background:var(--bg);overflow:auto}
+.locked #login{display:flex}
+.lg{width:100%;max-width:380px}
+.lg label{display:block;font-weight:600;margin:0 0 4px}
+.hide{display:none}
+@media (max-width:760px){
+body{font-size:16px}
+header{backdrop-filter:none;-webkit-backdrop-filter:none}
+.bar{padding:8px 12px;gap:8px;flex-wrap:nowrap}
+.logo{font-size:1.05rem;white-space:nowrap}
+.theme{font-size:.85rem;padding:6px 10px;white-space:nowrap}
+.nm{display:none}
+.nl{display:none}.ns{display:inline}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:15;gap:0;background:var(--hd);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;min-height:46px;padding:6px 0;font-size:.7rem;border-radius:12px;white-space:nowrap}
+main{padding:18px 12px 96px}
+.hero,.layout{grid-template-columns:1fr;gap:16px}
+.hero{margin-bottom:24px}
+.card{padding:16px}
+.tocbtn{display:flex}
+.toc{display:none;position:static;max-height:55vh;overflow-y:auto}
+.toc.open{display:flex}
+.toc button{min-width:0;padding:12px}
+.pager .cta{flex:1 1 140px;margin:0}
+.score{top:calc(env(safe-area-inset-top,0px) + 52px);flex-wrap:wrap;gap:6px}
+.score [data-tab]{display:none}
+.chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}
+.chip{white-space:nowrap}
+.keys button{min-height:48px;padding:12px 0;font-size:.95rem}
+.calc{padding:14px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 60px)}
+}
+.seg{display:flex;gap:4px;background:var(--soft);padding:4px;border-radius:999px;margin:6px 0 18px;max-width:420px}
+.seg button{flex:1;font:inherit;border:0;background:none;color:var(--ink);padding:10px 14px;border-radius:999px;cursor:pointer;min-height:44px}
+.seg button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.usu{display:grid;gap:16px}
+.usu h2{margin:20px 0 0}
+.corr summary{cursor:pointer;font-weight:600;color:var(--accent);min-height:44px;display:flex;align-items:center}
+.corr .expl{margin-top:0}
+.pst{display:block;margin-top:8px;font-size:.85rem;color:var(--muted);min-height:1.3em}
+.pcard{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.pcard small{color:var(--muted)}
+.pdfdoc{position:fixed;left:-10000px;top:0;width:794px;padding:48px 56px 8px;background:#fff;color:#0b1e3d;--bg:#f5f9ff;--surface:#fff;--ink:#0b1e3d;--muted:#4a5f82;--line:#cfe0f7;--accent:#1456d6;--accent-ink:#fff;--soft:#e4eeff;--ok:#0d7a4a;--ko:#b3261e;font:17px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+.pdfdoc .sets div{background:#f1f6ff}
+.pdfdoc .pbrand{font-size:.8rem;color:#4a5f82;border-bottom:2px solid #1456d6;padding-bottom:8px;margin-bottom:18px;letter-spacing:.02em}
+@media (prefers-reduced-motion:no-preference){.view{animation:in .25s ease}@keyframes in{from{opacity:0}to{opacity:1}}}
+</style>
+</head>
+<body class="locked">
+<div id="login"><div class="card lg">
+<h1 style="font-size:1.6rem">QCM <span style="color:var(--accent)">B</span> · Maths</h1>
+<p>Connectez-vous pour accéder aux cours.</p>
+<label for="lu">Identifiant (votre prénom)</label>
+<input id="lu" class="ci" type="text" name="username" autocomplete="username" autocapitalize="words" spellcheck="false">
+<label for="lp" style="margin-top:12px">Mot de passe</label>
+<input id="lp" class="ci" type="password" name="password" autocomplete="current-password">
+<p id="le" role="alert" style="color:var(--ko);min-height:1.5em;margin:10px 0"></p>
+<button class="cta" type="button" id="lb" style="width:100%;margin:0">Se connecter</button>
+</div></div>
+<header><div class="bar">
+<div class="logo">QCM <span>B</span> · Maths</div>
+<nav aria-label="Navigation principale">
+<button data-tab="cours">Cours</button><button data-tab="exercices">Exercices</button><button data-tab="calculatrice"><span class="nl">Calculatrice</span><span class="ns">Calcul</span></button><button data-tab="programme">Programme</button><button data-tab="pdfs">PDFs</button>
+</nav>
+<button class="theme" id="theme" aria-label="Changer de thème">Mode sombre</button>
+<button class="theme hide" id="logout"></button>
+</div></header>
+
+<main>
+<section id="cours" class="view hide">
+<div class="hero">
+<div>
+<h1>Les maths du QCM, sans la chute.</h1>
+<p class="lead">Des cours courts, appuyés sur des exemples concrets, pour comprendre la méthode plutôt que la réciter. Concours externe de Contrôleur des Finances Publiques, épreuve n° 2.</p>
+<button class="cta" data-go="cours-0">Commencer le premier cours</button>
+<button class="cta alt" data-tab="exercices">S’entraîner</button>
+</div>
+<div class="card machine">
+<strong>La fonction f(x) = 2x</strong>
+<div class="row" aria-live="polite"><span id="mIn"></span><span class="box">LA FONCTION</span><span id="mOut"></span></div>
+<label for="mx">Baguettes en entrée : <b id="mxv">1</b></label>
+<input id="mx" type="range" min="0" max="5" value="1">
+<small style="color:var(--muted)">Glissez pour voir la machine doubler les baguettes.</small>
+</div>
+</div>
+<div class="layout">
+<button type="button" class="tocbtn" id="tocBtn" aria-expanded="false" aria-controls="toc"><span id="tocLbl"></span><span aria-hidden="true">▾</span></button>
+<div class="toc" id="toc" aria-label="Liste des cours"></div>
+<article id="lesson" class="card"></article>
+</div>
+</section>
+
+<section id="exercices" class="view hide">
+<h1>Exercices</h1>
+<div class="seg" role="tablist" aria-label="Type d’exercices"><button type="button" role="tab" data-sub="qcm" aria-selected="true">Exos QCM</button><button type="button" role="tab" data-sub="usu" aria-selected="false">Exos Usuels</button></div>
+<div id="exQcm">
+<p class="lead">Choisissez une réponse : la correction s’affiche tout de suite, avec la méthode. Besoin d’un calcul ? La calculatrice conserve votre progression.</p><div class="chips" id="chips" role="group" aria-label="Filtrer par cours"></div>
+<div class="score"><span>Score : <b id="sc">0</b> / <span id="tot">0</span></span><span><button class="cta alt" data-tab="calculatrice" style="margin:0 6px 0 0">Calculatrice</button><button class="cta alt" id="reset" style="margin:0">Recommencer</button></span></div>
+<div id="exos" style="display:grid;gap:16px"></div>
+</div>
+<div id="exUsu" class="hide">
+<p class="lead">Des exercices rédigés, issus de vos fiches. Cherchez d’abord sur papier, puis ouvrez la correction détaillée.</p>
+<div class="usu" id="usuList"></div>
+</div>
+</section>
+
+<section id="calculatrice" class="view hide">
+<h1>Calculatrice scientifique</h1>
+<p class="lead">Pour un calcul compliqué pendant un exercice. Quand vous changez d’onglet, vos réponses et votre place dans les exercices sont conservées.</p>
+<div class="card calc">
+<input id="ci" class="ci" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Expression à calculer" placeholder="Ex. : 2×(3+4)^2 − √(16)">
+<output id="co" aria-live="polite">0</output>
+<div id="csci"></div>
+<div class="keys" id="keys"></div>
+<p style="margin:12px 0 0;font-size:.85rem;color:var(--muted)">Tapez au clavier ou avec les touches, puis Entrée ou =. Rép rappelle le dernier résultat. Pour 2 × 10³, tapez 2×10^(3).</p>
+</div>
+<h3 style="max-width:420px;margin:20px auto 6px">Historique</h3>
+<ul id="hist"></ul>
+</section>
+
+<section id="pdfs" class="view hide">
+<h1>Cours en PDF</h1>
+<p class="lead">Un PDF par chapitre, à télécharger pour réviser hors connexion ou à imprimer. Le fichier est généré à la demande, en quelques secondes.</p>
+<div class="grid" id="pdfList"></div>
+</section>
+
+<section id="programme" class="view hide">
+<h1>Le programme de l’épreuve</h1>
+<p class="lead">L’épreuve écrite n° 2 d’admissibilité comporte deux parties : un QCM de connaissances générales, de français, de mathématiques et de raisonnement logique, puis un questionnaire à réponses courtes (QRC) sur une matière au choix. Ce site couvre les mathématiques du QCM.</p>
+<h2>Les quatre blocs du QCM</h2>
+<div class="grid" style="margin-bottom:28px">
+<div class="card"><strong>I. Connaissances générales</strong><ul><li>Histoire et géographie de la France</li><li>Institutions françaises</li><li>Union européenne</li><li>Culture numérique</li></ul></div>
+<div class="card"><strong>II. Français</strong><ul><li>Grammaire</li><li>Orthographe</li><li>Vocabulaire</li></ul></div>
+<div class="card" style="border-color:var(--accent)"><strong>III. Mathématiques</strong><ul><li>A. Manipulation des nombres</li><li>B. Algèbre</li></ul><span class="tag">Traité sur ce site</span></div>
+<div class="card"><strong>IV. Raisonnement logique</strong><p style="margin:8px 0 0">Analyser des données et conduire un raisonnement déductif.</p></div>
+</div>
+<h2>Mathématiques : le détail</h2>
+<h3>A. Manipulation des nombres</h3>
+<ul>
+<li>Entiers, relatifs, fractions, racines carrées, le nombre π <span class="tag">cours disponible</span></li>
+<li>Quatre opérations, priorités opératoires</li>
+<li>Multiples, diviseurs <span class="tag">cours disponible</span>, nombres premiers <span class="tag">cours disponible</span>, PGCD, PPCM, division euclidienne <span class="tag">cours disponible</span>, critères de divisibilité <span class="tag">cours disponible</span></li>
+<li>Valeur décimale et valeur approchée d’une fraction <span class="tag">cours disponible</span></li>
+<li>Puissances d’exposant entier relatif, notation scientifique, racine d’un produit ou d’un quotient <span class="tag">cours disponible</span></li>
+<li><b>Proportionnalité</b> <span class="tag">cours disponible</span></li>
+<li>Moyennes, pourcentages, taux (TVA) <span class="tag">cours disponible</span>, intérêts simples</li>
+<li>Prix d’achat, de vente, de revient ; bénéfice, perte</li>
+<li>Masses, densité, masse volumique : calculs et conversions</li>
+</ul>
+<h3>B. Algèbre</h3>
+<ul>
+<li>Calcul littéral, identités remarquables <span class="tag">cours disponible</span>, monômes et polynômes</li>
+<li>Factorisation et développement <span class="tag">cours disponible</span></li>
+<li>Équations et inéquations du premier degré à une inconnue <span class="tag">cours disponible</span></li>
+<li>Systèmes de deux équations à deux inconnues <span class="tag">cours disponible</span></li>
+<li>Problèmes du premier degré à une ou deux inconnues</li>
+</ul>
+<p style="margin-top:20px;color:var(--muted)">Les cours sont ajoutés au fur et à mesure. Les fonctions, la dérivée et les intégrales, vues en cours, appartiennent au programme de mathématiques du QRC.</p>
+</section>
+</main>
+
+<script>
+var COURSES=[
+{t:"Pourquoi les maths du QCM B ?",s:"Introduction",h:
+"<h2>Pourquoi les mathématiques du QCM B ?</h2>"+
+"<ul><li><b>Des réponses difficilement contestables</b> : une réponse est bonne ou mauvaise, sans débat possible.</li>"+
+"<li><b>Un excellent rapport implication / résultats</b>, meilleur que celui de la culture générale.</li>"+
+"<li><b>Un bon entraînement à la logique</b> : on la bachote un peu, voire on la comprend mieux.</li>"+
+"<li><b>Beaucoup de profils découragés</b> par les maths sur le Discord.</li></ul>"+
+"<div class=\"formula\">Il y a tout intérêt à vous donner des pistes pour éviter la chute !</div>"},
+{t:"Le produit en croix",s:"Proportionnalité",h:
+"<h2>Un produit en croix, quésaco ?</h2>"+
+"<p>Le produit en croix est une méthode qui permet de trouver une <b>4ᵉ donnée inconnue</b> à partir de <b>trois données connues</b>. Il faut que chaque paire de données soit du même type (distance, temps, nombre de tours, nombre de patates vendues…).</p>"+
+"<h3>En pratique</h3><p>On fait un tableau qui regroupe les 4 données. A et C sont du même type ; B et D sont du même type, <b>mais pas en même quantité</b>.</p>"+
+"<div class=\"cross\"><div>A</div><div>B</div><div>C</div><div class=\"q\">D = ?</div></div>"+
+"<div class=\"formula\">A × D = B × C, donc D = (B × C) / A</div>"+
+"<h3>Exemple : QCM Maths B 2026, question 17</h3>"+
+"<p>Un moteur alternatif effectue 20 tours par seconde. Combien de tours effectue-t-il en 90 secondes ?</p>"+
+"<div class=\"cross\"><div>20 tours</div><div>1 seconde</div><div class=\"q\">?</div><div>90 s</div></div>"+
+"<p>20 × 90 = 1 × ?, donc ? = 20 × 90 = <b>1 800 tours</b> en 1 minute et 30 secondes.</p>"+
+"<h3>Exemple : QCM Maths B 2026, question 18</h3>"+
+"<p>Un train part à 10 h pour parcourir 50 km jusqu’à la gare et arrive à 11 h 36. Quelle est sa vitesse moyenne ?</p>"+
+"<div class=\"formula\">vitesse = distance / temps</div>"+
+"<p>On procède par élimination : une vitesse supérieure à 50 km/h est impossible, car le train est en retard, pas en avance. Il ne met pas 2 h pour parcourir 50 km, mais un peu moins, donc ce n’est pas 25 km/h.</p>"+
+"<p>Calcul : 11 h 36 − 10 h = 1 h 36 min = 1,6 h, et 50 / 1,6 = <b>31,25 km/h</b>.</p>"},
+{t:"TVA : du prix TTC au prix HT",s:"Proportionnalité (TVA)",h:
+"<h2>Comment déterminer un prix HT connaissant le prix TTC et le taux de TVA ?</h2><p>Si le taux de TVA est dit à 20 %, ce qu’on suppose dans la plupart des situations, on note :</p><div class=\"formula\">tauxTVA = 20 % = 20/100</div><p>Deux calculs fondamentaux sont à connaître ici :</p><ul><li><b>1)</b> montant_TVA = prix_HT × tauxTVA, soit ici montant_TVA = prix_HT × (20/100)</li><li><b>2)</b> prix_TTC = prix_HT + montant_TVA</li></ul><p>En utilisant 2) puis 1), on trouve un troisième calcul qui donne le prix TTC en fonction du prix HT et du taux de TVA appliqué :</p><div class=\"formula\">3) prix_TTC = prix_HT + prix_HT × tauxTVA = prix_HT × (1 + tauxTVA)</div><p>En inversant le membre de droite, qui nous intéresse, on a :</p><div class=\"formula\">4) prix_HT = prix_TTC / (1 + tauxTVA)</div><h3>Exemple</h3><p>Un article coûte 120 € TTC avec une TVA à 20 %. Son prix HT est 120 / (1 + 20/100) = 120 / 1,2 = 100 €.</p>"},
+{t:"TVA : le montant de TVA",s:"Proportionnalité (TVA, suite)",h:
+"<h2>Comment déterminer le montant de TVA selon le prix TTC et le taux de TVA ?</h2><p>En regardant d’abord le cours précédent sur le taux de TVA, on apprend que :</p><ul><li><b>1)</b> montant_TVA = prix_HT × tauxTVA = prix_HT × 20/100</li><li><b>4)</b> prix_HT = prix_TTC / (1 + tauxTVA) = prix_TTC / (1 + 20/100) = prix_TTC / (120/100) = prix_TTC × 100/120</li></ul><p>Il suffit alors de mélanger ces deux propriétés pour avoir le montant de TVA selon prix_TTC et tauxTVA :</p><div class=\"formula\">montant_TVA = (prix_TTC × tauxTVA) / (1 + tauxTVA)</div><h3>Exemple</h3><p>Un article coûte 120 € TTC avec une TVA à 20 %. Montant de TVA = (120 × 20/100) / (1 + 20/100) = 24 / 1,2 = 20 €.</p><p>Attention : la TVA n’est pas 20 % du prix TTC (20 % de 120 € feraient 24 €), mais 20 % du prix HT.</p>"},
+{t:"Les fonctions : la notion",s:"Fonctions",h:
+"<h2>Les fonctions, les fameuses fonctions…</h2>"+
+"<p><b>Situation :</b> vous allez à la boulangerie acheter deux baguettes. Le boulanger vient d’acquérir une machine étrange qui réduit ou augmente le nombre de baguettes. Vous glissez 1 baguette dans la machine : 2 baguettes en sortent !</p>"+
+"<p>Il s’agit de la fonction f définie par :</p><div class=\"formula\">f(x) = 2x, où x est le nombre de baguettes en entrée</div>"+
+"<h3>Le vocabulaire</h3><ul>"+
+"<li><b>Image</b> : l’image de 3 par f est f(3) = 2 × 3 = 6.</li>"+
+"<li><b>Antécédent</b> : UN antécédent de 6 par f est la valeur x telle que f(x) = 6. Ici, x = 3.</li></ul>"+
+"<p>Essayez la machine en haut de la page, ou passez aux exercices.</p>"},
+{t:"Les fonctions : représentation graphique",s:"Fonctions (suite)",h:
+"<h2>Les fonctions : suite du cours</h2>"+
+"<p>Une fonction peut être définie par une expression littérale (f(x) = 2x) ou par une représentation graphique. Calculons quelques valeurs :</p>"+
+"<ul><li>f(0) = 2 × 0 = 0</li><li>f(1) = 2 × 1 = 2</li><li>f(−1) = 2 × (−1) = −2</li></ul>"+
+"<p>On trace le graphe avec x en abscisse et f(x) en ordonnée.</p>"+
+"<svg class=\"graph\" viewBox=\"0 0 300 260\" role=\"img\" aria-label=\"Droite représentant f(x)=2x\"><g stroke=\"currentColor\" stroke-width=\"1.5\" fill=\"none\"><path d=\"M10 130H290M150 10V250\"/></g>"+
+"<g stroke=\"var(--line)\" stroke-dasharray=\"4\"><path d=\"M190 50V130M150 50H190M110 210V130M110 210H150\"/></g>"+
+"<path d=\"M90 250L210 10\" stroke=\"var(--accent)\" stroke-width=\"3.5\" fill=\"none\"/>"+
+"<g fill=\"var(--accent)\"><circle cx=\"150\" cy=\"130\" r=\"5\"/><circle cx=\"190\" cy=\"50\" r=\"5\"/><circle cx=\"110\" cy=\"210\" r=\"5\"/></g>"+
+"<g fill=\"currentColor\" font-size=\"13\"><text x=\"196\" y=\"46\">(1 ; 2)</text><text x=\"60\" y=\"226\">(−1 ; −2)</text><text x=\"282\" y=\"148\">x</text><text x=\"156\" y=\"20\">f(x)</text><text x=\"215\" y=\"22\" fill=\"var(--accent)\">f(x) = 2x</text></g></svg>"+
+"<ul><li>La courbe rouge du cours, ici en bleu, est la <b>représentation graphique</b> de f.</li>"+
+"<li>On lit l’image de 1 par f : elle vaut 2.</li>"+
+"<li>À l’inverse, UN antécédent de 2 par f est 1. Comme le graphe est une droite, cet antécédent est <b>unique</b>.</li></ul>"+
+"<h3>Sens de variation</h3><p>Ici la fonction est <b>strictement croissante</b> : quand x augmente, f(x) augmente toujours. Une fonction croissante, au sens large, peut aussi avoir des paliers où f(x) reste constant.</p>"},
+{t:"La dérivée : de quoi s’agit-il ?",s:"Dérivée",h:
+"<h2>La dérivée d’une fonction, qué quoi ?</h2>"+
+"<p>Ici, ce n’est pas le Titanic qui dérive à cause d’un iceberg, mais bien vous face à ce casse-tête.</p>"+
+"<h3>Qu’est-ce que la dérivée d’une fonction ?</h3>"+
+"<p>Pour les puristes des maths, la dérivée est un « opérateur », notion trop complexe pour être abordée ici. On dira que la dérivée d’une fonction f est elle-même une fonction, qui change l’expression littérale de la fonction f de départ.</p>"+
+"<h3>Comment se la représenter ?</h3>"+
+"<p>Imaginons une fonction g dont le graphe est tracé en bleu. <b>La dérivée en un point de g est le rapport hauteur / longueur de la tangente</b> à ce graphe <b>en ce point</b>.</p>"+
+"<svg class=\"graph\" viewBox=\"0 0 300 260\" role=\"img\" aria-label=\"Schéma d’une courbe avec deux tangentes\"><g stroke=\"currentColor\" stroke-width=\"1.5\" fill=\"none\"><path d=\"M10 150H290M150 10V250\"/></g>"+
+"<path d=\"M50 200Q150 0 250 200\" stroke=\"var(--accent)\" stroke-width=\"3.5\" fill=\"none\"/>"+
+"<g stroke=\"var(--ok)\" stroke-width=\"2.5\" fill=\"none\"><path d=\"M50 175L150 75M105 100H195\"/></g>"+
+"<path d=\"M100 125H150V75\" stroke=\"var(--muted)\" stroke-dasharray=\"4\" fill=\"none\"/>"+
+"<g fill=\"var(--accent)\"><circle cx=\"100\" cy=\"125\" r=\"5\"/><circle cx=\"150\" cy=\"100\" r=\"5\"/></g>"+
+"<g fill=\"currentColor\" font-size=\"13\"><text x=\"92\" y=\"142\">longueur = 1</text><text x=\"156\" y=\"120\">hauteur = 1</text><text x=\"158\" y=\"66\">g′(−1) = 1</text><text x=\"200\" y=\"94\">g′(0) = 0</text><text x=\"280\" y=\"168\">x</text></g></svg>"+
+"<ul><li>La dérivée de g en 0 est <b>nulle</b>, car la tangente est une ligne horizontale.</li>"+
+"<li>La dérivée de g en −1 est <b>positive</b>, car la tangente est une droite qui croît (hauteur 1 pour une longueur 1, donc g′(−1) = 1).</li></ul>"+
+"<p style=\"color:var(--muted);font-size:.9rem\">Schéma illustratif : la courbe n’est pas à l’échelle.</p>"},
+{t:"Expression littérale de la dérivée",s:"Dérivée (suite)",h:
+"<h2>Expression littérale de la dérivée d’une fonction</h2>"+
+"<p>On a vu comment schématiser la dérivée avec un graphe. Voyons maintenant comment l’exprimer par une expression <b>globale</b> et non plus en un seul point.</p>"+
+"<p>On sait représenter une fonction en un point (f(1), f(0), f(−1)) ou de manière globale (f(x) = 2x), ce qui permet de la calculer en n’importe quel point. Cela s’applique aussi à la dérivée.</p>"+
+"<div class=\"formula\">Pour f(x) = 2x, on a f′(x) = 2</div>"+
+"<p>On vient de donner l’expression littérale de la dérivée de f : pour n’importe quel point x en abscisse, la dérivée de f en ce point vaut 2.</p>"+
+"<h3>Quelques règles</h3><ul>"+
+"<li>Si f(x) = a·x, alors f′(x) = a</li>"+
+"<li>Si f(x) = x<sup>a</sup>, alors f′(x) = a·x<sup>a−1</sup></li>"+
+"<li>Si f(x) = a (une constante), alors la dérivée est nulle.</li></ul>"+
+"<h3>Exemples d’application</h3><ul><li>f(x) = 5x donne f′(x) = 5</li><li>f(x) = x² donne f′(x) = 2x</li><li>f(x) = x³ donne f′(x) = 3x²</li><li>f(x) = 7 donne f′(x) = 0</li></ul>"},
+{t:"Pourquoi la dérivée est importante",s:"Dérivée (applications)",h:
+"<h2>Pourquoi la dérivée est une notion importante</h2>"+
+"<p>Vous pensiez que la dérivée ne servait qu’à avoir des maux de tête en mathématiques ? Que nenni…</p>"+
+"<p>La dérivée est une notion centrale pour comprendre la position, la vitesse et l’accélération.</p>"+
+"<div class=\"formula\">La vitesse d’un corps est la dérivée de sa position.<br>L’accélération d’un corps est la dérivée de sa vitesse.</div>"+
+"<p>Exemple de corps : une voiture.</p>"+
+"<h3>Les équations différentielles</h3>"+
+"<p>La dérivée intervient aussi dans la résolution d’équations dites « différentielles », c’est-à-dire des équations faisant intervenir une fonction et sa (ou ses) dérivée(s). Elles interviennent :</p>"+
+"<ul><li>en <b>mécanique</b> : description de la position d’un pendule ;</li><li>en <b>électronique</b> : création de filtres laissant passer une gamme de fréquences au sein des composants d’une radio, par exemple ;</li><li>de manière générale dans tout <b>système chaotique</b> : prévision de la météo, par exemple.</li></ul>"},
+{t:"Les intégrales : l’aire sous la courbe",s:"Intégrales",h:
+"<h2>Les intégrales : l’idée en une image</h2>"+
+"<p>Une <b>intégrale</b> sert à mesurer une <b>aire</b> : celle qui se trouve entre la courbe d’une fonction f et l’axe des abscisses, pour x allant d’une valeur a à une valeur b.</p>"+
+"<svg class=\"graph\" viewBox=\"0 0 300 200\" role=\"img\" aria-label=\"Aire sous la courbe de f entre les abscisses 1 et 6\"><g stroke=\"currentColor\" stroke-width=\"1.5\" fill=\"none\"><path d=\"M10 160H290M30 10V170\"/></g>"+
+"<path d=\"M70 90C110 40 150 50 170 90S230 110 250 80V160H70Z\" fill=\"var(--accent)\" fill-opacity=\".25\"/>"+
+"<path d=\"M70 90C110 40 150 50 170 90S230 110 250 80\" stroke=\"var(--accent)\" stroke-width=\"3.5\" fill=\"none\"/>"+
+"<g stroke=\"var(--line)\" stroke-dasharray=\"4\"><path d=\"M70 90V160M250 80V160\"/></g>"+
+"<g fill=\"currentColor\" font-size=\"13\"><text x=\"66\" y=\"178\">1</text><text x=\"246\" y=\"178\">6</text><text x=\"128\" y=\"36\" fill=\"var(--accent)\">f</text><text x=\"112\" y=\"140\">aire</text><text x=\"282\" y=\"178\">x</text></g></svg>"+
+"<h3>Comment l’écrire ?</h3>"+
+"<div class=\"formula\">∫<sub>a</sub><sup>b</sup> f(x) dx = aire entre f et l’axe des abscisses, de a à b</div>"+
+"<ul><li>Le symbole ∫ est le symbole de l’intégrale : un « S » étiré, comme « somme » (on additionne plein de petites tranches d’aire).</li>"+
+"<li>a est la borne du bas, b la borne du haut.</li>"+
+"<li>dx rappelle que la variable est x.</li></ul>"+
+"<p>Dans le cours : l’aire pour un segment allant de 1 à 6 s’écrit ∫<sub>1</sub><sup>6</sup> f(x) dx. On dit que c’est l’<b>intégrale de f entre les abscisses 1 et 6</b>.</p>"+
+"<p>Si la courbe passe sous l’axe des abscisses, la partie correspondante compte négativement.</p>"},
+{t:"Primitive et calcul d’une intégrale",s:"Intégrales (suite)",h:
+"<h2>Primitive et intégrale : comment calculer ?</h2>"+
+"<h3>La primitive, c’est la dérivée à l’envers</h3>"+
+"<p>On a vu qu’on peut <b>dériver</b> une fonction : de x², on passe à 2x. La <b>primitive</b> fait le chemin inverse : de 2x, on remonte à x².</p>"+
+"<div class=\"formula\">F est une primitive de f lorsque F′(x) = f(x)</div>"+
+"<ul><li>(x²)′ = 2x, donc x² est une primitive de 2x.</li><li>(5x)′ = 5, donc 5x est une primitive de 5.</li><li>(x³)′ = 3x², donc x³ est une primitive de 3x².</li></ul>"+
+"<p>On dit bien <b>UNE</b> primitive : x² + 3 est aussi une primitive de 2x, car la dérivée d’une constante est nulle. Une fonction a donc une infinité de primitives, qui diffèrent d’une constante.</p>"+
+"<h3>Quelques règles (celles de la dérivée, à l’envers)</h3><ul>"+
+"<li>f(x) = a (constante) : F(x) = a·x</li><li>f(x) = x : F(x) = x² / 2</li><li>f(x) = x<sup>n</sup> : F(x) = x<sup>n+1</sup> / (n + 1), si n ≠ −1</li></ul>"+
+"<h3>Le lien avec l’intégrale</h3>"+
+"<div class=\"formula\">∫<sub>a</sub><sup>b</sup> f(x) dx = F(b) − F(a), où F est UNE primitive de f</div>"+
+"<p>Dans le cours : ∫<sub>1</sub><sup>6</sup> f(x) dx = F(6) − F(1). On calcule en trois temps : 1) on trouve une primitive F ; 2) on calcule F(b) et F(a) ; 3) on soustrait.</p>"+
+"<p>Peu importe la primitive choisie : la constante s’annule dans la soustraction.</p>"+
+"<h3>Exemples</h3><ul>"+
+"<li>∫<sub>0</sub><sup>3</sup> 2x dx : F(x) = x², donc 3² − 0² = <b>9</b>. Vérification : c’est l’aire d’un triangle de base 3 et de hauteur 6, soit 3 × 6 / 2 = 9.</li>"+
+"<li>∫<sub>1</sub><sup>6</sup> 4 dx : F(x) = 4x, donc 24 − 4 = <b>20</b>. C’est l’aire d’un rectangle de 5 sur 4.</li>"+
+"<li>∫<sub>1</sub><sup>2</sup> x² dx : F(x) = x³ / 3, donc 8/3 − 1/3 = <b>7/3</b>.</li></ul>"+
+"<h3>À quoi ça sert ?</h3><p>La position d’une voiture est une primitive de sa vitesse : en intégrant la vitesse entre deux instants, on obtient la distance parcourue.</p>"},
+{t:"Manipulation des nombres",s:"Nombres",h:
+"<h2>Manipulation des nombres</h2>"+
+"<p>Les mathématiciens aiment ranger les entiers et les nombres en différentes catégories.</p>"+
+"<div class=\"sets\" aria-label=\"N inclus dans Z, inclus dans Q, inclus dans R\"><div>ℝ<div>ℚ<div>ℤ<div>ℕ</div></div></div></div></div>"+
+"<ul><li>Les entiers <b>naturels</b> (ensemble noté ℕ) forment une suite de nombres commençant par 0 et avançant d’un pas de 1 : 0, 1, 2, 3, 4…</li>"+
+"<li>Les entiers <b>relatifs</b> (ensemble noté ℤ) complètent les entiers naturels avec leur équivalent négatif : …, −2, −1, 0, 1, 2, …</li>"+
+"<li>Les nombres <b>rationnels</b> (ensemble noté ℚ) sont les nombres qui s’écrivent comme une fraction d’entiers relatifs, par exemple −3/2 ou 5/9.</li>"+
+"<li>L’ensemble ℝ regroupe tous les nombres, rationnels ou non.</li></ul>"+
+"<div class=\"formula\">ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ</div>"+
+"<p>Le nombre π est dit <b>irrationnel</b> : il ne peut pas s’écrire avec un numérateur et un dénominateur entiers relatifs (π ≠ a/b avec a et b dans ℤ).</p>"},
+{t:"Multiples et diviseurs",s:"Nombres (suite)",h:
+"<h2>Multiples, diviseurs et nombres premiers</h2>"+
+"<h3>Multiple</h3>"+
+"<p>Un entier relatif a est dit <b>multiple</b> d’un entier relatif b s’il existe un entier naturel k dans ℕ tel que :</p><div class=\"formula\">a = k × b</div>"+
+"<p>Exemples : 9 est un multiple de 3 ; 15 est un multiple de 5 (mais aussi de 3) ; 732 est un multiple de 6.</p>"+
+"<h3>Diviseur</h3>"+
+"<p>À l’inverse, b est aussi un <b>diviseur</b> de a. Exemples : 3 est un diviseur de 9 ; 5 est un diviseur de 15 ; 6 est un diviseur de 732 (122 en est un aussi, car 732 = 6 × 122).</p>"+
+"<div class=\"formula\">On dit aussi que b divise a, ce qu’on note b | a</div>"},
+{t:"Critères de divisibilité",s:"Nombres (suite)",h:
+"<h2>Critères de divisibilité</h2>"+
+"<p><b>Rappel :</b> un entier a est divisible par b (entier) s’il admet b comme l’un de ses diviseurs, c’est-à-dire s’il existe un entier k tel que a = k × b.</p>"+
+"<div class=\"formula\">Un critère de divisibilité est une règle permettant de vérifier la divisibilité d’un nombre (entier)</div>"+
+"<h3>Divisibilité par 2</h3><p>Un entier est divisible par 2 s’il est pair (son dernier chiffre est 0, 2, 4, 6 ou 8).</p><p>Exemples : 4, 126 et 4 510 480 sont divisibles par 2.</p>"+
+"<h3>Divisibilité par 3</h3><p>Un entier est divisible par 3 si la somme de ses chiffres l’est aussi.</p><p>Exemples : 630 est divisible par 3, car 6 + 3 + 0 = 9 est divisible par 3. 123 aussi, car 1 + 2 + 3 = 6.</p>"+
+"<h3>Divisibilité par 4</h3><p>Un entier est divisible par 4 si ses deux derniers chiffres forment un nombre divisible par 4.</p><p>Exemples : 16 est divisible par 4 ; 64 aussi (4 × 16). Donc 416 et 464 sont divisibles par 4.</p>"},
+{t:"Critères de divisibilité : 5 à 10",s:"Nombres (suite)",h:
+"<h2>Critères de divisibilité : suite du cours</h2>"+
+"<h3>Par 5</h3><p>Le dernier chiffre du nombre étudié est 0 ou 5. Exemples : 410, 5 025 et 452 689 130 sont divisibles par 5.</p>"+
+"<h3>Par 6</h3><p>Le nombre est divisible par 2 <b>ET</b> par 3. Exemple : 72 est divisible par 6, car il est pair ET 7 + 2 = 9 est divisible par 3.</p>"+
+"<h3>Par 7 : une règle spéciale</h3><p>On isole le dernier chiffre du reste du nombre et on calcule :</p><div class=\"formula\">reste − 2 × dernier chiffre</div><p>Si le résultat est un multiple de 7, alors le nombre est divisible par 7.</p>"+
+"<ul><li>112 est divisible par 7, car 11 − 2 × 2 = 7, qui est un multiple de 7.</li><li>28 est divisible par 7, car 2 − 2 × 8 = −14, qui est un multiple de 7.</li></ul>"+
+"<h3>Par 8</h3><p>Les trois derniers chiffres forment un nombre divisible par 8.</p>"+
+"<h3>Par 9</h3><p>La somme des chiffres forme un nombre divisible par 9. Exemple : 729, car 7 + 2 + 9 = 18.</p>"+
+"<h3>Par 10</h3><p>Le dernier chiffre du nombre étudié est 0.</p>"},
+{t:"Les nombres premiers",s:"Nombres (suite)",h:
+"<h2>Nombres premiers, quésaco ?</h2>"+
+"<p>Les nombres premiers forment un ensemble de nombres assez particuliers en mathématiques, notamment très utiles en pratique (cryptage de données, par exemple).</p>"+
+"<h3>Mais alors, qu’est-ce qu’un nombre premier ?</h3>"+
+"<div class=\"formula\">Un nombre premier est un nombre dont les seuls diviseurs sont 1 et ce nombre lui-même !</div>"+
+"<p>Il a donc exactement deux diviseurs. Par convention, 1 n’est pas premier : il n’en a qu’un.</p>"+
+"<h3>Exemples</h3><ul><li>Les premiers nombres premiers sont 2, 3, 5, 7, 11, 13…</li>"+
+"<li>4 n’est pas premier : il n’admet pas seulement 1 et 4 comme diviseurs, mais aussi 2.</li>"+
+"<li>6 n’est pas premier : il admet 3 comme diviseur.</li>"+
+"<li><b>61 est un nombre premier</b> (voir le QCM de 2026 comme exercice).</li></ul>"+
+"<h3>Astuce</h3><p>Pour savoir si n est premier, essayez de le diviser par les nombres premiers dont le carré ne dépasse pas n. Pour 61 : 2, 3, 5 et 7 (car 11² = 121 > 61). Aucun ne divise 61, donc 61 est premier.</p>"},
+{t:"Nombres premiers entre eux",s:"Nombres (suite)",h:
+"<h2>Nombres premiers entre eux</h2>"+
+"<div class=\"formula\">Deux entiers relatifs sont dits « premiers entre eux » lorsqu’ils n’ont pas d’autre diviseur EN COMMUN que 1 et −1 !</div>"+
+"<p>On verra, comme définition plus simple mais demandant des connaissances supplémentaires, que deux nombres premiers entre eux ont un <b>PGCD égal à 1</b> (PGCD = plus grand diviseur commun).</p>"+
+"<h3>Exemples</h3><ul>"+
+"<li><b>6 et 25 sont premiers entre eux.</b> 6 admet comme diviseurs, en entiers naturels, seulement 1, 2, 3 et 6. Or 25 n’admet que 1 comme diviseur commun avec ceux de 6 : il n’admet ni 2, ni 3, ni 6.</li>"+
+"<li><b>6 et 27 ne sont pas premiers entre eux</b>, car ils admettent 3 comme diviseur commun autre que 1 ou −1.</li></ul>"+
+"<p>Attention : « premiers entre eux » ne veut pas dire « premiers ». 6 et 25 ne sont ni l’un ni l’autre des nombres premiers, et pourtant ils sont premiers entre eux.</p>"},
+{t:"Critères de divisibilité : 11 et nombres composés",s:"Nombres (suite)",h:
+"<h2>Critères de divisibilité : deux cas spéciaux</h2>"+
+"<h3>Par 11 : la règle de la somme alternée</h3>"+
+"<p>On fait la somme des chiffres en position <b>impaire</b> du nombre étudié (unités, centaines, etc.), puis celle des chiffres en position <b>paire</b> (dizaines, milliers, etc.).</p>"+
+"<div class=\"formula\">Si la différence entre ces deux sommes vaut 0 ou est divisible par 11, le nombre est divisible par 11</div>"+
+"<ul><li>27 214 est divisible par 11, car (2 + 2 + 4) − (7 + 1) = 0.</li><li>77 715 est divisible par 11, car (7 + 7 + 5) − (7 + 1) = 11, divisible par 11.</li></ul>"+
+"<h3>Par un nombre composé</h3>"+
+"<p>On rappelle qu’un nombre est <b>composé</b> s’il n’est pas premier.</p>"+
+"<p><b>Propriété :</b> un nombre composé peut s’écrire parfois comme le produit de deux nombres premiers entre eux.</p>"+
+"<div class=\"formula\">Pour qu’un nombre soit divisible par un nombre composé N = a × b (a et b premiers entre eux), il faut qu’il soit divisible par a ET par b</div>"+
+"<ul><li>Divisible par 12 (12 = 3 × 4) : divisible par 3 ET par 4.</li><li>Divisible par 15 (15 = 3 × 5) : divisible par 3 ET par 5.</li></ul>"+
+"<p><b>Attention :</b> les deux facteurs doivent être premiers entre eux. 8 = 2 × 4 ne convient pas : 12 est divisible par 2 et par 4, mais pas par 8.</p>"},
+{t:"La division euclidienne",s:"Division euclidienne",h:
+"<h2>La division euclidienne</h2>"+
+"<p>On travaille sur l’ensemble ℕ des entiers naturels.</p>"+
+"<div class=\"formula\">Une division euclidienne associe à deux entiers, le dividende a et le diviseur b (non nul), deux autres entiers : le quotient q et le reste r</div>"+
+"<p><b>Propriété :</b> en notant a le dividende, b le diviseur, q le quotient et r le reste, on a :</p><div class=\"formula\">a = b × q + r, avec 0 ≤ r &lt; b</div>"+
+"<p>Schéma d’une division posée :</p>"+
+"<div class=\"cross\"><div>a<br><small>dividende</small></div><div>b<br><small>diviseur</small></div><div>r<br><small>reste</small></div><div class=\"q\">q<br><small>quotient</small></div></div>"+
+"<p>Exemple : 47 = 5 × 9 + 2. Le dividende est 47, le diviseur 5, le quotient 9 et le reste 2 (bien plus petit que 5).</p>"+
+"<h3>La partie entière</h3>"+
+"<div class=\"formula\">La partie entière de x, notée ⌊x⌋, est le plus grand entier n vérifiant n ≤ x &lt; n + 1</div>"+
+"<p>En résumé, c’est l’entier le plus proche de x par valeurs inférieures. Exemples : ⌊3,7⌋ = 3 ; ⌊5⌋ = 5 ; ⌊−1,5⌋ = −2 (et non −1).</p>"},
+{t:"Division euclidienne et division usuelle",s:"Division euclidienne (suite)",h:
+"<h2>Division euclidienne : suite du cours</h2>"+
+"<p><b>Propriété 2 :</b> lien entre division euclidienne et division usuelle. Le quotient q de la division euclidienne de a par b est exactement la partie entière de la division usuelle de a par b.</p>"+
+"<div class=\"formula\">q = ⌊a / b⌋</div>"+
+"<p>Exemple : 47 / 5 = 9,4, donc q = 9. On retrouve le reste : r = 47 − 5 × 9 = 2.</p>"+
+"<p>Note : on peut aussi obtenir le reste r de la division euclidienne de a par b en connaissant a et b seulement, grâce à une fonction de la calculatrice.</p>"+
+"<h3>Pour aller plus loin : l’algorithme d’Euclide</h3>"+
+"<p>Il calcule le PGCD de deux nombres avec des divisions euclidiennes successives : le PGCD de a et b est le même que celui de b et r. On recommence jusqu’à obtenir un reste nul. Le <b>dernier reste non nul</b> est le PGCD.</p>"+
+"<p>PGCD de 12 et 17 :</p><ul><li>17 = 12 × 1 + 5</li><li>12 = 5 × 2 + 2</li><li>5 = 2 × 2 + 1</li><li>2 = 1 × 2 + 0</li></ul>"+
+"<p>Le dernier reste non nul est 1 : PGCD(12 ; 17) = 1. Donc 12 et 17 sont <b>premiers entre eux</b>.</p>"},
+{t:"Valeur décimale et valeur approchée",s:"Nombres (suite)",h:
+"<h2>Valeur décimale et valeur approchée d’une fraction</h2><p>Pour passer d’une fraction a/b (a dans ℕ et b dans ℕ*) à sa <b>valeur décimale</b> (valeur avec des virgules), on l’approche souvent selon un certain nombre de chiffres après la virgule :</p><ul><li><b>par défaut</b> (= par valeurs inférieures) ;</li><li><b>par excès</b> (= par valeurs supérieures).</li></ul><div class=\"formula\">valeur approchée par défaut ≤ a/b ≤ valeur approchée par excès</div><h3>Exemples</h3><ul><li>2/3 = 0,6666… Au centième : par défaut 0,66 ; par excès 0,67. On écrit 0,66 &lt; 2/3 &lt; 0,67.</li><li>1/3 = 0,3333… Au dixième : par défaut 0,3 ; par excès 0,4.</li><li>1/4 = 0,25 : la valeur décimale est exacte, il n’y a rien à approcher.</li></ul><p>Attention : un <b>arrondi</b> est celui des deux encadrements qui est le plus proche de la valeur. Pour 2/3 au centième, l’arrondi est 0,67 (par excès) ; pour 1/3 au centième, c’est 0,33 (par défaut).</p>"},
+{t:"Puissances, racines et notation scientifique",s:"Nombres (suite)",h:
+"<h2>Puissances, racines carrées et notation scientifique</h2><h3>Puissance d’exposant entier relatif</h3><div class=\"formula\">10<sup>−a</sup> = 1 / 10<sup>a</sup> avec a dans ℤ, et aussi 10<sup>a</sup> = 1 / 10<sup>−a</sup></div><p>À retenir : <b>diviser par un nombre revient à multiplier par son inverse</b>.</p><p>De même, 10<sup>−a</sup> s’écrit 0,00…01, avec a chiffres après la virgule (a − 1 zéros, puis un 1). Exemples : 10<sup>−1</sup> = 0,1 ; 10<sup>−3</sup> = 0,001.</p><h3>Racine carrée d’un produit ou d’un quotient</h3><p>Pour a dans ℝ⁺ et b dans ℝ*⁺ :</p><div class=\"formula\">√(a × b) = √a × √b &nbsp;et&nbsp; √(a / b) = √a / √b</div><ul><li>√50 = √(25 × 2) = 5√2.</li><li>√(9 / 4) = √9 / √4 = 3/2.</li></ul><p>Attention : cela ne marche <b>pas</b> pour une somme. √9 + √16 = 7, mais √(9 + 16) = √25 = 5.</p><h3>Notation scientifique</h3><p>On parle de notation scientifique lorsqu’on exprime un réel c sous la forme :</p><div class=\"formula\">c = a × 10<sup>b</sup>, avec a dans [1 ; 10[ (la « mantisse ») et b dans ℤ (l’« exposant »)</div><p>On dit alors qu’on a exprimé la notation scientifique de c, qui vaut a × 10<sup>b</sup>.</p><ul><li>45 000 = 4,5 × 10<sup>4</sup>.</li><li>0,0032 = 3,2 × 10<sup>−3</sup>.</li></ul>"},
+{t:"Développement et factorisation",s:"Calcul littéral",h:
+"<h2>Développement et factorisation</h2>"+
+"<p>On appelle <b>développement</b> tout processus qui vise à transformer une suite de multiplications / divisions en une suite d’additions.</p>"+
+"<ul><li>(3 + 2) × 6 = 3 × 6 + 2 × 6 (= 30)</li><li>(y + 2) × y = y × y + 2 × y = y² + 2y, avec y un nombre réel</li></ul>"+
+"<p>On appelle <b>factorisation</b> tout processus qui vise à transformer une suite d’additions / soustractions en une suite de multiplications.</p>"+
+"<ul><li>y² + 2y = y × y + 2 × y = (y + 2) × y, avec y réel</li></ul>"+
+"<div class=\"formula\">La factorisation est donc le processus inverse du développement</div>"},
+{t:"Les identités remarquables",s:"Calcul littéral (suite)",h:
+"<h2>Les identités remarquables</h2>"+
+"<p>Soient a et b deux nombres réels (les nombres de base que vous utilisez, qui regroupent les rationnels et les irrationnels). On définit la factorisation et le développement de formes particulières, qu’on nomme « identités remarquables » :</p>"+
+"<div class=\"formula\">(a + b)² = a² + 2ab + b²<br>(a − b)² = a² − 2ab + b²<br>(a + b)(a − b) = a² − b²</div>"+
+"<p>De gauche à droite, on <b>développe</b>. De droite à gauche, on <b>factorise</b>.</p>"+
+"<h3>Exemples</h3><ul><li>(x + 3)² = x² + 6x + 9</li><li>(x − 3)² = x² − 6x + 9</li><li>x² − 16 = (x + 4)(x − 4)</li><li>Calcul mental : 21² = (20 + 1)² = 400 + 40 + 1 = 441</li></ul>"},
+{t:"Équations et inéquations du 1er degré",s:"Algèbre",h:
+"<h2>Équations et inéquations du 1er degré à une inconnue</h2>"+
+"<p>Une <b>équation</b> à une inconnue est une égalité du type A = B, où A désigne le premier membre et B le second. L’inconnue est souvent dans les deux membres : il convient de l’isoler, soit dans A, soit dans B.</p>"+
+"<ul><li>x + 5 = 0 : équation du premier degré (second membre nul)</li><li>x² + 2x + 1 = 8 : équation du second degré, avec second membre</li></ul>"+
+"<p>On parle d’<b>inéquation</b> lorsque l’un des membres est supérieur (ou strictement supérieur) à l’autre : A &gt; B, A ≥ B, A &lt; B ou A ≤ B.</p>"+
+"<ul><li>x + 5 &lt; 0 : inéquation du premier degré à une inconnue</li><li>3y + 2 &gt; 8 donne 3y &gt; 6, soit y &gt; 2 (on a isolé y dans le premier membre)</li></ul>"+
+"<div class=\"formula\">L’équation du premier degré à une inconnue et à coefficients réels est de la forme ax + b = 0 (a et b réels)</div>"+
+"<p>Si a ≠ 0, elle a pour solution x = −b / a. Par exemple, 2x + 6 = 0 donne x = −3.</p>"+
+"<h3>Le piège des inéquations</h3><p>Quand on multiplie ou divise les deux membres par un nombre <b>négatif</b>, le sens de l’inégalité s’inverse : −2x &gt; 6 donne x &lt; −3.</p>"},
+{t:"Inéquations du 1er degré (suite)",s:"Algèbre (suite)",h:
+"<h2>Inéquations du 1er degré : suite du cours</h2>"+
+"<div class=\"formula\">Une inéquation du 1er degré à une inconnue est de la forme ax + b &gt; 0 ou ax + b &lt; 0, avec a et b réels et x l’inconnue à déterminer</div>"+
+"<h3>Hors programme, mais important à connaître dans le doute : le second degré</h3>"+
+"<p>Résolution des équations du second degré à une inconnue, à coefficients réels. Forme : aX² + bX + c = 0, où X est l’inconnue à déterminer.</p>"+
+"<p>On détermine le <b>discriminant</b> :</p><div class=\"formula\">Δ = b² − 4ac</div>"+
+"<p>Puis on cherche les solutions selon le signe de Δ :</p>"+
+"<ul><li>Δ &gt; 0 : deux solutions, X₁ = (−b + √Δ) / 2a et X₂ = (−b − √Δ) / 2a ;</li><li>Δ = 0 : une solution, X = −b / 2a ;</li><li>Δ &lt; 0 : aucune solution réelle.</li></ul>"+
+"<h3>Exercice : résoudre X² − X − 1 = 0</h3>"+
+"<p>Ici a = 1, b = −1 et c = −1. Δ = (−1)² − 4 × 1 × (−1) = 1 + 4 = 5 &gt; 0 : il y a 2 solutions.</p>"+
+"<ul><li>X₁ = (1 + √5) / 2 ≈ 1,618</li><li>X₂ = (1 − √5) / 2</li></ul>"+
+"<p>L’une des deux solutions est un nombre très connu des matheux : le <b>nombre d’or</b> (« divine proportion »), noté φ ≈ 1,618. Il vérifie φ² = φ + 1 et 1/φ = φ − 1.</p>"},
+{t:"Systèmes : la substitution",s:"Systèmes d’équations",h:
+"<h2>Système de deux équations à deux inconnues</h2>"+
+"<p>Un système de deux équations à deux inconnues (coefficients réels) est de la forme :</p>"+
+"<div class=\"formula\">ax + by = c<br>dx + ey = f</div>"+
+"<p>avec a, b, c, d, e, f dans ℝ. Il y a deux méthodes pour le résoudre : par <b>substitution</b> et par <b>combinaison</b>.</p>"+
+"<h3>Par substitution</h3><p>On isole x dans la première équation, puis on reporte sa valeur dans la 2ᵉ.</p>"+
+"<ul><li>ax + by = c donne x = (c − by) / a</li><li>dx + ey = f devient d × (c − by) / a + ey = f : on trouve y, puis on en déduit x grâce à x = (c − by) / a.</li></ul>"+
+"<h3>Exemple numérique</h3><p>x + 2y = 7 et 3x − y = 7. On isole x = 7 − 2y, puis 3(7 − 2y) − y = 7 donne 21 − 7y = 7, soit y = 2. Donc x = 7 − 4 = 3.</p>"},
+{t:"Systèmes : la combinaison",s:"Systèmes d’équations (suite)",h:
+"<h2>Système de deux équations à deux inconnues : suite</h2>"+
+"<h3>Par combinaison</h3><p>On repart du même système, en remplaçant e par −b :</p>"+
+"<div class=\"formula\">ax + by = c (1)<br>dx − by = f (2)</div>"+
+"<p>On peut « combiner » les équations pour isoler un élément (ici x, mais dans d’autres exemples ce pourrait être y).</p>"+
+"<p>En additionnant les deux équations, 1) + 2), on a :</p><div class=\"formula\">(a + d)x = c + f, soit x = (c + f) / (a + d)</div>"+
+"<p>On cherche y en reprenant ce résultat de x dans l’une des deux équations.</p>"+
+"<h3>Exemple numérique</h3><p>x + y = 5 (1) et 2x − y = 1 (2). En additionnant, 3x = 6, donc x = 2. Dans (1) : y = 5 − 2 = 3.</p>"}
+];
+var UPCOMING=["PGCD et PPCM"];
+var EXOS=[
+{c:"Proportionnalité",q:"Une imprimante imprime 12 pages en 3 minutes. Combien de pages imprime-t-elle en 15 minutes ?",o:["48 pages","60 pages","36 pages","75 pages"],a:1,e:"Produit en croix : 12 × 15 / 3 = 60 pages. On peut aussi voir que 15 min = 5 × 3 min, donc 5 × 12 = 60."},
+{c:"Proportionnalité",q:"Un cycliste roule à vitesse constante et parcourt 18 km en 45 minutes. Quelle distance parcourt-il en 1 h 30 ?",o:["27 km","36 km","40 km","54 km"],a:1,e:"1 h 30 = 90 min, soit le double de 45 min : 2 × 18 = 36 km. Par produit en croix : 18 × 90 / 45 = 36."},
+{c:"Proportionnalité",q:"Un moteur effectue 25 tours par seconde. Combien de tours effectue-t-il en 2 minutes ?",o:["50 tours","300 tours","1 500 tours","3 000 tours"],a:3,e:"2 min = 120 s. 25 × 120 = 3 000 tours. Attention à convertir les minutes en secondes avant de faire le produit en croix."},
+{c:"Vitesse",q:"Un train parcourt 60 km en 1 h 15. Quelle est sa vitesse moyenne ?",o:["45 km/h","48 km/h","50 km/h","60 km/h"],a:1,e:"1 h 15 = 1,25 h. vitesse = distance / temps = 60 / 1,25 = 48 km/h. On pouvait éliminer 60 km/h : le trajet dure plus d’une heure."},
+{c:"Vitesse",q:"Un train part à 14 h et parcourt 100 km jusqu’à la gare, où il arrive à 16 h. Quelle est sa vitesse moyenne ?",o:["25 km/h","40 km/h","50 km/h","200 km/h"],a:2,e:"Durée : 2 h. 100 / 2 = 50 km/h."},
+{c:"Fonctions",q:"Soit f(x) = 2x. Quelle est l’image de 3 par f ?",o:["5","6","1,5","9"],a:1,e:"L’image de 3 est f(3) = 2 × 3 = 6."},
+{c:"Fonctions",q:"Soit f(x) = 2x. Quel est l’antécédent de 10 par f ?",o:["5","20","12","8"],a:0,e:"On cherche x tel que 2x = 10, donc x = 5."},
+{c:"Fonctions",q:"Soit f(x) = 2x. Combien vaut f(−1) ?",o:["2","−1","−2","0,5"],a:2,e:"f(−1) = 2 × (−1) = −2."},
+{c:"Fonctions",q:"La représentation graphique de f(x) = 2x est une droite qui monte de gauche à droite. Que peut-on dire de f ?",o:["Elle est strictement décroissante","Elle est constante","Elle est strictement croissante","Elle a deux antécédents de 2"],a:2,e:"Quand x augmente, f(x) augmente toujours : f est strictement croissante. Comme le graphe est une droite, chaque valeur a un unique antécédent."},
+{c:"Dérivée",q:"Soit f(x) = 5x. Quelle est la dérivée f′(x) ?",o:["5x","5","x","0"],a:1,e:"Si f(x) = a·x, alors f′(x) = a. Ici a = 5, donc f′(x) = 5."},
+{c:"Dérivée",q:"Soit f(x) = x³. Quelle est la dérivée f′(x) ?",o:["x²","3x³","3x²","2x²"],a:2,e:"Si f(x) = xᵃ, alors f′(x) = a·xᵃ⁻¹. Ici a = 3, donc f′(x) = 3x²."},
+{c:"Dérivée",q:"Soit f(x) = 7, une constante. Que vaut f′(x) ?",o:["7","0","1","7x"],a:1,e:"La dérivée d’une constante est nulle."},
+{c:"Dérivée",q:"En un point, la tangente à la courbe est une ligne horizontale. Que dire de la dérivée en ce point ?",o:["Elle est positive","Elle est négative","Elle est nulle","Elle vaut 1"],a:2,e:"Une tangente horizontale a une hauteur nulle : le rapport hauteur / longueur vaut 0, donc la dérivée est nulle."},
+{c:"Dérivée",q:"En un point, la tangente à la courbe est une droite qui monte de gauche à droite. Que dire de la dérivée en ce point ?",o:["Elle est négative","Elle est nulle","Elle est impossible à connaître","Elle est positive"],a:3,e:"Une tangente qui croît correspond à une dérivée positive. Une tangente qui descend correspondrait à une dérivée négative."},
+{c:"Dérivée",q:"Soit f(x) = x². Combien vaut f′(3) ?",o:["3","6","9","2"],a:1,e:"f′(x) = 2x, donc f′(3) = 2 × 3 = 6."},
+{c:"Dérivée",q:"Quel lien existe-t-il entre la position d’une voiture et sa vitesse ?",o:["La vitesse est la dérivée de la position","La position est la dérivée de la vitesse","La vitesse est la dérivée de l’accélération","Il n’y a aucun lien"],a:0,e:"La vitesse d’un corps est la dérivée de sa position, et son accélération est la dérivée de sa vitesse."},
+{c:"Nombres",q:"Quel est le plus petit de ces ensembles qui contient le nombre −3 ?",o:["ℕ","ℤ","ℚ","ℝ"],a:1,e:"−3 est négatif, donc il n’est pas dans ℕ. Il est dans ℤ, qui est lui-même inclus dans ℚ et ℝ."},
+{c:"Nombres",q:"Lequel de ces nombres n’est pas un entier relatif ?",o:["−12","0","5/9","7"],a:2,e:"5/9 est un rationnel, mais pas un entier : il appartient à ℚ sans appartenir à ℤ."},
+{c:"Nombres",q:"Le nombre π est…",o:["un entier relatif","un nombre rationnel","un nombre irrationnel","un entier naturel"],a:2,e:"π ne peut pas s’écrire comme une fraction d’entiers relatifs : il est irrationnel."},
+{c:"Nombres",q:"Quelle écriture est correcte ?",o:["ℚ ⊂ ℤ","ℤ ⊂ ℕ","ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ","ℝ ⊂ ℚ"],a:2,e:"Chaque ensemble est inclus dans le suivant : ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ."},
+{c:"Multiples et diviseurs",q:"Lequel de ces nombres est un multiple de 6 ?",o:["722","730","732","740"],a:2,e:"732 = 6 × 122. Les autres ne s’écrivent pas k × 6 avec k entier."},
+{c:"Multiples et diviseurs",q:"Lequel de ces nombres est un diviseur de 45 ?",o:["6","9","10","12"],a:1,e:"45 = 9 × 5, donc 9 divise 45. Les autres ne conviennent pas."},
+{c:"Multiples et diviseurs",q:"On sait que 732 = 6 × 122. Quelle affirmation est vraie ?",o:["122 est un diviseur de 732","6 est un multiple de 732","732 divise 6","122 est un multiple de 732"],a:0,e:"732 = 6 × 122 : 6 et 122 sont des diviseurs de 732, et 732 est un multiple de 6 et de 122."},
+{c:"Multiples et diviseurs",q:"Que signifie la notation 4 | 20 ?",o:["4 divise 20","20 divise 4","4 est égal à 20","4 est un multiple de 20"],a:0,e:"b | a signifie que b divise a. Ici 20 = 5 × 4, donc 4 divise 20."},
+{c:"Nombres premiers",q:"Lequel de ces nombres est premier ?",o:["51", "57", "61", "63"],a:2,e:"51 = 3 × 17, 57 = 3 × 19 et 63 = 7 × 9. 61 n’est divisible ni par 2, 3, 5 ni 7 : il est premier."},
+{c:"Nombres premiers",q:"Lequel de ces nombres n’est pas premier ?",o:["2", "3", "5", "9"],a:3,e:"9 = 3 × 3 : il admet 3 comme diviseur, en plus de 1 et 9."},
+{c:"Nombres premiers",q:"Pourquoi 6 n’est-il pas un nombre premier ?",o:["Il n’a aucun diviseur", "Il admet 2 et 3 comme diviseurs, en plus de 1 et 6", "Il est trop petit", "Il est négatif"],a:1,e:"Un nombre premier n’a que 1 et lui-même pour diviseurs. 6 admet aussi 2 et 3."},
+{c:"Nombres premiers",q:"Quel est le seul nombre premier pair ?",o:["2", "4", "6", "0"],a:0,e:"Tout autre nombre pair est divisible par 2 en plus de 1 et de lui-même, donc il n’est pas premier."},
+{c:"Nombres premiers entre eux",q:"6 et 25 sont-ils premiers entre eux ?",o:["Oui, leur seul diviseur commun est 1", "Non, ils ont 2 en commun", "Non, ils ont 3 en commun", "Non, car 25 n’est pas premier"],a:0,e:"Diviseurs de 6 : 1, 2, 3, 6. Diviseurs de 25 : 1, 5, 25. Le seul diviseur commun est 1."},
+{c:"Nombres premiers entre eux",q:"Lequel de ces couples est formé de nombres premiers entre eux ?",o:["(6 ; 27)", "(8 ; 12)", "(9 ; 10)", "(14 ; 21)"],a:2,e:"6 et 27 ont 3 en commun ; 8 et 12 ont 2 et 4 ; 14 et 21 ont 7. 9 (1, 3, 9) et 10 (1, 2, 5, 10) n’ont que 1 en commun."},
+{c:"Nombres premiers entre eux",q:"Deux nombres premiers entre eux ont un PGCD égal à…",o:["0", "1", "au plus petit des deux", "à leur produit"],a:1,e:"Leur plus grand diviseur commun est 1, puisque c’est leur seul diviseur commun positif."},
+{c:"Développement et factorisation",q:"Développer 3(x + 4).",o:["3x + 4", "3x + 12", "x + 12", "3x + 7"],a:1,e:"On multiplie chaque terme par 3 : 3 × x + 3 × 4 = 3x + 12."},
+{c:"Développement et factorisation",q:"Développer (y + 2) × y.",o:["y² + 2y", "y² + 2", "2y²", "y + 2y"],a:0,e:"(y + 2) × y = y × y + 2 × y = y² + 2y."},
+{c:"Développement et factorisation",q:"Factoriser y² + 2y.",o:["y(y + 2)", "y(y + 2y)", "2(y + y²)", "(y + 2)²"],a:0,e:"y est un facteur commun : y² + 2y = y × y + 2 × y = y(y + 2)."},
+{c:"Développement et factorisation",q:"Quel processus transforme une somme en produit ?",o:["Le développement", "La factorisation", "La dérivation", "L’approximation"],a:1,e:"La factorisation transforme des additions / soustractions en multiplications. C’est l’inverse du développement."},
+{c:"Identités remarquables",q:"(a + b)² est égal à…",o:["a² + b²", "a² + 2ab + b²", "a² − 2ab + b²", "a² + ab + b²"],a:1,e:"Identité remarquable : (a + b)² = a² + 2ab + b². Le double produit 2ab est le terme qu’on oublie le plus souvent."},
+{c:"Identités remarquables",q:"Développer (x − 3)².",o:["x² − 9", "x² − 6x + 9", "x² + 6x + 9", "x² − 6x − 9"],a:1,e:"(a − b)² = a² − 2ab + b² avec a = x et b = 3 : x² − 6x + 9."},
+{c:"Identités remarquables",q:"Factoriser x² − 16.",o:["(x − 4)²", "(x − 4)(x + 4)", "(x − 8)(x + 2)", "(x + 4)²"],a:1,e:"x² − 16 = x² − 4². On applique a² − b² = (a + b)(a − b) : (x + 4)(x − 4)."},
+{c:"Identités remarquables",q:"Calculer 21² astucieusement.",o:["441", "421", "400", "461"],a:0,e:"21² = (20 + 1)² = 20² + 2 × 20 × 1 + 1² = 400 + 40 + 1 = 441."},
+{c:"Équations et inéquations",q:"Résoudre x + 5 = 0.",o:["x = 5", "x = −5", "x = 0", "x = 1/5"],a:1,e:"On isole x : x = 0 − 5 = −5."},
+{c:"Équations et inéquations",q:"Résoudre 2x + 6 = 0.",o:["x = 3", "x = −3", "x = −12", "x = 6"],a:1,e:"2x = −6, donc x = −6 / 2 = −3. C’est la formule x = −b / a avec a = 2 et b = 6."},
+{c:"Équations et inéquations",q:"Quelle équation est du premier degré ?",o:["x² + 2x + 1 = 8", "3x − 4 = 0", "x³ = 8", "x² = x"],a:1,e:"Seule 3x − 4 = 0 ne contient l’inconnue qu’à la puissance 1. Les autres font apparaître x² ou x³."},
+{c:"Équations et inéquations",q:"3y + 2 > 8 équivaut à…",o:["y > 2", "y < 2", "y > 10/3", "y > 6"],a:0,e:"3y > 8 − 2 = 6, donc y > 6 / 3 = 2."},
+{c:"Équations et inéquations",q:"Résoudre 5x − 3 ≤ 12.",o:["x ≤ 3", "x ≥ 3", "x ≤ 9/5", "x ≤ 15"],a:0,e:"5x ≤ 15, donc x ≤ 3. On divise par 5, positif : le sens ne change pas."},
+{c:"Équations et inéquations",q:"Résoudre −2x > 6.",o:["x > −3", "x < −3", "x > 3", "x < 3"],a:1,e:"On divise par −2, négatif : le sens s’inverse. x < −3."},
+{c:"Critères de divisibilité",q:"Lequel de ces nombres est divisible par 3 ?",o:["122", "124", "123", "125"],a:2,e:"1 + 2 + 3 = 6, qui est divisible par 3. Les sommes des autres chiffres valent 5, 7 et 8."},
+{c:"Critères de divisibilité",q:"Lequel de ces nombres est divisible par 4 ?",o:["414", "416", "418", "422"],a:1,e:"On regarde les deux derniers chiffres : 16 = 4 × 4. Les autres donnent 14, 18 et 22, non divisibles par 4."},
+{c:"Critères de divisibilité",q:"Lequel de ces nombres est divisible par 5 ?",o:["412", "415", "417", "419"],a:1,e:"Un nombre est divisible par 5 si son dernier chiffre est 0 ou 5."},
+{c:"Critères de divisibilité",q:"72 est-il divisible par 6 ?",o:["Oui : il est pair et 7 + 2 = 9 est divisible par 3", "Non : il est impair", "Non : 7 + 2 n’est pas divisible par 3", "On ne peut pas savoir"],a:0,e:"Un nombre est divisible par 6 s’il est divisible par 2 ET par 3."},
+{c:"Critères de divisibilité",q:"Lequel de ces nombres est divisible par 7 ?",o:["113", "119", "121", "125"],a:1,e:"119 : 11 − 2 × 9 = −7, multiple de 7. Pour 113 : 11 − 6 = 5 ; 121 : 12 − 2 = 10 ; 125 : 12 − 10 = 2."},
+{c:"Critères de divisibilité",q:"Lequel de ces nombres est divisible par 8 ?",o:["2012", "2016", "2020", "2018"],a:1,e:"On regarde les trois derniers chiffres : 016 = 16 = 2 × 8. Les autres donnent 12, 20 et 18."},
+{c:"Critères de divisibilité",q:"Lequel de ces nombres est divisible par 9 ?",o:["721", "729", "731", "743"],a:1,e:"7 + 2 + 9 = 18, divisible par 9. Les autres sommes valent 10, 11 et 14."},
+{c:"Second degré (hors programme)",q:"Quel est le discriminant Δ de X² − X − 1 = 0 ?",o:["5", "3", "−3", "1"],a:0,e:"Δ = b² − 4ac = (−1)² − 4 × 1 × (−1) = 1 + 4 = 5."},
+{c:"Second degré (hors programme)",q:"Δ = 5 pour X² − X − 1 = 0. Combien de solutions réelles ?",o:["Aucune", "Une", "Deux", "Une infinité"],a:2,e:"Δ > 0 : l’équation a deux solutions réelles."},
+{c:"Second degré (hors programme)",q:"Laquelle des solutions de X² − X − 1 = 0 est le nombre d’or (≈ 1,618) ?",o:["(1 + √5) / 2", "(1 − √5) / 2", "√5", "1 + √5"],a:0,e:"X₁ = (1 + √5) / 2 ≈ 1,618. L’autre solution, (1 − √5) / 2, est négative."},
+{c:"Second degré (hors programme)",q:"Combien de solutions réelles a X² + 1 = 0 ?",o:["Aucune", "Une", "Deux", "Trois"],a:0,e:"Δ = 0 − 4 × 1 × 1 = −4 < 0 : pas de solution réelle."},
+{c:"Systèmes",q:"Quelle est la méthode par substitution ?",o:["On isole une inconnue dans une équation, puis on reporte sa valeur dans l’autre", "On additionne les deux équations", "On multiplie les deux équations entre elles", "On supprime une des deux équations"],a:0,e:"Par substitution, on isole par exemple x dans la 1ʳᵉ équation et on le reporte dans la 2ᵉ."},
+{c:"Systèmes",q:"x + 2y = 7 et 3x − y = 7. Quelle est la solution (x ; y) ?",o:["(1 ; 3)", "(3 ; 2)", "(5 ; 1)", "(7 ; 0)"],a:1,e:"x = 7 − 2y, puis 3(7 − 2y) − y = 7 donne y = 2 et x = 3. Vérification : 3 + 4 = 7 et 9 − 2 = 7."},
+{c:"Systèmes",q:"En additionnant ax + by = c et dx − by = f, on obtient…",o:["(a + d)x = c + f", "(a − d)x = c − f", "(a + d)y = c + f", "ax + dx = c − f"],a:0,e:"Les termes en y s’annulent (by − by = 0) : (a + d)x = c + f."},
+{c:"Systèmes",q:"x + y = 5 et 2x − y = 1. Quelle est la solution (x ; y) ?",o:["(1 ; 4)", "(2 ; 3)", "(3 ; 2)", "(4 ; 1)"],a:1,e:"En additionnant : 3x = 6, donc x = 2. Puis y = 5 − 2 = 3."},
+{c:"Critères de divisibilité",q:"Lequel de ces nombres est divisible par 11 ?",o:["2728", "2729", "2730", "2731"],a:0,e:"2728 : (8 + 7) − (2 + 2) = 15 − 4 = 11, divisible par 11. Les autres donnent 12, 3 et 4."},
+{c:"Critères de divisibilité",q:"Un nombre est divisible par 12 s’il est divisible par…",o:["3 ET 4", "2 ET 6", "2 ET 4", "3 OU 4"],a:0,e:"12 = 3 × 4 avec 3 et 4 premiers entre eux. 2 et 6, ou 2 et 4, ont un diviseur commun : ils ne conviennent pas."},
+{c:"Critères de divisibilité",q:"Lequel de ces nombres est divisible par 15 ?",o:["135", "142", "128", "146"],a:0,e:"135 est divisible par 3 (1 + 3 + 5 = 9) ET par 5 (il finit par 5). Les autres ne le sont pas."},
+{c:"Critères de divisibilité",q:"12 est divisible par 2 et par 4. Est-il divisible par 8 ?",o:["Non : 2 et 4 ne sont pas premiers entre eux, le critère ne s’applique pas", "Oui, car 2 × 4 = 8", "Oui, car il est pair", "On ne peut pas savoir"],a:0,e:"Le critère « divisible par a ET par b » exige que a et b soient premiers entre eux. Ici 12 n’est pas divisible par 8."},
+{c:"Division euclidienne",q:"Division euclidienne de 47 par 5 : quotient et reste ?",o:["q = 9 et r = 2", "q = 8 et r = 7", "q = 10 et r = −3", "q = 2 et r = 9"],a:0,e:"47 = 5 × 9 + 2. Le reste doit être plus petit que le diviseur : 7 et 9 sont trop grands, et −3 est négatif."},
+{c:"Division euclidienne",q:"Dans 29 = 4 × 7 + 1, quel est le diviseur ?",o:["29", "4", "7", "1"],a:1,e:"Dans a = b × q + r, b est le diviseur. Ici a = 29, b = 4, q = 7 et r = 1."},
+{c:"Division euclidienne",q:"Quel est le quotient de la division euclidienne de 100 par 7 ?",o:["14", "15", "13", "7"],a:0,e:"100 / 7 ≈ 14,28 : la partie entière est 14. Vérification : 7 × 14 = 98, et il reste 2."},
+{c:"Division euclidienne",q:"Quelle est la partie entière de 3,7 ?",o:["3", "4", "3,7", "0,7"],a:0,e:"C’est le plus grand entier n tel que n ≤ 3,7 < n + 1 : n = 3."},
+{c:"Division euclidienne",q:"Quelle est la partie entière de −1,5 ?",o:["−1", "−2", "1", "2"],a:1,e:"On prend l’entier immédiatement en dessous : −2 ≤ −1,5 < −1. Ce n’est pas un arrondi vers 0."},
+{c:"Division euclidienne",q:"Le quotient q de la division euclidienne de a par b est…",o:["la partie entière de a / b", "a × b", "le reste r", "la partie entière de b / a"],a:0,e:"q = ⌊a / b⌋."},
+{c:"Division euclidienne",q:"Que vaut le PGCD de 12 et 17 par l’algorithme d’Euclide ?",o:["1", "2", "5", "17"],a:0,e:"17 = 12 × 1 + 5, 12 = 5 × 2 + 2, 5 = 2 × 2 + 1, 2 = 1 × 2 + 0. Le dernier reste non nul est 1 : 12 et 17 sont premiers entre eux."},
+{c:"Intégrales",q:"F est une primitive de f signifie que…",o:["F′(x) = f(x)", "f′(x) = F(x)", "F(x) = f(x)", "F(x) = 0"],a:0,e:"Une primitive est une fonction dont la dérivée est f : c’est la dérivée « à l’envers »."},
+{c:"Intégrales",q:"Quelle est une primitive de f(x) = 2x ?",o:["x²", "2", "x", "2x²"],a:0,e:"(x²)′ = 2x. D’autres réponses comme x² + 5 conviendraient aussi : une primitive est définie à une constante près."},
+{c:"Intégrales",q:"Quelle est une primitive de f(x) = 5 ?",o:["5x", "5", "x⁵", "0"],a:0,e:"(5x)′ = 5."},
+{c:"Intégrales",q:"Une fonction a…",o:["une infinité de primitives, qui diffèrent d’une constante", "une seule primitive", "exactement deux primitives", "aucune primitive"],a:0,e:"Si F est une primitive, F + k l’est aussi pour toute constante k, car la dérivée d’une constante est nulle."},
+{c:"Intégrales",q:"∫ de a à b de f(x) dx est égal à…",o:["F(b) − F(a)", "F(a) − F(b)", "F(b) + F(a)", "f(b) − f(a)"],a:0,e:"Avec F une primitive de f, l’intégrale vaut F(b) − F(a). Dans le cours : F(6) − F(1)."},
+{c:"Intégrales",q:"Calculer l’intégrale de 0 à 3 de 2x dx.",o:["9", "6", "3", "18"],a:0,e:"F(x) = x², donc F(3) − F(0) = 9 − 0 = 9. C’est bien l’aire du triangle de base 3 et de hauteur 6."},
+{c:"Intégrales",q:"Quelle est l’aire sous f(x) = 4 entre les abscisses 1 et 6 ?",o:["20", "24", "4", "5"],a:0,e:"F(x) = 4x, donc F(6) − F(1) = 24 − 4 = 20. C’est un rectangle de 5 sur 4."},
+{c:"Intégrales",q:"Calculer l’intégrale de 1 à 2 de x² dx.",o:["7/3", "1", "3", "8/3"],a:0,e:"F(x) = x³ / 3, donc F(2) − F(1) = 8/3 − 1/3 = 7/3."},
+{c:"Valeur approchée",q:"Quelle est la valeur approchée par défaut de 2/3 au centième ?",o:["0,67", "0,66", "0,6", "0,7"],a:1,e:"2/3 = 0,6666… La valeur par défaut est inférieure ou égale : 0,66. La valeur 0,67 est celle par excès."},
+{c:"Valeur approchée",q:"Quelle est la valeur approchée par excès de 1/3 au dixième ?",o:["0,3", "0,33", "0,4", "0,34"],a:2,e:"1/3 = 0,3333… Au dixième, 0,3 ≤ 1/3 ≤ 0,4 : la valeur par excès est 0,4."},
+{c:"Valeur approchée",q:"Une valeur approchée par excès est…",o:["inférieure ou égale à la valeur exacte", "supérieure ou égale à la valeur exacte", "toujours égale à l’arrondi", "toujours égale à la valeur exacte"],a:1,e:"Par excès = par valeurs supérieures. Par défaut = par valeurs inférieures."},
+{c:"Puissances et notation scientifique",q:"Que vaut 10⁻³ ?",o:["−1 000", "0,01", "0,001", "0,0001"],a:2,e:"10⁻³ = 1 / 10³ = 1/1 000 = 0,001, soit 3 chiffres après la virgule."},
+{c:"Puissances et notation scientifique",q:"1 / 10⁴ est égal à…",o:["10⁴", "10⁻⁴", "10⁻⁵", "−10⁴"],a:1,e:"1 / 10ᵃ = 10⁻ᵃ, ici avec a = 4."},
+{c:"Puissances et notation scientifique",q:"Quelle est la notation scientifique de 45 000 ?",o:["45 × 10³", "0,45 × 10⁵", "4,5 × 10⁴", "4,5 × 10³"],a:2,e:"La mantisse doit être dans [1 ; 10[ : 45 000 = 4,5 × 10 000 = 4,5 × 10⁴. 45 × 10³ vaut bien 45 000, mais 45 n’est pas dans [1 ; 10[."},
+{c:"Puissances et notation scientifique",q:"Quelle est la notation scientifique de 0,0032 ?",o:["3,2 × 10⁻²", "32 × 10⁻⁴", "0,32 × 10⁻²", "3,2 × 10⁻³"],a:3,e:"0,0032 = 3,2 / 1 000 = 3,2 × 10⁻³."},
+{c:"Puissances et notation scientifique",q:"Que vaut √(49 × 4) ?",o:["11", "14", "28", "196"],a:1,e:"√(49 × 4) = √49 × √4 = 7 × 2 = 14."},
+{c:"Puissances et notation scientifique",q:"Que vaut √9 + √16 ?",o:["5", "7", "25", "√25"],a:1,e:"√9 + √16 = 3 + 4 = 7. Attention : √(9 + 16) = 5, car la racine d’une somme n’est pas la somme des racines."},
+{c:"TVA",q:"TVA à 20 %. Un article coûte 50 € HT. Quel est son prix TTC ?",o:["70 €", "55 €", "60 €", "10 €"],a:2,e:"prix_TTC = prix_HT × (1 + 20/100) = 50 × 1,2 = 60 €."},
+{c:"TVA",q:"TVA à 20 %. Un article coûte 120 € TTC. Quel est son prix HT ?",o:["96 €", "100 €", "90 €", "110 €"],a:1,e:"prix_HT = prix_TTC / (1 + 20/100) = 120 / 1,2 = 100 €. Retirer 20 % de 120 € (soit 96 €) est une erreur classique."},
+{c:"TVA",q:"TVA à 20 %. Un article coûte 240 € TTC. Quel est le montant de TVA ?",o:["48 €", "20 €", "60 €", "40 €"],a:3,e:"montant_TVA = (240 × 20/100) / (1 + 20/100) = 48 / 1,2 = 40 €. Vérification : HT = 200 €, et 20 % de 200 = 40."},
+{c:"TVA",q:"Quelle formule donne le prix HT à partir du prix TTC ?",o:["prix_TTC × (1 + tauxTVA)", "prix_TTC × tauxTVA", "prix_TTC − tauxTVA", "prix_TTC / (1 + tauxTVA)"],a:3,e:"Comme prix_TTC = prix_HT × (1 + tauxTVA), on divise par (1 + tauxTVA)."}
+];
+var $=function(s){return document.querySelector(s)};
+var curTab="",pos={};
+function setTab(t,push){
+ if(["cours","exercices","programme","calculatrice","pdfs"].indexOf(t)<0)t="cours";if(t===curTab)return;pos[curTab]=window.scrollY;
+ document.querySelectorAll(".view").forEach(function(v){v.classList.toggle("hide",v.id!==t)});
+ document.querySelectorAll("nav button").forEach(function(b){if(b.dataset.tab===t)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+ if(push&&location.hash!=="#"+t)location.hash=t;
+ curTab=t;window.scrollTo(0,pos[t]||0);
+}
+document.addEventListener("click",function(e){
+ var b=e.target.closest("[data-tab],[data-go]");if(!b)return;
+ if(b.dataset.go){setTab("cours",true);showCourse(+b.dataset.go.split("-")[1]);return}
+ setTab(b.dataset.tab,true);
+});
+window.addEventListener("hashchange",function(){setTab(location.hash.slice(1),false)});
+var cur=0;
+function showCourse(i,noScroll){
+ cur=i;var c=COURSES[i];
+ $("#lesson").innerHTML=c.h+"<div class=\"pager\"><button class=\"cta alt\" "+(i?"":"disabled style=\"opacity:.4\"")+" id=\"prev\">Cours précédent</button><button class=\"cta\" id=\"next\">"+(i<COURSES.length-1?"Cours suivant":"Aller aux exercices")+"</button></div>";
+ $("#prev").onclick=function(){if(cur>0)showCourse(cur-1)};
+ $("#next").onclick=function(){if(cur<COURSES.length-1)showCourse(cur+1);else setTab("exercices",true)};
+ document.querySelectorAll("#toc button").forEach(function(b,k){if(k===i)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
+ $("#tocLbl").textContent="Cours "+(i+1)+"/"+COURSES.length+" · "+c.t;$("#toc").classList.remove("open");$("#tocBtn").setAttribute("aria-expanded","false");
+ if(!noScroll)(matchMedia("(max-width:760px)").matches?$("#tocBtn"):$("#lesson")).scrollIntoView({block:"start"});
+}
+(function(){
+ var t=$("#toc");
+ COURSES.forEach(function(c,i){var b=document.createElement("button");b.innerHTML=c.t+"<small>"+c.s+"</small>";b.onclick=function(){showCourse(i)};t.appendChild(b)});
+ UPCOMING.forEach(function(u){var b=document.createElement("button");b.disabled=true;b.style.opacity=".55";b.innerHTML=u+"<small>Bientôt</small>";t.appendChild(b)});
+ showCourse(0,true);
+})();
+$("#tocBtn").onclick=function(){var o=$("#toc").classList.toggle("open");this.setAttribute("aria-expanded",o?"true":"false");if(o)this.scrollIntoView({block:"start"})};
+function machine(){
+ var n=+$("#mx").value;$("#mxv").textContent=n;
+ $("#mIn").textContent=n?"🥖".repeat(n):"∅";
+ $("#mOut").textContent=n?"🥖".repeat(2*n):"∅";
+}
+$("#mx").addEventListener("input",machine);machine();
+var score=0,done=0,filt="";
+function renderExos(){
+ var L=EXOS.filter(function(x){return !filt||x.c===filt});score=0;done=0;$("#sc").textContent=0;$("#tot").textContent=L.length;
+ var box=$("#exos");box.innerHTML="";
+ L.forEach(function(x,i){
+  var d=document.createElement("div");d.className="card";
+  d.innerHTML="<span class=\"tag\">"+x.c+"</span><p style=\"margin:10px 0 0\"><b>Question "+(i+1)+".</b> "+x.q+"</p><div class=\"opts\"></div><div class=\"expl hide\"></div>";
+  var o=d.querySelector(".opts");
+  x.o.forEach(function(txt,k){
+   var b=document.createElement("button");b.textContent=txt;
+   b.onclick=function(){
+    o.querySelectorAll("button").forEach(function(z,j){z.disabled=true;if(j===x.a)z.classList.add("good")});
+    if(k===x.a)score++;else b.classList.add("bad");
+    done++;$("#sc").textContent=score;
+    var ex=d.querySelector(".expl");ex.classList.remove("hide");
+    ex.innerHTML="<b>"+(k===x.a?"Bonne réponse. ":"Pas tout à fait. ")+"</b>"+x.e;
+    if(done===L.length)$("#sc").parentNode.insertAdjacentHTML("beforeend"," <b> Terminé !</b>");
+   };
+   o.appendChild(b);
+  });
+  box.appendChild(d);
+ });
+}
+$("#reset").onclick=function(){renderExos();window.scrollTo(0,0)};
+var cats=["Tous"].concat(EXOS.map(function(x){return x.c}).filter(function(c,i,a){return a.indexOf(c)===i}));
+cats.forEach(function(c){var b=document.createElement("button");b.className="chip";b.textContent=c;b.setAttribute("aria-pressed",c==="Tous"?"true":"false");b.onclick=function(){filt=c==="Tous"?"":c;document.querySelectorAll(".chip[aria-pressed]").forEach(function(z){z.setAttribute("aria-pressed",z===b?"true":"false")});renderExos()};$("#chips").appendChild(b)});
+renderExos();
+var H2C="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",JSP="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",libs={},DL=null;
+try{if(window.claude&&claude.use)claude.use("downloads").then(function(d){DL=d}).catch(function(){})}catch(x){}
+function loadJS(u){return libs[u]||(libs[u]=new Promise(function(ok,ko){var e=document.createElement("script");e.src=u;e.onload=ok;e.onerror=function(){delete libs[u];ko(new Error("load"))};document.head.appendChild(e)}))}
+function slug(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+var LIGHT={"var(--accent)":"#1456d6","var(--line)":"#cfe0f7","var(--ok)":"#0d7a4a","var(--muted)":"#4a5f82"};
+function pdfHTML(i){var c=COURSES[i],h=c.h.replace(/var\(--(accent|line|ok|muted)\)/g,function(m){return LIGHT[m]}).replace(/currentColor/g,"#0b1e3d");
+ return "<div class=\"pbrand\">QCM <b>B</b> · Maths — Cours "+(i+1)+"/"+COURSES.length+" · "+c.s+"</div>"+h}
+function blankRow(ctx,y,w){var d=ctx.getImageData(0,y,w,1).data;for(var j=0;j<d.length;j+=4){if(d[j]<250||d[j+1]<250||d[j+2]<250)return false}return true}
+async function makePdf(i){
+ await loadJS(H2C);await loadJS(JSP);
+ var box=document.createElement("div");box.className="pdfdoc";box.innerHTML=pdfHTML(i);document.body.appendChild(box);
+ try{
+  var cv=await html2canvas(box,{scale:2,backgroundColor:"#ffffff",logging:false,onclone:function(d){var e=d.querySelector(".pdfdoc");e.style.left="0";e.style.top="0"}});
+  var pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4",compress:true}),W=cv.width,T=cv.height,mm=W/210,ph=Math.floor(269*mm),ctx=cv.getContext("2d"),y=0,pg=[];
+  while(y<T){var end=Math.min(y+ph,T);
+   if(end<T){for(var k=end;k>end-320&&k>y+200;k--){if(blankRow(ctx,k,W)){end=k;break}}}
+   pg.push([y,end]);y=end}
+  pg.forEach(function(r,n){if(n)pdf.addPage();var h=r[1]-r[0],s=document.createElement("canvas");s.width=W;s.height=h;var x=s.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,W,h);x.drawImage(cv,0,r[0],W,h,0,0,W,h);
+   pdf.addImage(s.toDataURL("image/jpeg",0.92),"JPEG",0,14,210,h/mm);pdf.setFontSize(9);pdf.setTextColor(120);pdf.text("QCM B - Cours "+(i+1)+" - page "+(n+1)+"/"+pg.length,105,291,{align:"center"})});
+  return pdf.output("blob");
+ }finally{box.remove()}}
+function saveFile(name,blob){
+ if(DL)return DL.save({filename:name,data:blob});
+ var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},4000);return Promise.resolve()}
+(function(){var L=$("#pdfList");
+ COURSES.forEach(function(c,i){
+  var d=document.createElement("div");d.className="card pcard";
+  d.innerHTML="<span class=\"tag\">Cours "+(i+1)+"</span><b>"+c.t+"</b><small>"+c.s+"</small>";
+  var b=document.createElement("button");b.type="button";b.className="cta";b.textContent="Télécharger le PDF";
+  var st=document.createElement("span");st.className="pst";st.setAttribute("role","status");
+  b.onclick=async function(){
+   b.disabled=true;b.textContent="Création du PDF…";st.textContent="";
+   try{var blob=await makePdf(i);await saveFile("QCMed-cours-"+String(i+1).padStart(2,"0")+"-"+slug(c.t)+".pdf",blob);st.textContent="PDF prêt."}
+   catch(e){st.textContent=e&&e.code==="declined"?"Téléchargement annulé.":"Impossible de créer le PDF. Vérifiez votre connexion et réessayez."}
+   b.disabled=false;b.textContent="Télécharger le PDF"};
+  d.appendChild(b);d.appendChild(st);L.appendChild(d)})})();
+var USU=[{"g": "Factorisation", "items": [{"t": "Exercice 1", "q": "Quelle expression est égale à x(2x + 1) − 2(2x + 1) ?<br>A) (2x + 1)(−2x)<br>B) (2x + 1)(2 − x)<br>C) (2x + 1)(x − 2)<br>D) −2 × 2 + x + 2", "a": "<b>Réponse C.</b> Le facteur commun est (2x + 1) :<br>x(2x + 1) − 2(2x + 1) = (2x + 1)(x − 2)."}, {"t": "Exercice 2", "q": "Factorisez l’expression suivante : 25(x − 6)² − 49<br>A) 25x² − 576<br>B) (5x − 13)(5x + 1)<br>C) 25x² − 22 451<br>D) (5x − 37)(5x − 23)", "a": "<b>Réponse D.</b> On reconnaît a² − b² avec a² = 25(x − 6)², soit a = 5(x − 6) = 5x − 30, et b² = 49, soit b = 7.<br>(a − b)(a + b) = (5x − 30 − 7)(5x − 30 + 7) = (5x − 37)(5x − 23).<br>Les réponses A et C sont des expressions développées, pas factorisées."}, {"t": "Exercice 3", "q": "Quelle est la forme factorisée de (5x − 4)(x − 1) − (5x − 4)² ?<br>A) (5x − 4)(6x − 5)<br>B) (5x − 4)(−4x − 3)<br>C) (5x − 4)(−4x + 3)<br>D) (5x − 4)(−6x − 5)", "a": "<b>Réponse C.</b> Le facteur commun est (5x − 4) :<br>(5x − 4)[(x − 1) − (5x − 4)] = (5x − 4)(x − 1 − 5x + 4) = (5x − 4)(−4x + 3).<br>Attention au signe moins devant la parenthèse : il change le signe de chaque terme."}]}, {"g": "Problèmes du 1er degré", "items": [{"t": "Exercice a", "q": "Adama dépense le quart de son salaire à la nourriture, le tiers de son salaire à la location, et il lui reste 50 000 francs CFA. Quel est le montant de son salaire ?", "a": "Soit x le salaire. Ce qu’il dépense plus ce qui lui reste vaut x :<br>x/4 + x/3 + 50 000 = x.<br>x/4 + x/3 = 7x/12, donc 50 000 = x − 7x/12 = 5x/12.<br>x = 50 000 × 12 / 5 = <b>120 000 francs CFA</b>.<br>Vérification : 30 000 + 40 000 + 50 000 = 120 000."}, {"t": "Exercice b", "q": "Berlioz dit : « Il y a 10 ans, j’avais la moitié de l’âge que j’aurai dans 10 ans. » Quel est l’âge de Berlioz ? Exprimer le raisonnement par des calculs.", "a": "Soit x son âge. Il y a 10 ans : x − 10. Dans 10 ans : x + 10.<br>x − 10 = (x + 10) / 2, donc 2x − 20 = x + 10, soit x = <b>30 ans</b>.<br>Vérification : il y a 10 ans, 20 ans, soit la moitié de 40."}, {"t": "Exercice c", "q": "Un relevé de notes est déchiré : la note de maths est inconnue (notée x).<br>Français : coefficient 2, note 14. Maths : coefficient 3, note x. Histoire : coefficient 1, note 16. Sport : coefficient 2, note 8.<br>1) Sachant que la moyenne est de 12, déterminer x.<br>2) Quelle note faut-il obtenir pour une moyenne supérieure à 14 ? à 16 ? On note sur 20, sans point bonus. Commenter les résultats.", "a": "La somme des coefficients vaut 2 + 3 + 1 + 2 = 8.<br><b>1)</b> (2 × 14 + 3x + 16 + 2 × 8) / 8 = 12, donc 60 + 3x = 96 et x = <b>12</b>.<br><b>2)</b> Moyenne &gt; 14 : 60 + 3x &gt; 112, donc x &gt; 52/3 ≈ 17,33. Il faut au moins 17,34, par exemple 18/20.<br>Moyenne &gt; 16 : 60 + 3x &gt; 128, donc x &gt; 68/3 ≈ 22,67 : <b>impossible</b>, la note maximale est 20.<br>Commentaire : avec 20 en maths, la moyenne est (60 + 60) / 8 = 15. Les autres notes (14, 16, 8) limitent le résultat, même si le coefficient de 3 donne beaucoup de poids aux maths."}]}, {"g": "Nombres, PGCD et critères de divisibilité", "items": [{"t": "Exercice 1", "q": "Rappeler ce qu’est un nombre premier et ce que sont deux nombres premiers entre eux.", "a": "Un <b>nombre premier</b> n’a que 1 et lui-même pour diviseurs.<br>Deux nombres sont <b>premiers entre eux</b> lorsque leur seul diviseur commun positif est 1, c’est-à-dire lorsque leur PGCD vaut 1."}, {"t": "Exercice 2", "q": "17 est-il un nombre premier ? Pareil pour 29 ? 17 et 29 sont-ils premiers entre eux ?", "a": "17 n’est divisible ni par 2 ni par 3 (4² = 16 &lt; 17 &lt; 5²) : il est <b>premier</b>.<br>29 n’est divisible ni par 2, ni par 3, ni par 5 (5² = 25 ≤ 29 &lt; 6²) : il est <b>premier</b>.<br>Leur seul diviseur commun est 1 : ils sont <b>premiers entre eux</b>."}, {"t": "Exercice 3", "q": "4 et 27 sont-ils premiers entre eux ? 4 est-il un nombre premier ? Pareil pour 27 ?", "a": "Diviseurs de 4 : 1, 2, 4. Diviseurs de 27 : 1, 3, 9, 27. Le seul diviseur commun est 1 : <b>oui, premiers entre eux</b>.<br>Mais 4 = 2 × 2 et 27 = 3 × 9 : <b>ni l’un ni l’autre n’est premier</b>."}, {"t": "Exercice 4", "q": "Que peut-on à priori en déduire des exercices 2 et 3 ?", "a": "Deux nombres premiers distincts sont toujours premiers entre eux (exercice 2).<br>Mais deux nombres premiers entre eux ne sont pas forcément premiers (exercice 3).<br>« Premiers entre eux » est donc une notion plus large que « premiers »."}, {"t": "Exercice 5", "q": "Déterminer le PGCD de 4 et 12, puis leur PPCM. Faire le produit PGCD × PPCM. En déduire une propriété possible entre a, b, PPCM(a, b) et PGCD(a, b).", "a": "PGCD(4 ; 12) : diviseurs communs 1, 2 et 4, donc <b>4</b>.<br>PPCM(4 ; 12) : plus petit multiple commun. Multiples de 4 : 4, 8, 12… ; 12 est aussi multiple de 12, donc <b>12</b>.<br>Produit : 4 × 12 = 48 = 4 × 12 = a × b.<br>Propriété possible : <b>PGCD(a, b) × PPCM(a, b) = a × b</b>. Elle est vraie pour tous les entiers a et b."}, {"t": "Exercice 6 (recherche)", "q": "Qu’est-ce que le théorème fondamental de l’arithmétique ? Combien d’entiers admettent une décomposition unique en produit de facteurs premiers ?", "a": "Tout entier supérieur ou égal à 2 s’écrit comme un produit de nombres premiers, et cette écriture est <b>unique</b> (à l’ordre des facteurs près). Exemple : 60 = 2² × 3 × 5.<br>Donc <b>tous les entiers ≥ 2</b>, soit une infinité d’entiers, ont une décomposition unique."}, {"t": "Exercice 7", "q": "15 est-il un nombre premier ? Rappeler le critère de divisibilité d’un nombre par 3, par 5, par 15.", "a": "15 = 3 × 5 : <b>non premier</b>.<br>Par 3 : la somme des chiffres est divisible par 3.<br>Par 5 : le dernier chiffre est 0 ou 5.<br>Par 15 : le nombre est divisible par 3 ET par 5 (3 et 5 sont premiers entre eux)."}, {"t": "Exercice 8", "q": "573 est-il divisible par 15 ? Exprimer quotient et reste pour la division euclidienne de 573 par 15.", "a": "5 + 7 + 3 = 15, divisible par 3 : OK pour 3. Mais 573 se termine par 3, donc il n’est pas divisible par 5 : <b>non</b>.<br>15 × 38 = 570, donc 573 = 15 × 38 + 3 : quotient <b>38</b>, reste <b>3</b>."}]}, {"g": "Nombres et notions ensemblistes", "items": [{"t": "Exercice 1", "q": "Classer l’entier ou le nombre dans l’ensemble le plus approprié (= l’ensemble le plus réduit auquel l’entier ou le nombre appartient) :<br>a. 2 &nbsp; b. 7,5 &nbsp; c. −3 &nbsp; d. 1 000 000 &nbsp; e. le nombre π &nbsp; f. le nombre d’or noté φ", "a": "On rappelle que ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ.<br>a. 2 est un entier naturel : <b>ℕ</b>.<br>b. 7,5 = 15/2 est une fraction d’entiers, mais pas un entier : <b>ℚ</b>.<br>c. −3 est un entier négatif : <b>ℤ</b>.<br>d. 1 000 000 est un entier naturel : <b>ℕ</b>.<br>e. π est irrationnel : <b>ℝ</b>.<br>f. φ = (1 + √5) / 2 est irrationnel : <b>ℝ</b>."}, {"t": "Exercice 2", "q": "On note i un nombre tel que i² = −1. On appelle ℂ l’ensemble des nombres complexes. On appelle nombre complexe tout nombre de la forme a + b × i où a et b sont des coefficients réels. Répondez aux questions suivantes.<br>a. Donner un exemple de nombre complexe qui appartient à ℝ (= l’ensemble des nombres réels).<br>b. Donner un exemple de nombre complexe qui n’appartient pas à ℝ.<br>c. À partir des questions précédentes et d’un schéma où ℝ est entouré d’un grand ensemble rouge et contient un petit ensemble vert, dire si ℂ est l’ensemble rouge ou vert. Justifiez.", "a": "<b>a.</b> 3 = 3 + 0 × i est un nombre complexe (avec b = 0) et c’est un réel. Tout réel a s’écrit a + 0 × i.<br><b>b.</b> i = 0 + 1 × i est un nombre complexe qui n’est pas réel : le carré d’un réel est toujours positif, alors que i² = −1. De même 2 + 3i convient.<br><b>c.</b> D’après a, ℝ est contenu dans ℂ. D’après b, ℂ contient des nombres hors de ℝ (comme i). ℂ est donc strictement plus grand que ℝ : c’est <b>l’ensemble rouge</b>, qui entoure ℝ. L’ensemble vert est à l’intérieur de ℝ, donc il ne peut pas contenir i.<br>On a ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ."}]}, {"g": "Nombres premiers, décomposition, PGCD et PPCM", "items": [{"t": "Exercice 1", "q": "Décomposez en produit de facteurs premiers les entiers suivants (on procédera en plusieurs étapes) :<br>a. 56 &nbsp; b. 24 &nbsp; c. 39 &nbsp; d. 17 &nbsp; e. 19 &nbsp; f. 720", "a": "a. 56 = 2 × 28 = 2 × 2 × 14 = 2 × 2 × 2 × 7, donc <b>56 = 2³ × 7</b>.<br>b. 24 = 2 × 12 = 2 × 2 × 6 = 2 × 2 × 2 × 3, donc <b>24 = 2³ × 3</b>.<br>c. 39 = 3 × 13, donc <b>39 = 3 × 13</b>.<br>d. 17 n’est divisible ni par 2 ni par 3 (5² = 25 &gt; 17) : il est <b>premier</b>, sa décomposition est 17.<br>e. 19 n’est divisible ni par 2 ni par 3 (5² = 25 &gt; 19) : il est <b>premier</b>, sa décomposition est 19.<br>f. 720 = 2 × 360 = 2² × 180 = 2³ × 90 = 2⁴ × 45 = 2⁴ × 3 × 15, donc <b>720 = 2⁴ × 3² × 5</b>."}, {"t": "Exercice 2", "q": "Déterminer les PGCD et PPCM suivants en vous aidant de l’exercice 1 :<br>a. PGCD(56 ; 24) &nbsp; b. PPCM(24 ; 39) &nbsp; c. PGCD(17 ; 720)", "a": "Méthode : le PGCD est le produit des facteurs premiers <b>communs</b>, avec leur plus petit exposant. Le PPCM est le produit de <b>tous</b> les facteurs premiers présents, avec leur plus grand exposant.<br>a. 56 = 2³ × 7 et 24 = 2³ × 3 : facteur commun 2³, donc <b>PGCD(56 ; 24) = 8</b>.<br>b. 24 = 2³ × 3 et 39 = 3 × 13 : PPCM = 2³ × 3 × 13 = <b>312</b>. Vérification : PGCD(24 ; 39) = 3 et 3 × 312 = 936 = 24 × 39.<br>c. 17 est premier et n’apparaît pas dans 720 = 2⁴ × 3² × 5 : aucun facteur commun, donc <b>PGCD(17 ; 720) = 1</b>."}, {"t": "Exercice 3", "q": "En déduire pour la a. et la c. de l’exercice 2 si le duo de nombres formé est premier entre eux ou pas.", "a": "a. PGCD(56 ; 24) = 8 ≠ 1 : 56 et 24 <b>ne sont pas premiers entre eux</b> (ils sont tous deux divisibles par 2).<br>c. PGCD(17 ; 720) = 1 : 17 et 720 <b>sont premiers entre eux</b>."}]}, {"g": "Division euclidienne : le jeu vidéo", "items": [{"t": "Mise en situation", "q": "Vous venez d’acheter un jeu sur PC avec une boutique. Vous avez deux monnaies : des pièces d’or (O) et des cristaux (I).<br>Écran de la boutique : DiabloX9, <b>573 000 O</b> et <b>351 I</b>. Équipement 1 : 3 500 O ; équipement 2 : 4 150 O ; équipement 3 : 4 450 O. Rafraîchir la boutique : <b>3 I</b>."}, {"t": "Question 1", "q": "Vous voulez savoir si vous serez à 0 cristal exactement (après avoir réinitialisé plusieurs fois la boutique) si vous ne trouvez jamais l’objet voulu. Sera-ce le cas, ou restera-t-il des cristaux après X réinitialisations ?", "a": "351 est-il divisible par 3 ? 3 + 5 + 1 = 9, divisible par 3 : oui. 351 = 3 × 117.<br>Vous serez à <b>0 cristal exactement</b>."}, {"t": "Question 2", "q": "Déterminer ce nombre X de réinitialisations maximales possibles (calculatrice autorisée).", "a": "351 ÷ 3 = 117, donc <b>X = 117</b>."}, {"t": "Question 3", "q": "Utiliser la division euclidienne et retrouver les réponses 1) et 2) par déduction du quotient et du reste.", "a": "351 = 3 × 117 + 0.<br>Le quotient 117 est le nombre de réinitialisations X. Le reste 0 est le nombre de cristaux restants : on retrouve les réponses 1) et 2)."}, {"t": "Question 4", "q": "Vous cherchez l’équipement « Épée S tier » à 5 000 O. Supposons que vous ayez 100 % de chances d’avoir exactement une Épée S tier par réinitialisation. Quel est le nombre maximum Nm d’Épées S tier obtenables ?", "a": "Deux limites :<br>• les cristaux : 117 réinitialisations, donc 117 épées au plus ;<br>• l’or : 573 000 = 5 000 × 114 + 3 000, donc 114 épées au plus.<br>C’est l’or qui limite : <b>Nm = 114</b>."}, {"t": "Question 5", "q": "Les valeurs de X et Nm sont-elles identiques ? Justifier avec les valeurs de l’écran.", "a": "<b>Non</b> : X = 117 et Nm = 114. X dépend des cristaux (351 ÷ 3), Nm dépend aussi de l’or (573 000 ÷ 5 000 ≈ 114,6). Ici Nm est le plus petit des deux nombres."}, {"t": "Question 6", "q": "Combien de pièces d’or restera-t-il au joueur après Nm achats de l’Épée S tier ? Justifier avec une division euclidienne.", "a": "573 000 = 5 000 × 114 + 3 000, avec 3 000 &lt; 5 000.<br>Il restera <b>3 000 O</b>."}, {"t": "Question 7 (pour les plus rapides)", "q": "Répondre à toutes les questions 1) à 5) sachant que le nombre de cristaux nécessaires à la réinitialisation passe de 3 à 5.", "a": "351 = 5 × 70 + 1.<br>1) <b>Non</b> : il restera 1 cristal (351 n’est pas divisible par 5).<br>2) <b>X = 70</b>.<br>3) Quotient 70, reste 1.<br>4) Les cristaux permettent 70 épées, l’or 114 : <b>Nm = 70</b>.<br>5) X et Nm sont désormais <b>identiques</b> (70) : ce sont maintenant les cristaux qui limitent."}, {"t": "Question 8", "q": "Restera-t-il des pièces d’or après Nm achats de l’Épée S tier ? Justifier avec la fonction modulo de la calculatrice.", "a": "a mod b vaut 0 si la division euclidienne de a par b a un reste nul.<br>573 000 mod 5 000 = 3 000, non nul : <b>oui</b>, il restera de l’or (3 000 O après 114 achats).<br>Dans le cas de la question 7 (Nm = 70) : 573 000 − 70 × 5 000 = 223 000 O restants."}]}, {"g": "Lien entre modulo et RIB : exercice complémentaire", "items": [{"t": "Définition", "q": "Un RIB (= Relevé d’Identité Bancaire) se compose de 23 chiffres divisés en 4 blocs : le code banque (5 chiffres), le code guichet (5 chiffres) pour l’agence de rattachement, le numéro de compte (11 chiffres) pour identifier votre compte, et enfin la clé RIB (2 chiffres), essentielle pour s’assurer qu’il n’y ait pas de faute de frappe dans la saisie du RIB.<br>Pour déterminer la clé RIB, on note B le code banque, G le code guichet, C le numéro de compte et C<sub>R</sub> la clé RIB. Le calcul est :<br><b>C<sub>R</sub> = 97 − [(89 × (B mod 97) + 15 × (G mod 97) + 3 × (C mod 97)) mod 97]</b>"}, {"t": "Question 1", "q": "On donne les deux RIB suivants :<br>3000 5008 7500 0123 4567 823 (RIB a)<br>3000 4008 5600 0123 8905 850 (RIB b)<br>Lequel de ces deux RIB a été mal saisi ? Vérifier par calcul de la clé RIB et comparaison avec celle donnée pour les deux RIB ci-dessus.", "a": "<b>RIB a</b> : B = 30005, G = 00875 = 875, C = 00012345678 = 12345678, clé donnée 23.<br>B mod 97 = 32, G mod 97 = 2, C mod 97 = 3.<br>89 × 32 + 15 × 2 + 3 × 3 = 2 848 + 30 + 9 = 2 887, et 2 887 mod 97 = 74.<br>C<sub>R</sub> = 97 − 74 = 23 : <b>conforme</b> à la clé donnée.<br><br><b>RIB b</b> : B = 30004, G = 00856 = 856, C = 00012389058 = 12389058, clé donnée 50.<br>B mod 97 = 31, G mod 97 = 80, C mod 97 = 24.<br>89 × 31 + 15 × 80 + 3 × 24 = 2 759 + 1 200 + 72 = 4 031, et 4 031 mod 97 = 54.<br>C<sub>R</sub> = 97 − 54 = 43, différent de 50.<br><br>Le <b>RIB b</b> a été mal saisi."}]}, {"g": "Système d’équations", "items": [{"t": "Mise en situation", "q": "Vous êtes enquêteur pour un sondage Ipsos sur l’intérêt des personnes pour la venue du pape en France. Le sondage porte sur Benoît XVI et Léon XIV, qu’on considère venus 2 fois chacun. Benoît XVI est venu 18 ans plus tôt que Léon XIV.<br>• 1ʳᵉ venue : le nombre de personnes venues voir Léon XIV égale celui de Benoît XVI, plus 400.<br>• 2ᵉ venue : le nombre de personnes venues voir Léon XIV est le double de celui de Benoît XVI."}, {"t": "Question 1", "q": "Sachant qu’entre la 1ʳᵉ et la 2ᵉ venue, 500 personnes en plus ont voulu voir Léon XIV et 2 500 personnes en moins ont voulu voir Benoît XVI, déterminer le nombre de personnes venues voir chaque pape lors de sa première venue. On s’aidera d’un système d’équations.", "a": "Notons X le nombre de personnes venues la 1ʳᵉ fois pour Léon XIV et Y celles venues la 1ʳᵉ fois pour Benoît XVI.<br>1ʳᵉ venue : X = Y + 400.<br>2ᵉ venue : Léon XIV a X + 500 personnes, Benoît XVI en a Y − 2 500, et Léon XIV en a le double : X + 500 = 2(Y − 2 500).<br>On obtient le système :<br>X − Y = 400 &nbsp;(E1)<br>X − 2Y = −5 500 &nbsp;(E2)<br>En faisant E3 = E1 − E2 : (X − Y) − (X − 2Y) = 400 − (−5 500), soit <b>Y = 5 900</b> (Benoît XVI).<br>Y est donné par E3, puis X = 400 + Y = <b>6 300</b> (Léon XIV).<br>Vérification : 6 300 − 5 900 = 400 et 6 300 − 2 × 5 900 = −5 500."}, {"t": "Question 2", "q": "En déduire le nombre de personnes venues voir chaque pape lors de leur 2ᵉ venue.", "a": "Pour la 2ᵉ venue :<br>Léon XIV : X₂ = X + 500 = 6 300 + 500 = <b>6 800</b>.<br>Benoît XVI : Y₂ = Y − 2 500 = 5 900 − 2 500 = <b>3 400</b>.<br>Vérification : 6 800 = 2 × 3 400."}]}, {"g": "Problèmes du second degré", "items": [{"t": "Exercice 1 (une inconnue)", "q": "Résoudre ce problème du second degré à une inconnue.<svg viewBox=\"0 0 520 170\" role=\"img\" aria-label=\"Un rectangle de côtés x + 3 et x − 1, et un carré de côté x\" style=\"width:100%;max-width:520px;height:auto;display:block;margin:12px 0\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"10\" y=\"30\" width=\"270\" height=\"100\" fill=\"none\" stroke=\"#1456d6\" stroke-width=\"3\"/><text x=\"145\" y=\"22\" text-anchor=\"middle\" font-size=\"17\" fill=\"currentColor\">x + 3</text><text x=\"292\" y=\"86\" font-size=\"17\" fill=\"currentColor\">x − 1</text><rect x=\"365\" y=\"25\" width=\"110\" height=\"110\" fill=\"none\" stroke=\"#d62828\" stroke-width=\"3\"/><text x=\"420\" y=\"18\" text-anchor=\"middle\" font-size=\"17\" fill=\"currentColor\">x</text><text x=\"485\" y=\"86\" font-size=\"17\" fill=\"currentColor\">x</text><text x=\"145\" y=\"155\" text-anchor=\"middle\" font-size=\"15\" fill=\"currentColor\">rectangle bleu</text><text x=\"420\" y=\"157\" text-anchor=\"middle\" font-size=\"15\" fill=\"currentColor\">carré rouge</text></svg>Est-il possible de trouver une valeur de x telle que l’aire du rectangle bleu soit égale au double de l’aire du carré rouge ? Expliquer par des calculs.", "a": "Aire du rectangle bleu : (x + 3)(x − 1) = x² + 2x − 3.<br>Aire du carré rouge : x², dont le double vaut 2x².<br>On cherche x tel que x² + 2x − 3 = 2x², soit x² − 2x + 3 = 0.<br>Δ = (−2)² − 4 × 1 × 3 = 4 − 12 = −8 &lt; 0.<br>Le discriminant est négatif : l’équation n’a aucune solution réelle. <b>Non, ce n’est pas possible.</b>"}, {"t": "Exercice 2 (deux inconnues)", "q": "Résoudre ce problème du second degré à deux inconnues.<br>Un père a 25 ans de plus que son fils. Le produit de leurs âges est de 116. Calculer les âges du père et du fils.", "a": "Soit x l’âge du fils : le père a x + 25 ans.<br>x(x + 25) = 116, soit x² + 25x − 116 = 0.<br>Δ = 25² − 4 × 1 × (−116) = 625 + 464 = 1 089 = 33².<br>x₁ = (−25 − 33) / 2 = −29 : impossible, un âge est positif.<br>x₂ = (−25 + 33) / 2 = 4.<br>Le fils a <b>4 ans</b> et le père <b>29 ans</b>.<br>Vérification : 29 − 4 = 25 et 4 × 29 = 116."}]}, {"g": "Équation du 4ᵉ degré : exercice spécial", "items": [{"t": "Introduction", "q": "On se propose ici de résoudre une équation du 4ᵉ degré dont les solutions doivent être des entiers (et non des réels comme dans les équations vues en cours). On va la résoudre en quelques étapes, en s’aidant des propriétés et notions vues concernant les nombres premiers."}, {"t": "Question 1", "q": "Décomposez 120 en produit de facteurs premiers. En déduire une écriture de 120 comme produit de 4 entiers consécutifs.", "a": "Les nombres premiers à essayer sont 2, 3, 5.<br>120 = 2 × 60 = 2 × 2 × 30 = 2 × 2 × 2 × 15 = 2 × 2 × 2 × 3 × 5.<br>Donc <b>120 = 2³ × 3 × 5</b>.<br>On regroupe deux facteurs 2 : 2 × 2 = 4, d’où 120 = 2 × 3 × (2 × 2) × 5 = <b>2 × 3 × 4 × 5</b>, quatre entiers consécutifs."}, {"t": "Question 2", "q": "En déduire dans ℕ l’unique solution de l’équation : (x + 1)(x + 2)(x + 3)(x + 4) = 120.", "a": "D’après la question 1, 120 = 2 × 3 × 4 × 5. On identifie (x + 1)(x + 2)(x + 3)(x + 4) avec 2 × 3 × 4 × 5, ce qui donne <b>x = 1</b>.<br>Vérification : 2 × 3 × 4 × 5 = 120.<br>Unicité : pour x ≥ 0, chaque facteur augmente avec x, donc le produit augmente strictement (x = 0 donne 24, x = 2 donne 360). Il n’y a donc pas d’autre solution dans ℕ."}, {"t": "Question 3 (bonus)", "q": "On note n! la factorielle d’un entier naturel n. Par convention 0! = 1, et pour tout n dans ℕ* : n! = 1 × 2 × 3 × … × (n − 1) × n.<br>En déduire la solution n de l’équation n! = 120 en vous appuyant sur les résultats et sur cet énoncé.", "a": "D’après la question 2, 120 = 2 × 3 × 4 × 5 = 1 × 2 × 3 × 4 × 5, ce qui est la définition de 5!.<br>Donc <b>n = 5</b>.<br>C’est la seule solution : à partir de n = 1, n! augmente strictement (4! = 24, 6! = 720)."}]}];
+(function(){var b=$("#usuList");
+ USU.forEach(function(g){var h=document.createElement("h2");h.textContent=g.g;b.appendChild(h);
+  g.items.forEach(function(x){var d=document.createElement("div");d.className="card";
+   d.innerHTML="<span class=\"tag\">"+g.g+"</span><p style=\"margin:10px 0 0\"><b>"+x.t+".</b> "+x.q+"</p>"+(x.a?"<details class=\"corr\"><summary>Voir la correction</summary><div class=\"expl\">"+x.a+"</div></details>":"");
+   b.appendChild(d)})});
+ document.querySelectorAll(".seg button").forEach(function(t){t.onclick=function(){
+  document.querySelectorAll(".seg button").forEach(function(z){z.setAttribute("aria-selected",z===t?"true":"false")});
+  $("#exQcm").classList.toggle("hide",t.dataset.sub!=="qcm");$("#exUsu").classList.toggle("hide",t.dataset.sub!=="usu");window.scrollTo(0,0)}})})();
+var ans=0,deg=true;
+function rz(r){return Math.abs(r)<1e-12?0:r}
+var F={sqrt:Math.sqrt,ln:Math.log,log:Math.log10,exp:Math.exp,abs:Math.abs,
+sin:function(x){return rz(Math.sin(deg?x*Math.PI/180:x))},cos:function(x){return rz(Math.cos(deg?x*Math.PI/180:x))},tan:function(x){return rz(Math.tan(deg?x*Math.PI/180:x))}};
+function fact(n){if(n<0||n%1||n>170)throw 0;var r=1;for(var i=2;i<=n;i++)r*=i;return r}
+function calc(s){
+ var p=0;s=s.toLowerCase().replace(/\s+/g,"").replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-").replace(/π/g,"pi").replace(/√/g,"sqrt").replace(/rép/g,"ans").replace(/,/g,".");
+ function expr(){var v=term(),o,r;while(s[p]==="+"||s[p]==="-"){o=s[p++];r=term();v=o==="+"?v+r:v-r}return v}
+ function term(){var v=unary(),r;for(;;){var c=s[p];if(c==="*"||c==="/"){p++;r=unary();v=c==="*"?v*r:v/r}else if(c==="("||(c&&/[a-z]/.test(c))){v*=unary()}else break}return v}
+ function unary(){if(s[p]==="-"){p++;return -unary()}if(s[p]==="+"){p++;return unary()}return power()}
+ function power(){var v=post();if(s[p]==="^"){p++;v=Math.pow(v,unary())}return v}
+ function post(){var v=atom();for(;;){if(s[p]==="!"){p++;v=fact(v)}else if(s[p]==="%"){p++;v/=100}else break}return v}
+ function atom(){var m,rest=s.slice(p);
+  if(s[p]==="("){p++;var v=expr();if(s[p]!==")")throw 0;p++;return v}
+  if(m=rest.match(/^(\d+\.?\d*|\.\d+)(e[+-]?\d+)?/)){p+=m[0].length;return parseFloat(m[0])}
+  if(m=rest.match(/^[a-z]+/)){var n=m[0];p+=n.length;
+   if(n==="pi")return Math.PI;if(n==="e")return Math.E;if(n==="ans")return ans;
+   var f=F[n];if(!f||s[p]!=="(")throw 0;p++;var a=expr();if(s[p]!==")")throw 0;p++;return f(a)}
+  throw 0}
+ var r=expr();if(p<s.length)throw 0;return r}
+function fmt(v){if(!isFinite(v))throw 0;return String(parseFloat(v.toPrecision(12))).replace(".",",")}
+var ci=$("#ci"),co=$("#co"),cs=$("#csci"),hs=$("#hist");
+function run(){var q=ci.value.trim();if(!q)return;
+ try{var v=calc(q),r=fmt(v);ans=v;co.textContent=r;
+  if(v!==0){var pr=v.toExponential(8).split("e");cs.innerHTML="Notation scientifique : "+String(parseFloat(pr[0])).replace(".",",")+" × 10<sup>"+(+pr[1])+"</sup>"}else cs.textContent="";
+  var li=document.createElement("li"),b=document.createElement("button");b.className="chip";b.textContent=q+" = "+r;b.onclick=function(){ci.value=q};li.appendChild(b);hs.insertBefore(li,hs.firstChild);while(hs.children.length>6)hs.removeChild(hs.lastChild)}
+ catch(e){co.textContent="Expression invalide";cs.textContent=""}}
+var KEYS=[["Deg","deg"],["AC","ac"],["⌫","bs"],["(","("],[")",")"],["sin","sin("],["cos","cos("],["tan","tan("],["√","√("],["^","^"],["7","7"],["8","8"],["9","9"],["÷","÷"],["ln","ln("],["4","4"],["5","5"],["6","6"],["×","×"],["log","log("],["1","1"],["2","2"],["3","3"],["−","−"],["π","π"],["0","0"],[",",","],["×10ˣ","×10^("],["+","+"],["=","eq"],["e","e"],["Rép","Rép"],["x!","!"],["%","%"],["exp","exp("]];
+KEYS.forEach(function(k){var b=document.createElement("button");b.type="button";b.textContent=k[0];
+ if("÷×−+^".indexOf(k[0])>=0)b.className="op";if(k[1]==="eq")b.className="eq";
+ b.onclick=function(){var c=k[1];
+  if(c==="deg"){deg=!deg;b.textContent=deg?"Deg":"Rad";return}
+  if(c==="ac"){ci.value="";co.textContent="0";cs.textContent="";return}
+  if(c==="eq"){run();return}
+  var st=ci.selectionStart,en=ci.selectionEnd;if(document.activeElement!==ci){st=en=ci.value.length}
+  if(c==="bs"){if(st===en&&st>0)st--;ci.setRangeText("",st,en,"end");return}
+  ci.setRangeText(c,st,en,"end")};
+ $("#keys").appendChild(b)});
+ci.addEventListener("keydown",function(e){if(e.key==="Enter")run()});
+var PH="00a9289487c52eb0367e7978bdeb0e3480d898a20e76320dff8390cd4cce4790",ALLOWED=[];
+async function sha(t){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
+function norm(n){return n.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ")}
+function unlock(n){document.body.classList.remove("locked");var l=$("#logout");l.classList.remove("hide");l.textContent="Déconnexion";var sp=document.createElement("span");sp.className="nm";sp.textContent=" ("+n+")";l.appendChild(sp);window.scrollTo(0,0)}
+function lock(){document.body.classList.add("locked");$("#logout").classList.add("hide");$("#lu").value="";$("#lp").value="";$("#lu").focus()}
+async function login(){var u=$("#lu").value.trim(),p=$("#lp").value,e=$("#le");
+ if(!/^[A-Za-zÀ-ÖØ-öø-ÿ'’ -]{2,40}$/.test(u)){e.textContent="Entrez votre prénom comme identifiant.";return}
+ try{var ok=(await sha("qcmb|"+p))===PH;
+  if(ok&&ALLOWED.length){ok=ALLOWED.indexOf(await sha("qcmb-id|"+norm(u)))>=0}
+  if(!ok){e.textContent="Identifiant ou mot de passe incorrect.";$("#lp").value="";return}
+ }catch(x){e.textContent="Connexion impossible sur ce navigateur.";return}
+ e.textContent="";$("#lp").value="";
+ try{sessionStorage.setItem("qcmb-user",u)}catch(x){}
+ unlock(u)}
+$("#lb").onclick=login;
+["#lu","#lp"].forEach(function(s){$(s).addEventListener("keydown",function(e){if(e.key==="Enter")login()})});
+$("#logout").onclick=function(){try{sessionStorage.removeItem("qcmb-user")}catch(x){}lock()};
+try{var su=sessionStorage.getItem("qcmb-user");if(su)unlock(su);else $("#lu").focus()}catch(x){$("#lu").focus()}
+var root=document.documentElement,tb=$("#theme");
+function dark(){var t=root.dataset.theme;return t?t==="dark":matchMedia("(prefers-color-scheme:dark)").matches}
+function label(){tb.textContent=dark()?"Mode clair":"Mode sombre"}
+try{var s=localStorage.getItem("qcmb-theme");if(s)root.dataset.theme=s}catch(e){}
+label();
+tb.onclick=function(){var n=dark()?"light":"dark";root.dataset.theme=n;try{localStorage.setItem("qcmb-theme",n)}catch(e){}label()};
+setTab(location.hash.slice(1),false);
+</script>
+</body>
+</html>
