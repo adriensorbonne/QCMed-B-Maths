@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Révisions Spé Maths A</title>
+<style>
+:root{--bg:#f5f9ff;--surface:#fff;--ink:#0b1e3d;--muted:#4a5f82;--line:#cfe0f7;--accent:#1456d6;--accent-ink:#fff;--soft:#e4eeff;--ok:#0d7a4a;--ko:#b3261e;--hd:rgba(245,249,255,.92);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--surface:#070d1a;--ink:#e8f0ff;--muted:#8fa6cc;--line:#16294d;--accent:#4d8dff;--accent-ink:#000;--soft:#0c1a38;--ok:#4cd694;--ko:#ff8a80;--hd:rgba(0,0,0,.92);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000;--surface:#070d1a;--ink:#e8f0ff;--muted:#8fa6cc;--line:#16294d;--accent:#4d8dff;--accent-ink:#000;--soft:#0c1a38;--ok:#4cd694;--ko:#ff8a80;--hd:rgba(0,0,0,.92);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{overflow-wrap:break-word;-webkit-text-size-adjust:100%;margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--hd);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{max-width:1040px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:-.02em;margin-right:auto}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:4px}
+nav button,.theme{font:inherit;font-size:.95rem;border:1px solid transparent;background:none;color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer}
+nav button[aria-current="page"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+nav button:hover:not([aria-current]),.theme:hover{background:var(--soft)}
+.theme{border-color:var(--line)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+main{max-width:1040px;margin:auto;padding:28px 16px 64px}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 12px}
+h2{font-size:1.5rem;margin:0 0 12px;letter-spacing:-.02em}
+h3{font-size:1.1rem;margin:22px 0 6px;color:var(--accent)}
+p{margin:0 0 12px;max-width:68ch}
+.lead{font-size:1.15rem;color:var(--muted)}
+.hero{display:grid;gap:24px;grid-template-columns:1.1fr 1fr;align-items:center;margin-bottom:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.machine{text-align:center}
+.machine .row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px 0;min-height:44px;font-size:1.6rem}
+.box{border:2px solid var(--accent);border-radius:8px;padding:6px 12px;font-size:1rem;font-weight:700;color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.cta{font:inherit;background:var(--accent);color:var(--accent-ink);border:0;padding:11px 20px;border-radius:10px;font-weight:600;cursor:pointer;margin:6px 8px 0 0}
+.cta.alt{background:var(--soft);color:var(--ink)}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start}
+.toc{display:flex;flex-direction:column;gap:6px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px)}
+.toc button{font:inherit;text-align:left;background:var(--surface);border:1px solid var(--line);color:var(--ink);padding:10px 12px;border-radius:10px;cursor:pointer;line-height:1.35}
+.toc button[aria-current="true"]{border-color:var(--accent);background:var(--soft);font-weight:600}
+.toc small{display:block;color:var(--muted);font-weight:400}
+.formula{background:var(--soft);border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-weight:600}
+.cross{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--accent);border-radius:10px;max-width:360px;margin:14px 0;overflow:hidden}
+.cross div{padding:14px;text-align:center;border:1px solid var(--line);font-weight:600}
+.cross .q{background:var(--soft);color:var(--accent)}
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:28px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;background:var(--soft);color:var(--accent);font-weight:600}
+.tag.soon{color:var(--muted)}
+ul{padding-left:1.2em;max-width:68ch}
+li{margin-bottom:6px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr))}
+.grid li{list-style:none;margin:0}
+.grid ul{padding:0;margin:8px 0 0}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opts button{font:inherit;text-align:left;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:10px 14px;border-radius:10px;cursor:pointer}
+.opts button:hover:not(:disabled){border-color:var(--accent)}
+.opts button.good{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--bg))}
+.opts button.bad{border-color:var(--ko);background:color-mix(in srgb,var(--ko) 15%,var(--bg))}
+.expl{margin-top:12px;padding:10px 14px;background:var(--soft);border-radius:10px;font-size:.95rem}
+.score{position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:5;display:flex;justify-content:space-between;align-items:center;background:var(--hd);padding:8px 0;margin-bottom:10px;border-bottom:1px solid var(--line)}
+svg.graph{max-width:340px;width:100%;display:block;margin:12px 0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.chip{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:5px 14px;border-radius:999px;cursor:pointer;text-align:left}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.calc{max-width:420px;margin:auto}
+.ci{width:100%;font:inherit;font-size:1.2rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+#co{display:block;text-align:right;font-size:2rem;font-weight:700;margin:10px 0 0;word-break:break-all;min-height:2.6rem;color:var(--accent)}
+#csci{text-align:right;color:var(--muted);font-size:.9rem;min-height:1.4em;margin-bottom:10px}
+.keys{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.keys button{font:inherit;padding:12px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer}
+.keys button:hover{background:var(--soft)}
+.keys button.op{background:var(--soft)}
+.keys button.eq{background:var(--accent);color:var(--accent-ink);font-weight:700}
+#hist{list-style:none;padding:0;max-width:420px;margin:0 auto}
+#hist li{margin-bottom:6px}
+.sets{max-width:380px;margin:14px 0}
+.sets div{border:2px solid var(--accent);border-radius:999px;padding:6px 14px;font-weight:700;display:flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.tocbtn{display:none;width:100%;justify-content:space-between;align-items:center;gap:10px;font:inherit;font-weight:600;text-align:left;background:var(--surface);border:1px solid var(--accent);color:var(--ink);padding:12px 14px;border-radius:12px;cursor:pointer;min-height:48px}
+.opts button,.cta{min-height:44px}
+.ns{display:none}
+.locked header,.locked main{display:none}
+#login{display:none;position:fixed;inset:0;z-index:20;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));background:var(--bg);overflow:auto}
+.locked #login{display:flex}
+.lg{width:100%;max-width:380px}
+.lg label{display:block;font-weight:600;margin:0 0 4px}
+.hide{display:none}
+@media (max-width:760px){
+body{font-size:16px}
+header{backdrop-filter:none;-webkit-backdrop-filter:none}
+.bar{padding:8px 12px;gap:8px;flex-wrap:nowrap}
+.logo{font-size:1.05rem;white-space:nowrap}
+.theme{font-size:.85rem;padding:6px 10px;white-space:nowrap}
+.nm{display:none}
+.nl{display:none}.ns{display:inline}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:15;gap:0;background:var(--hd);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;min-height:46px;padding:6px 0;font-size:.7rem;border-radius:12px;white-space:nowrap}
+main{padding:18px 12px 96px}
+.hero,.layout{grid-template-columns:1fr;gap:16px}
+.hero{margin-bottom:24px}
+.card{padding:16px}
+.tocbtn{display:flex}
+.toc{display:none;position:static;max-height:55vh;overflow-y:auto}
+.toc.open{display:flex}
+.toc button{min-width:0;padding:12px}
+.pager .cta{flex:1 1 140px;margin:0}
+.score{top:calc(env(safe-area-inset-top,0px) + 52px);flex-wrap:wrap;gap:6px}
+.score [data-tab]{display:none}
+.chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}
+.chip{white-space:nowrap}
+.keys button{min-height:48px;padding:12px 0;font-size:.95rem}
+.calc{padding:14px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 60px)}
+}
+.seg{display:flex;gap:4px;background:var(--soft);padding:4px;border-radius:999px;margin:6px 0 18px;max-width:420px}
+.seg button{flex:1;font:inherit;border:0;background:none;color:var(--ink);padding:10px 14px;border-radius:999px;cursor:pointer;min-height:44px}
+.seg button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.usu{display:grid;gap:16px}
+.usu h2{margin:20px 0 0}
+.corr summary{cursor:pointer;font-weight:600;color:var(--accent);min-height:44px;display:flex;align-items:center}
+.corr .expl{margin-top:0}
+.pst{display:block;margin-top:8px;font-size:.85rem;color:var(--muted);min-height:1.3em}
+.pcard{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.pcard small{color:var(--muted)}
+.pdfdoc{position:fixed;left:-10000px;top:0;width:794px;padding:48px 56px 8px;background:#fff;color:#0b1e3d;--bg:#f5f9ff;--surface:#fff;--ink:#0b1e3d;--muted:#4a5f82;--line:#cfe0f7;--accent:#1456d6;--accent-ink:#fff;--soft:#e4eeff;--ok:#0d7a4a;--ko:#b3261e;font:17px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+.pdfdoc .sets div{background:#f1f6ff}
+.pdfdoc .pbrand{font-size:.8rem;color:#4a5f82;border-bottom:2px solid #1456d6;padding-bottom:8px;margin-bottom:18px;letter-spacing:.02em}
+.back{display:inline-flex;align-items:center;min-height:44px;margin:-8px 0 8px;color:var(--accent);font-weight:600;text-decoration:none}
+.back:hover{text-decoration:underline}
+@media (prefers-reduced-motion:no-preference){.view{animation:in .25s ease}@keyframes in{from{opacity:0}to{opacity:1}}}
+</style>
+</head>
+<body class="locked">
+<div id="login"><div class="card lg">
+<h1 style="font-size:1.6rem">Spé Maths <span style="color:var(--accent)">A</span></h1>
+<p>Révisions Spé Maths A. Connectez-vous pour accéder aux cours.</p>
+<label for="lu">Identifiant (votre prénom)</label>
+<input id="lu" class="ci" type="text" name="username" autocomplete="username" autocapitalize="words" spellcheck="false">
+<label for="lp" style="margin-top:12px">Mot de passe</label>
+<input id="lp" class="ci" type="password" name="password" autocomplete="current-password">
+<p id="le" role="alert" style="color:var(--ko);min-height:1.5em;margin:10px 0"></p>
+<button class="cta" type="button" id="lb" style="width:100%;margin:0">Se connecter</button>
+</div></div>
+<header><div class="bar">
+<div class="logo">Spé Maths <span>A</span></div>
+<nav aria-label="Navigation principale">
+<button data-tab="cours">Cours</button><button data-tab="exercices">Exercices</button><button data-tab="calculatrice"><span class="nl">Calculatrice</span><span class="ns">Calcul</span></button><button data-tab="programme">Programme</button><button data-tab="pdfs">PDFs</button>
+</nav>
+<button class="theme" id="theme" aria-label="Changer de thème">Mode sombre</button>
+<button class="theme hide" id="logout"></button>
+</div></header>
+
+<main>
+<a class="back" href="index.html">← Retour au site QCM B</a>
+<section id="cours" class="view hide">
+<div class="hero">
+<div>
+<h1>Révisions Spé Maths A</h1>
+<p class="lead">Cours, exercices, calculatrice et PDF pour réviser les mathématiques de spécialité (A). Concours des Finances Publiques.</p>
+<button class="cta" data-go="cours-0">Commencer le premier cours</button>
+<button class="cta alt" data-tab="exercices">S’entraîner</button>
+</div>
+<div class="card machine" style="display:none">
+<strong>La fonction f(x) = 2x</strong>
+<div class="row" aria-live="polite"><span id="mIn"></span><span class="box">LA FONCTION</span><span id="mOut"></span></div>
+<label for="mx">Baguettes en entrée : <b id="mxv">1</b></label>
+<input id="mx" type="range" min="0" max="5" value="1">
+<small style="color:var(--muted)">Glissez pour voir la machine doubler les baguettes.</small>
+</div>
+</div>
+<div class="layout">
+<button type="button" class="tocbtn" id="tocBtn" aria-expanded="false" aria-controls="toc"><span id="tocLbl"></span><span aria-hidden="true">▾</span></button>
+<div class="toc" id="toc" aria-label="Liste des cours"></div>
+<article id="lesson" class="card"></article>
+</div>
+</section>
+
+<section id="exercices" class="view hide">
+<h1>Exercices</h1>
+<div class="seg" role="tablist" aria-label="Type d’exercices"><button type="button" role="tab" data-sub="qcm" aria-selected="true">Exos QCM</button><button type="button" role="tab" data-sub="usu" aria-selected="false">Exos Usuels</button></div>
+<div id="exQcm">
+<p class="lead">Choisissez une réponse : la correction s’affiche tout de suite, avec la méthode. Besoin d’un calcul ? La calculatrice conserve votre progression.</p><div class="chips" id="chips" role="group" aria-label="Filtrer par cours"></div>
+<div class="score"><span>Score : <b id="sc">0</b> / <span id="tot">0</span></span><span><button class="cta alt" data-tab="calculatrice" style="margin:0 6px 0 0">Calculatrice</button><button class="cta alt" id="reset" style="margin:0">Recommencer</button></span></div>
+<div id="exos" style="display:grid;gap:16px"></div>
+</div>
+<div id="exUsu" class="hide">
+<p class="lead">Des exercices rédigés, issus de vos fiches. Cherchez d’abord sur papier, puis ouvrez la correction détaillée.</p>
+<div class="usu" id="usuList"></div>
+</div>
+</section>
+
+<section id="calculatrice" class="view hide">
+<h1>Calculatrice scientifique</h1>
+<p class="lead">Pour un calcul compliqué pendant un exercice. Quand vous changez d’onglet, vos réponses et votre place dans les exercices sont conservées.</p>
+<div class="card calc">
+<input id="ci" class="ci" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Expression à calculer" placeholder="Ex. : 2×(3+4)^2 − √(16)">
+<output id="co" aria-live="polite">0</output>
+<div id="csci"></div>
+<div class="keys" id="keys"></div>
+<p style="margin:12px 0 0;font-size:.85rem;color:var(--muted)">Tapez au clavier ou avec les touches, puis Entrée ou =. Rép rappelle le dernier résultat. Pour 2 × 10³, tapez 2×10^(3).</p>
+</div>
+<h3 style="max-width:420px;margin:20px auto 6px">Historique</h3>
+<ul id="hist"></ul>
+</section>
+
+<section id="pdfs" class="view hide">
+<h1>Cours en PDF</h1>
+<p class="lead">Un PDF par chapitre, à télécharger pour réviser hors connexion ou à imprimer. Le fichier est généré à la demande, en quelques secondes.</p>
+<div class="grid" id="pdfList"></div>
+</section>
+
+<section id="programme" class="view hide">
+<h1>Programme : Spé Maths A</h1>
+<p class="lead">Cette section regroupe les révisions de mathématiques de spécialité (A). Le programme détaillé sera complété au fur et à mesure.</p>
+<p>Aucun cours n’est encore disponible dans cette section.</p>
+<p style="margin-top:20px;color:var(--muted)">Les chapitres sont ajoutés au fur et à mesure.</p>
+</section>
+</main>
+
+<script>
+var COURSES=[
+{t:"Bienvenue",s:"Introduction",h:"<h2>Révisions Spé Maths A</h2><p>Cette section est prête à accueillir ses cours, ses exercices et son programme. Les contenus seront ajoutés au fur et à mesure.</p>"}
+];
+var UPCOMING=[];
+var EXOS=[];
+var $=function(s){return document.querySelector(s)};
+var curTab="",pos={};
+function setTab(t,push){
+ if(["cours","exercices","programme","calculatrice","pdfs"].indexOf(t)<0)t="cours";if(t===curTab)return;pos[curTab]=window.scrollY;
+ document.querySelectorAll(".view").forEach(function(v){v.classList.toggle("hide",v.id!==t)});
+ document.querySelectorAll("nav button").forEach(function(b){if(b.dataset.tab===t)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+ if(push&&location.hash!=="#"+t)location.hash=t;
+ curTab=t;window.scrollTo(0,pos[t]||0);
+}
+document.addEventListener("click",function(e){
+ var b=e.target.closest("[data-tab],[data-go]");if(!b)return;
+ if(b.dataset.go){setTab("cours",true);showCourse(+b.dataset.go.split("-")[1]);return}
+ setTab(b.dataset.tab,true);
+});
+window.addEventListener("hashchange",function(){setTab(location.hash.slice(1),false)});
+var cur=0;
+function showCourse(i,noScroll){
+ cur=i;var c=COURSES[i];
+ $("#lesson").innerHTML=c.h+"<div class=\"pager\"><button class=\"cta alt\" "+(i?"":"disabled style=\"opacity:.4\"")+" id=\"prev\">Cours précédent</button><button class=\"cta\" id=\"next\">"+(i<COURSES.length-1?"Cours suivant":"Aller aux exercices")+"</button></div>";
+ $("#prev").onclick=function(){if(cur>0)showCourse(cur-1)};
+ $("#next").onclick=function(){if(cur<COURSES.length-1)showCourse(cur+1);else setTab("exercices",true)};
+ document.querySelectorAll("#toc button").forEach(function(b,k){if(k===i)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
+ $("#tocLbl").textContent="Cours "+(i+1)+"/"+COURSES.length+" · "+c.t;$("#toc").classList.remove("open");$("#tocBtn").setAttribute("aria-expanded","false");
+ if(!noScroll)(matchMedia("(max-width:760px)").matches?$("#tocBtn"):$("#lesson")).scrollIntoView({block:"start"});
+}
+(function(){
+ var t=$("#toc");
+ COURSES.forEach(function(c,i){var b=document.createElement("button");b.innerHTML=c.t+"<small>"+c.s+"</small>";b.onclick=function(){showCourse(i)};t.appendChild(b)});
+ UPCOMING.forEach(function(u){var b=document.createElement("button");b.disabled=true;b.style.opacity=".55";b.innerHTML=u+"<small>Bientôt</small>";t.appendChild(b)});
+ showCourse(0,true);
+})();
+$("#tocBtn").onclick=function(){var o=$("#toc").classList.toggle("open");this.setAttribute("aria-expanded",o?"true":"false");if(o)this.scrollIntoView({block:"start"})};
+function machine(){
+ var n=+$("#mx").value;$("#mxv").textContent=n;
+ $("#mIn").textContent=n?"🥖".repeat(n):"∅";
+ $("#mOut").textContent=n?"🥖".repeat(2*n):"∅";
+}
+$("#mx").addEventListener("input",machine);machine();
+var score=0,done=0,filt="";
+function renderExos(){
+ var L=EXOS.filter(function(x){return !filt||x.c===filt});score=0;done=0;$("#sc").textContent=0;$("#tot").textContent=L.length;
+ var box=$("#exos");box.innerHTML="";
+ L.forEach(function(x,i){
+  var d=document.createElement("div");d.className="card";
+  d.innerHTML="<span class=\"tag\">"+x.c+"</span><p style=\"margin:10px 0 0\"><b>Question "+(i+1)+".</b> "+x.q+"</p><div class=\"opts\"></div><div class=\"expl hide\"></div>";
+  var o=d.querySelector(".opts");
+  x.o.forEach(function(txt,k){
+   var b=document.createElement("button");b.textContent=txt;
+   b.onclick=function(){
+    o.querySelectorAll("button").forEach(function(z,j){z.disabled=true;if(j===x.a)z.classList.add("good")});
+    if(k===x.a)score++;else b.classList.add("bad");
+    done++;$("#sc").textContent=score;
+    var ex=d.querySelector(".expl");ex.classList.remove("hide");
+    ex.innerHTML="<b>"+(k===x.a?"Bonne réponse. ":"Pas tout à fait. ")+"</b>"+x.e;
+    if(done===L.length)$("#sc").parentNode.insertAdjacentHTML("beforeend"," <b> Terminé !</b>");
+   };
+   o.appendChild(b);
+  });
+  box.appendChild(d);
+ });
+}
+$("#reset").onclick=function(){renderExos();window.scrollTo(0,0)};
+var cats=["Tous"].concat(EXOS.map(function(x){return x.c}).filter(function(c,i,a){return a.indexOf(c)===i}));
+cats.forEach(function(c){var b=document.createElement("button");b.className="chip";b.textContent=c;b.setAttribute("aria-pressed",c==="Tous"?"true":"false");b.onclick=function(){filt=c==="Tous"?"":c;document.querySelectorAll(".chip[aria-pressed]").forEach(function(z){z.setAttribute("aria-pressed",z===b?"true":"false")});renderExos()};$("#chips").appendChild(b)});
+renderExos();
+var H2C="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",JSP="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",libs={},DL=null;
+try{if(window.claude&&claude.use)claude.use("downloads").then(function(d){DL=d}).catch(function(){})}catch(x){}
+function loadJS(u){return libs[u]||(libs[u]=new Promise(function(ok,ko){var e=document.createElement("script");e.src=u;e.onload=ok;e.onerror=function(){delete libs[u];ko(new Error("load"))};document.head.appendChild(e)}))}
+function slug(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+var LIGHT={"var(--accent)":"#1456d6","var(--line)":"#cfe0f7","var(--ok)":"#0d7a4a","var(--muted)":"#4a5f82"};
+function pdfHTML(i){var c=COURSES[i],h=c.h.replace(/var\(--(accent|line|ok|muted)\)/g,function(m){return LIGHT[m]}).replace(/currentColor/g,"#0b1e3d");
+ return "<div class=\"pbrand\">Spé Maths <b>A</b> — Cours "+(i+1)+"/"+COURSES.length+" · "+c.s+"</div>"+h}
+function blankRow(ctx,y,w){var d=ctx.getImageData(0,y,w,1).data;for(var j=0;j<d.length;j+=4){if(d[j]<250||d[j+1]<250||d[j+2]<250)return false}return true}
+async function makePdf(i){
+ await loadJS(H2C);await loadJS(JSP);
+ var box=document.createElement("div");box.className="pdfdoc";box.innerHTML=pdfHTML(i);document.body.appendChild(box);
+ try{
+  var cv=await html2canvas(box,{scale:2,backgroundColor:"#ffffff",logging:false,onclone:function(d){var e=d.querySelector(".pdfdoc");e.style.left="0";e.style.top="0"}});
+  var pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4",compress:true}),W=cv.width,T=cv.height,mm=W/210,ph=Math.floor(269*mm),ctx=cv.getContext("2d"),y=0,pg=[];
+  while(y<T){var end=Math.min(y+ph,T);
+   if(end<T){for(var k=end;k>end-320&&k>y+200;k--){if(blankRow(ctx,k,W)){end=k;break}}}
+   pg.push([y,end]);y=end}
+  pg.forEach(function(r,n){if(n)pdf.addPage();var h=r[1]-r[0],s=document.createElement("canvas");s.width=W;s.height=h;var x=s.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,W,h);x.drawImage(cv,0,r[0],W,h,0,0,W,h);
+   pdf.addImage(s.toDataURL("image/jpeg",0.92),"JPEG",0,14,210,h/mm);pdf.setFontSize(9);pdf.setTextColor(120);pdf.text("Spe Maths A - Cours "+(i+1)+" - page "+(n+1)+"/"+pg.length,105,291,{align:"center"})});
+  return pdf.output("blob");
+ }finally{box.remove()}}
+function saveFile(name,blob){
+ if(DL)return DL.save({filename:name,data:blob});
+ var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},4000);return Promise.resolve()}
+(function(){var L=$("#pdfList");
+ COURSES.forEach(function(c,i){
+  var d=document.createElement("div");d.className="card pcard";
+  d.innerHTML="<span class=\"tag\">Cours "+(i+1)+"</span><b>"+c.t+"</b><small>"+c.s+"</small>";
+  var b=document.createElement("button");b.type="button";b.className="cta";b.textContent="Télécharger le PDF";
+  var st=document.createElement("span");st.className="pst";st.setAttribute("role","status");
+  b.onclick=async function(){
+   b.disabled=true;b.textContent="Création du PDF…";st.textContent="";
+   try{var blob=await makePdf(i);await saveFile("SpeMathsA-cours-"+String(i+1).padStart(2,"0")+"-"+slug(c.t)+".pdf",blob);st.textContent="PDF prêt."}
+   catch(e){st.textContent=e&&e.code==="declined"?"Téléchargement annulé.":"Impossible de créer le PDF. Vérifiez votre connexion et réessayez."}
+   b.disabled=false;b.textContent="Télécharger le PDF"};
+  d.appendChild(b);d.appendChild(st);L.appendChild(d)})})();
+var USU=[];
+$("#usuList").innerHTML="<p>Aucun exercice usuel pour le moment.</p>";
+(function(){var b=$("#usuList");
+ USU.forEach(function(g){var h=document.createElement("h2");h.textContent=g.g;b.appendChild(h);
+  g.items.forEach(function(x){var d=document.createElement("div");d.className="card";
+   d.innerHTML="<span class=\"tag\">"+g.g+"</span><p style=\"margin:10px 0 0\"><b>"+x.t+".</b> "+x.q+"</p>"+(x.a?"<details class=\"corr\"><summary>Voir la correction</summary><div class=\"expl\">"+x.a+"</div></details>":"");
+   b.appendChild(d)})});
+ document.querySelectorAll(".seg button").forEach(function(t){t.onclick=function(){
+  document.querySelectorAll(".seg button").forEach(function(z){z.setAttribute("aria-selected",z===t?"true":"false")});
+  $("#exQcm").classList.toggle("hide",t.dataset.sub!=="qcm");$("#exUsu").classList.toggle("hide",t.dataset.sub!=="usu");window.scrollTo(0,0)}})})();
+var ans=0,deg=true;
+function rz(r){return Math.abs(r)<1e-12?0:r}
+var F={sqrt:Math.sqrt,ln:Math.log,log:Math.log10,exp:Math.exp,abs:Math.abs,
+sin:function(x){return rz(Math.sin(deg?x*Math.PI/180:x))},cos:function(x){return rz(Math.cos(deg?x*Math.PI/180:x))},tan:function(x){return rz(Math.tan(deg?x*Math.PI/180:x))}};
+function fact(n){if(n<0||n%1||n>170)throw 0;var r=1;for(var i=2;i<=n;i++)r*=i;return r}
+function calc(s){
+ var p=0;s=s.toLowerCase().replace(/\s+/g,"").replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-").replace(/π/g,"pi").replace(/√/g,"sqrt").replace(/rép/g,"ans").replace(/,/g,".");
+ function expr(){var v=term(),o,r;while(s[p]==="+"||s[p]==="-"){o=s[p++];r=term();v=o==="+"?v+r:v-r}return v}
+ function term(){var v=unary(),r;for(;;){var c=s[p];if(c==="*"||c==="/"){p++;r=unary();v=c==="*"?v*r:v/r}else if(c==="("||(c&&/[a-z]/.test(c))){v*=unary()}else break}return v}
+ function unary(){if(s[p]==="-"){p++;return -unary()}if(s[p]==="+"){p++;return unary()}return power()}
+ function power(){var v=post();if(s[p]==="^"){p++;v=Math.pow(v,unary())}return v}
+ function post(){var v=atom();for(;;){if(s[p]==="!"){p++;v=fact(v)}else if(s[p]==="%"){p++;v/=100}else break}return v}
+ function atom(){var m,rest=s.slice(p);
+  if(s[p]==="("){p++;var v=expr();if(s[p]!==")")throw 0;p++;return v}
+  if(m=rest.match(/^(\d+\.?\d*|\.\d+)(e[+-]?\d+)?/)){p+=m[0].length;return parseFloat(m[0])}
+  if(m=rest.match(/^[a-z]+/)){var n=m[0];p+=n.length;
+   if(n==="pi")return Math.PI;if(n==="e")return Math.E;if(n==="ans")return ans;
+   var f=F[n];if(!f||s[p]!=="(")throw 0;p++;var a=expr();if(s[p]!==")")throw 0;p++;return f(a)}
+  throw 0}
+ var r=expr();if(p<s.length)throw 0;return r}
+function fmt(v){if(!isFinite(v))throw 0;return String(parseFloat(v.toPrecision(12))).replace(".",",")}
+var ci=$("#ci"),co=$("#co"),cs=$("#csci"),hs=$("#hist");
+function run(){var q=ci.value.trim();if(!q)return;
+ try{var v=calc(q),r=fmt(v);ans=v;co.textContent=r;
+  if(v!==0){var pr=v.toExponential(8).split("e");cs.innerHTML="Notation scientifique : "+String(parseFloat(pr[0])).replace(".",",")+" × 10<sup>"+(+pr[1])+"</sup>"}else cs.textContent="";
+  var li=document.createElement("li"),b=document.createElement("button");b.className="chip";b.textContent=q+" = "+r;b.onclick=function(){ci.value=q};li.appendChild(b);hs.insertBefore(li,hs.firstChild);while(hs.children.length>6)hs.removeChild(hs.lastChild)}
+ catch(e){co.textContent="Expression invalide";cs.textContent=""}}
+var KEYS=[["Deg","deg"],["AC","ac"],["⌫","bs"],["(","("],[")",")"],["sin","sin("],["cos","cos("],["tan","tan("],["√","√("],["^","^"],["7","7"],["8","8"],["9","9"],["÷","÷"],["ln","ln("],["4","4"],["5","5"],["6","6"],["×","×"],["log","log("],["1","1"],["2","2"],["3","3"],["−","−"],["π","π"],["0","0"],[",",","],["×10ˣ","×10^("],["+","+"],["=","eq"],["e","e"],["Rép","Rép"],["x!","!"],["%","%"],["exp","exp("]];
+KEYS.forEach(function(k){var b=document.createElement("button");b.type="button";b.textContent=k[0];
+ if("÷×−+^".indexOf(k[0])>=0)b.className="op";if(k[1]==="eq")b.className="eq";
+ b.onclick=function(){var c=k[1];
+  if(c==="deg"){deg=!deg;b.textContent=deg?"Deg":"Rad";return}
+  if(c==="ac"){ci.value="";co.textContent="0";cs.textContent="";return}
+  if(c==="eq"){run();return}
+  var st=ci.selectionStart,en=ci.selectionEnd;if(document.activeElement!==ci){st=en=ci.value.length}
+  if(c==="bs"){if(st===en&&st>0)st--;ci.setRangeText("",st,en,"end");return}
+  ci.setRangeText(c,st,en,"end")};
+ $("#keys").appendChild(b)});
+ci.addEventListener("keydown",function(e){if(e.key==="Enter")run()});
+var PH="00a9289487c52eb0367e7978bdeb0e3480d898a20e76320dff8390cd4cce4790",ALLOWED=[];
+async function sha(t){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
+function norm(n){return n.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ")}
+function unlock(n){document.body.classList.remove("locked");var l=$("#logout");l.classList.remove("hide");l.textContent="Déconnexion";var sp=document.createElement("span");sp.className="nm";sp.textContent=" ("+n+")";l.appendChild(sp);window.scrollTo(0,0)}
+function lock(){document.body.classList.add("locked");$("#logout").classList.add("hide");$("#lu").value="";$("#lp").value="";$("#lu").focus()}
+async function login(){var u=$("#lu").value.trim(),p=$("#lp").value,e=$("#le");
+ if(!/^[A-Za-zÀ-ÖØ-öø-ÿ'’ -]{2,40}$/.test(u)){e.textContent="Entrez votre prénom comme identifiant.";return}
+ try{var ok=(await sha("qcmb|"+p))===PH;
+  if(ok&&ALLOWED.length){ok=ALLOWED.indexOf(await sha("qcmb-id|"+norm(u)))>=0}
+  if(!ok){e.textContent="Identifiant ou mot de passe incorrect.";$("#lp").value="";return}
+ }catch(x){e.textContent="Connexion impossible sur ce navigateur.";return}
+ e.textContent="";$("#lp").value="";
+ try{sessionStorage.setItem("spema-user",u)}catch(x){}
+ unlock(u)}
+$("#lb").onclick=login;
+["#lu","#lp"].forEach(function(s){$(s).addEventListener("keydown",function(e){if(e.key==="Enter")login()})});
+$("#logout").onclick=function(){try{sessionStorage.removeItem("spema-user")}catch(x){}lock()};
+try{var su=sessionStorage.getItem("spema-user");if(su)unlock(su);else $("#lu").focus()}catch(x){$("#lu").focus()}
+var root=document.documentElement,tb=$("#theme");
+function dark(){var t=root.dataset.theme;return t?t==="dark":matchMedia("(prefers-color-scheme:dark)").matches}
+function label(){tb.textContent=dark()?"Mode clair":"Mode sombre"}
+try{var s=localStorage.getItem("spema-theme");if(s)root.dataset.theme=s}catch(e){}
+label();
+tb.onclick=function(){var n=dark()?"light":"dark";root.dataset.theme=n;try{localStorage.setItem("spema-theme",n)}catch(e){}label()};
+setTab(location.hash.slice(1),false);
+</script>
+</body>
+</html>

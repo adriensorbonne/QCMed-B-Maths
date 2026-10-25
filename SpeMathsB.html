@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Révisions Spé Maths B</title>
+<style>
+:root{--bg:#f5f9ff;--surface:#fff;--ink:#0b1e3d;--muted:#4a5f82;--line:#cfe0f7;--accent:#1456d6;--accent-ink:#fff;--soft:#e4eeff;--ok:#0d7a4a;--ko:#b3261e;--hd:rgba(245,249,255,.92);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--surface:#070d1a;--ink:#e8f0ff;--muted:#8fa6cc;--line:#16294d;--accent:#4d8dff;--accent-ink:#000;--soft:#0c1a38;--ok:#4cd694;--ko:#ff8a80;--hd:rgba(0,0,0,.92);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000;--surface:#070d1a;--ink:#e8f0ff;--muted:#8fa6cc;--line:#16294d;--accent:#4d8dff;--accent-ink:#000;--soft:#0c1a38;--ok:#4cd694;--ko:#ff8a80;--hd:rgba(0,0,0,.92);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{overflow-wrap:break-word;-webkit-text-size-adjust:100%;margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--hd);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{max-width:1040px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:-.02em;margin-right:auto}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:4px}
+nav button,.theme{font:inherit;font-size:.95rem;border:1px solid transparent;background:none;color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer}
+nav button[aria-current="page"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+nav button:hover:not([aria-current]),.theme:hover{background:var(--soft)}
+.theme{border-color:var(--line)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+main{max-width:1040px;margin:auto;padding:28px 16px 64px}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 12px}
+h2{font-size:1.5rem;margin:0 0 12px;letter-spacing:-.02em}
+h3{font-size:1.1rem;margin:22px 0 6px;color:var(--accent)}
+p{margin:0 0 12px;max-width:68ch}
+.lead{font-size:1.15rem;color:var(--muted)}
+.hero{display:grid;gap:24px;grid-template-columns:1.1fr 1fr;align-items:center;margin-bottom:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.machine{text-align:center}
+.machine .row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px 0;min-height:44px;font-size:1.6rem}
+.box{border:2px solid var(--accent);border-radius:8px;padding:6px 12px;font-size:1rem;font-weight:700;color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.cta{font:inherit;background:var(--accent);color:var(--accent-ink);border:0;padding:11px 20px;border-radius:10px;font-weight:600;cursor:pointer;margin:6px 8px 0 0}
+.cta.alt{background:var(--soft);color:var(--ink)}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start}
+.toc{display:flex;flex-direction:column;gap:6px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px)}
+.toc button{font:inherit;text-align:left;background:var(--surface);border:1px solid var(--line);color:var(--ink);padding:10px 12px;border-radius:10px;cursor:pointer;line-height:1.35}
+.toc button[aria-current="true"]{border-color:var(--accent);background:var(--soft);font-weight:600}
+.toc small{display:block;color:var(--muted);font-weight:400}
+.formula{background:var(--soft);border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-weight:600}
+.cross{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--accent);border-radius:10px;max-width:360px;margin:14px 0;overflow:hidden}
+.cross div{padding:14px;text-align:center;border:1px solid var(--line);font-weight:600}
+.cross .q{background:var(--soft);color:var(--accent)}
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:28px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;background:var(--soft);color:var(--accent);font-weight:600}
+.tag.soon{color:var(--muted)}
+ul{padding-left:1.2em;max-width:68ch}
+li{margin-bottom:6px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr))}
+.grid li{list-style:none;margin:0}
+.grid ul{padding:0;margin:8px 0 0}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opts button{font:inherit;text-align:left;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:10px 14px;border-radius:10px;cursor:pointer}
+.opts button:hover:not(:disabled){border-color:var(--accent)}
+.opts button.good{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--bg))}
+.opts button.bad{border-color:var(--ko);background:color-mix(in srgb,var(--ko) 15%,var(--bg))}
+.expl{margin-top:12px;padding:10px 14px;background:var(--soft);border-radius:10px;font-size:.95rem}
+.score{position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:5;display:flex;justify-content:space-between;align-items:center;background:var(--hd);padding:8px 0;margin-bottom:10px;border-bottom:1px solid var(--line)}
+svg.graph{max-width:340px;width:100%;display:block;margin:12px 0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.chip{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:5px 14px;border-radius:999px;cursor:pointer;text-align:left}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.calc{max-width:420px;margin:auto}
+.ci{width:100%;font:inherit;font-size:1.2rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+#co{display:block;text-align:right;font-size:2rem;font-weight:700;margin:10px 0 0;word-break:break-all;min-height:2.6rem;color:var(--accent)}
+#csci{text-align:right;color:var(--muted);font-size:.9rem;min-height:1.4em;margin-bottom:10px}
+.keys{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.keys button{font:inherit;padding:12px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer}
+.keys button:hover{background:var(--soft)}
+.keys button.op{background:var(--soft)}
+.keys button.eq{background:var(--accent);color:var(--accent-ink);font-weight:700}
+#hist{list-style:none;padding:0;max-width:420px;margin:0 auto}
+#hist li{margin-bottom:6px}
+.sets{max-width:380px;margin:14px 0}
+.sets div{border:2px solid var(--accent);border-radius:999px;padding:6px 14px;font-weight:700;display:flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.tocbtn{display:none;width:100%;justify-content:space-between;align-items:center;gap:10px;font:inherit;font-weight:600;text-align:left;background:var(--surface);border:1px solid var(--accent);color:var(--ink);padding:12px 14px;border-radius:12px;cursor:pointer;min-height:48px}
+.opts button,.cta{min-height:44px}
+.ns{display:none}
+.locked header,.locked main{display:none}
+#login{display:none;position:fixed;inset:0;z-index:20;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));background:var(--bg);overflow:auto}
+.locked #login{display:flex}
+.lg{width:100%;max-width:380px}
+.lg label{display:block;font-weight:600;margin:0 0 4px}
+.hide{display:none}
+@media (max-width:760px){
+body{font-size:16px}
+header{backdrop-filter:none;-webkit-backdrop-filter:none}
+.bar{padding:8px 12px;gap:8px;flex-wrap:nowrap}
+.logo{font-size:1.05rem;white-space:nowrap}
+.theme{font-size:.85rem;padding:6px 10px;white-space:nowrap}
+.nm{display:none}
+.nl{display:none}.ns{display:inline}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:15;gap:0;background:var(--hd);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;min-height:46px;padding:6px 0;font-size:.7rem;border-radius:12px;white-space:nowrap}
+main{padding:18px 12px 96px}
+.hero,.layout{grid-template-columns:1fr;gap:16px}
+.hero{margin-bottom:24px}
+.card{padding:16px}
+.tocbtn{display:flex}
+.toc{display:none;position:static;max-height:55vh;overflow-y:auto}
+.toc.open{display:flex}
+.toc button{min-width:0;padding:12px}
+.pager .cta{flex:1 1 140px;margin:0}
+.score{top:calc(env(safe-area-inset-top,0px) + 52px);flex-wrap:wrap;gap:6px}
+.score [data-tab]{display:none}
+.chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}
+.chip{white-space:nowrap}
+.keys button{min-height:48px;padding:12px 0;font-size:.95rem}
+.calc{padding:14px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 60px)}
+}
+.seg{display:flex;gap:4px;background:var(--soft);padding:4px;border-radius:999px;margin:6px 0 18px;max-width:420px}
+.seg button{flex:1;font:inherit;border:0;background:none;color:var(--ink);padding:10px 14px;border-radius:999px;cursor:pointer;min-height:44px}
+.seg button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.usu{display:grid;gap:16px}
+.usu h2{margin:20px 0 0}
+.corr summary{cursor:pointer;font-weight:600;color:var(--accent);min-height:44px;display:flex;align-items:center}
+.corr .expl{margin-top:0}
+.pst{display:block;margin-top:8px;font-size:.85rem;color:var(--muted);min-height:1.3em}
+.pcard{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.pcard small{color:var(--muted)}
+.pdfdoc{position:fixed;left:-10000px;top:0;width:794px;padding:48px 56px 8px;background:#fff;color:#0b1e3d;--bg:#f5f9ff;--surface:#fff;--ink:#0b1e3d;--muted:#4a5f82;--line:#cfe0f7;--accent:#1456d6;--accent-ink:#fff;--soft:#e4eeff;--ok:#0d7a4a;--ko:#b3261e;font:17px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+.pdfdoc .sets div{background:#f1f6ff}
+.pdfdoc .pbrand{font-size:.8rem;color:#4a5f82;border-bottom:2px solid #1456d6;padding-bottom:8px;margin-bottom:18px;letter-spacing:.02em}
+.back{display:inline-flex;align-items:center;min-height:44px;margin:-8px 0 8px;color:var(--accent);font-weight:600;text-decoration:none}
+.back:hover{text-decoration:underline}
+@media (prefers-reduced-motion:no-preference){.view{animation:in .25s ease}@keyframes in{from{opacity:0}to{opacity:1}}}
+</style>
+</head>
+<body class="locked">
+<div id="login"><div class="card lg">
+<h1 style="font-size:1.6rem">Spé Maths <span style="color:var(--accent)">B</span></h1>
+<p>Révisions Spé Maths B. Connectez-vous pour accéder aux cours.</p>
+<label for="lu">Identifiant (votre prénom)</label>
+<input id="lu" class="ci" type="text" name="username" autocomplete="username" autocapitalize="words" spellcheck="false">
+<label for="lp" style="margin-top:12px">Mot de passe</label>
+<input id="lp" class="ci" type="password" name="password" autocomplete="current-password">
+<p id="le" role="alert" style="color:var(--ko);min-height:1.5em;margin:10px 0"></p>
+<button class="cta" type="button" id="lb" style="width:100%;margin:0">Se connecter</button>
+</div></div>
+<header><div class="bar">
+<div class="logo">Spé Maths <span>B</span></div>
+<nav aria-label="Navigation principale">
+<button data-tab="cours">Cours</button><button data-tab="exercices">Exercices</button><button data-tab="calculatrice"><span class="nl">Calculatrice</span><span class="ns">Calcul</span></button><button data-tab="programme">Programme</button><button data-tab="pdfs">PDFs</button>
+</nav>
+<button class="theme" id="theme" aria-label="Changer de thème">Mode sombre</button>
+<button class="theme hide" id="logout"></button>
+</div></header>
+
+<main>
+<a class="back" href="index.html">← Retour au site QCM B</a>
+<section id="cours" class="view hide">
+<div class="hero">
+<div>
+<h1>Révisions Spé Maths B</h1>
+<p class="lead">Les fonctions, la dérivée et les intégrales, expliquées par des cours courts et des exemples concrets. Concours externe de Contrôleur des Finances Publiques.</p>
+<button class="cta" data-go="cours-0">Commencer le premier cours</button>
+<button class="cta alt" data-tab="exercices">S’entraîner</button>
+</div>
+<div class="card machine">
+<strong>La fonction f(x) = 2x</strong>
+<div class="row" aria-live="polite"><span id="mIn"></span><span class="box">LA FONCTION</span><span id="mOut"></span></div>
+<label for="mx">Baguettes en entrée : <b id="mxv">1</b></label>
+<input id="mx" type="range" min="0" max="5" value="1">
+<small style="color:var(--muted)">Glissez pour voir la machine doubler les baguettes.</small>
+</div>
+</div>
+<div class="layout">
+<button type="button" class="tocbtn" id="tocBtn" aria-expanded="false" aria-controls="toc"><span id="tocLbl"></span><span aria-hidden="true">▾</span></button>
+<div class="toc" id="toc" aria-label="Liste des cours"></div>
+<article id="lesson" class="card"></article>
+</div>
+</section>
+
+<section id="exercices" class="view hide">
+<h1>Exercices</h1>
+<div class="seg" role="tablist" aria-label="Type d’exercices"><button type="button" role="tab" data-sub="qcm" aria-selected="true">Exos QCM</button><button type="button" role="tab" data-sub="usu" aria-selected="false">Exos Usuels</button></div>
+<div id="exQcm">
+<p class="lead">Choisissez une réponse : la correction s’affiche tout de suite, avec la méthode. Besoin d’un calcul ? La calculatrice conserve votre progression.</p><div class="chips" id="chips" role="group" aria-label="Filtrer par cours"></div>
+<div class="score"><span>Score : <b id="sc">0</b> / <span id="tot">0</span></span><span><button class="cta alt" data-tab="calculatrice" style="margin:0 6px 0 0">Calculatrice</button><button class="cta alt" id="reset" style="margin:0">Recommencer</button></span></div>
+<div id="exos" style="display:grid;gap:16px"></div>
+</div>
+<div id="exUsu" class="hide">
+<p class="lead">Des exercices rédigés, issus de vos fiches. Cherchez d’abord sur papier, puis ouvrez la correction détaillée.</p>
+<div class="usu" id="usuList"></div>
+</div>
+</section>
+
+<section id="calculatrice" class="view hide">
+<h1>Calculatrice scientifique</h1>
+<p class="lead">Pour un calcul compliqué pendant un exercice. Quand vous changez d’onglet, vos réponses et votre place dans les exercices sont conservées.</p>
+<div class="card calc">
+<input id="ci" class="ci" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Expression à calculer" placeholder="Ex. : 2×(3+4)^2 − √(16)">
+<output id="co" aria-live="polite">0</output>
+<div id="csci"></div>
+<div class="keys" id="keys"></div>
+<p style="margin:12px 0 0;font-size:.85rem;color:var(--muted)">Tapez au clavier ou avec les touches, puis Entrée ou =. Rép rappelle le dernier résultat. Pour 2 × 10³, tapez 2×10^(3).</p>
+</div>
+<h3 style="max-width:420px;margin:20px auto 6px">Historique</h3>
+<ul id="hist"></ul>
+</section>
+
+<section id="pdfs" class="view hide">
+<h1>Cours en PDF</h1>
+<p class="lead">Un PDF par chapitre, à télécharger pour réviser hors connexion ou à imprimer. Le fichier est généré à la demande, en quelques secondes.</p>
+<div class="grid" id="pdfList"></div>
+</section>
+
+<section id="programme" class="view hide">
+<h1>Programme : Spé Maths B</h1>
+<p class="lead">Le programme de mathématiques de la spécialité (catégorie B) est découpé en cinq blocs. Les cours sont ajoutés au fur et à mesure : le repère « cours disponible » indique ce qui est déjà couvert.</p>
+<h2>IV. Mathématiques</h2>
+<h3>A. Arithmétiques</h3><ul><li>Les 4 opérations (addition, soustraction, multiplication, division) ;</li><li>Priorités des opérations ;</li><li>Notions de multiple, de diviseur, de nombre pair, de nombre impair, nombre premier ;</li><li>Fractions, valeur décimale d’une fraction, opération sur les fractions, comparaison ;</li><li>Puissances, opérations sur les puissances, comparaison ;</li><li>Conversion :<ul><li>Unité de mesure ;</li><li>Échelle d’une carte ;</li><li>Passer d’une écriture d’un nombre à une autre (décimale, fractionnaire, scientifique).</li></ul></li></ul>
+<h3>B. Algèbre</h3><ul><li>Les différents ensembles (entiers naturels, entiers relatifs, nombres décimaux et nombres rationnels) ;</li><li>Opérations et comparaison dans ces ensembles ;</li><li>Expression algébrique simple (factoriser, développer, réduire, réaliser des calculs) ;</li><li>Règles de calcul sur les puissances entières relatives, sur les racines carrées ;</li><li>Identités remarquables : a² − b² = (a − b)(a + b) ; (a + b)² = a² + 2ab + b² et (a − b)² = a² − 2ab + b² ;</li><li>Somme d’inégalités ;</li><li>Produit d’une inégalité par un réel positif, négatif, en liaison avec le sens de variation d’une fonction affine ;</li><li>Résolution d’équations et d’inéquations du premier degré ;</li><li>Résolution d’une expression factorisée du second degré.</li></ul>
+<h3>C. Fonctions numériques</h3><ul><li>Généralités des fonctions usuelles (ensemble de définition, représentation graphique, parité, comportement, variation, tableau de variation et extremum) ; <span class="tag">cours disponible</span></li><li>Se repérer sur un repère orthonormé (point, droite, courbe, position relative et caractériser les éléments du plan) ;</li><li>Fonctions dérivées (fonction affine, polynôme de degrés deux et trois, fonction inverse) : <span class="tag">cours disponible</span><ul><li>Dérivabilité de la somme, de la différence, lien de la dérivé et de la tangente (équation de la tangente) ;</li><li>Sens de variation d’une fonction à partir de l’étude de sa dérivée ;</li></ul></li><li>Fonctions usuelles (fonction affine, carré, inverse, racine carré, cube, polynôme de degré deux et trois factorisés, exponentielle).</li></ul>
+<h3>D. Statistiques et probabilités</h3><ul><li>Description statistique d’une population ou d’un échantillon (taux d’évolutions, moyenne pondérée, linéarité de la moyenne, nuage de point associé à une série statistique à deux variables numériques) ;</li><li>Ajustement affine ;</li><li>Dénombrement (arrangements, permutations, combinaisons) ;</li><li>Modélisation d’expériences indépendantes (dés, pièces, urnes…) ;</li><li>Conditionnement et indépendance (tableaux, arbres pondérés, diagramme) ;</li><li>Conditionnement par un évènement de probabilité non nulle puis indépendance de deux évènements ;</li><li>Formule des probabilités totales ;</li><li>Lois de probabilités discrètes ;</li><li>Cas particuliers : loi de Bernoulli, loi binomiale ;</li><li>Espérance.</li></ul>
+<h3>E. Suites numériques</h3><ul><li>Suites arithmétiques, suites géométriques à terme positif (sens de variation, relation de récurrence) ;</li><li>Somme des n premiers termes ;</li><li>Expression en fonction de n du rang n ;</li><li>Représentation graphique ;</li><li>Calculer un terme de rang donnée d’une suite définie explicitement par une relation de récurrence ou par une relation fonctionnelle.</li></ul>
+<p style="margin-top:20px;color:var(--muted)">Les intégrales, vues en cours, ne figurent pas dans ce programme : elles sont proposées à titre de complément. Les cours d’arithmétique et d’algèbre se trouvent sur le site « QCM B ».</p>
+</section>
+</main>
+
+<script>
+var COURSES=[
+{t:"Les fonctions : la notion",s:"Fonctions",h:
+"<h2>Les fonctions, les fameuses fonctions…</h2>"+
+"<p><b>Situation :</b> vous allez à la boulangerie acheter deux baguettes. Le boulanger vient d’acquérir une machine étrange qui réduit ou augmente le nombre de baguettes. Vous glissez 1 baguette dans la machine : 2 baguettes en sortent !</p>"+
+"<p>Il s’agit de la fonction f définie par :</p><div class=\"formula\">f(x) = 2x, où x est le nombre de baguettes en entrée</div>"+
+"<h3>Le vocabulaire</h3><ul>"+
+"<li><b>Image</b> : l’image de 3 par f est f(3) = 2 × 3 = 6.</li>"+
+"<li><b>Antécédent</b> : UN antécédent de 6 par f est la valeur x telle que f(x) = 6. Ici, x = 3.</li></ul>"+
+"<p>Essayez la machine en haut de la page, ou passez aux exercices.</p>"},
+{t:"Les fonctions : représentation graphique",s:"Fonctions (suite)",h:
+"<h2>Les fonctions : suite du cours</h2>"+
+"<p>Une fonction peut être définie par une expression littérale (f(x) = 2x) ou par une représentation graphique. Calculons quelques valeurs :</p>"+
+"<ul><li>f(0) = 2 × 0 = 0</li><li>f(1) = 2 × 1 = 2</li><li>f(−1) = 2 × (−1) = −2</li></ul>"+
+"<p>On trace le graphe avec x en abscisse et f(x) en ordonnée.</p>"+
+"<svg class=\"graph\" viewBox=\"0 0 300 260\" role=\"img\" aria-label=\"Droite représentant f(x)=2x\"><g stroke=\"currentColor\" stroke-width=\"1.5\" fill=\"none\"><path d=\"M10 130H290M150 10V250\"/></g>"+
+"<g stroke=\"var(--line)\" stroke-dasharray=\"4\"><path d=\"M190 50V130M150 50H190M110 210V130M110 210H150\"/></g>"+
+"<path d=\"M90 250L210 10\" stroke=\"var(--accent)\" stroke-width=\"3.5\" fill=\"none\"/>"+
+"<g fill=\"var(--accent)\"><circle cx=\"150\" cy=\"130\" r=\"5\"/><circle cx=\"190\" cy=\"50\" r=\"5\"/><circle cx=\"110\" cy=\"210\" r=\"5\"/></g>"+
+"<g fill=\"currentColor\" font-size=\"13\"><text x=\"196\" y=\"46\">(1 ; 2)</text><text x=\"60\" y=\"226\">(−1 ; −2)</text><text x=\"282\" y=\"148\">x</text><text x=\"156\" y=\"20\">f(x)</text><text x=\"215\" y=\"22\" fill=\"var(--accent)\">f(x) = 2x</text></g></svg>"+
+"<ul><li>La courbe rouge du cours, ici en bleu, est la <b>représentation graphique</b> de f.</li>"+
+"<li>On lit l’image de 1 par f : elle vaut 2.</li>"+
+"<li>À l’inverse, UN antécédent de 2 par f est 1. Comme le graphe est une droite, cet antécédent est <b>unique</b>.</li></ul>"+
+"<h3>Sens de variation</h3><p>Ici la fonction est <b>strictement croissante</b> : quand x augmente, f(x) augmente toujours. Une fonction croissante, au sens large, peut aussi avoir des paliers où f(x) reste constant.</p>"},
+{t:"La dérivée : de quoi s’agit-il ?",s:"Dérivée",h:
+"<h2>La dérivée d’une fonction, qué quoi ?</h2>"+
+"<p>Ici, ce n’est pas le Titanic qui dérive à cause d’un iceberg, mais bien vous face à ce casse-tête.</p>"+
+"<h3>Qu’est-ce que la dérivée d’une fonction ?</h3>"+
+"<p>Pour les puristes des maths, la dérivée est un « opérateur », notion trop complexe pour être abordée ici. On dira que la dérivée d’une fonction f est elle-même une fonction, qui change l’expression littérale de la fonction f de départ.</p>"+
+"<h3>Comment se la représenter ?</h3>"+
+"<p>Imaginons une fonction g dont le graphe est tracé en bleu. <b>La dérivée en un point de g est le rapport hauteur / longueur de la tangente</b> à ce graphe <b>en ce point</b>.</p>"+
+"<svg class=\"graph\" viewBox=\"0 0 300 260\" role=\"img\" aria-label=\"Schéma d’une courbe avec deux tangentes\"><g stroke=\"currentColor\" stroke-width=\"1.5\" fill=\"none\"><path d=\"M10 150H290M150 10V250\"/></g>"+
+"<path d=\"M50 200Q150 0 250 200\" stroke=\"var(--accent)\" stroke-width=\"3.5\" fill=\"none\"/>"+
+"<g stroke=\"var(--ok)\" stroke-width=\"2.5\" fill=\"none\"><path d=\"M50 175L150 75M105 100H195\"/></g>"+
+"<path d=\"M100 125H150V75\" stroke=\"var(--muted)\" stroke-dasharray=\"4\" fill=\"none\"/>"+
+"<g fill=\"var(--accent)\"><circle cx=\"100\" cy=\"125\" r=\"5\"/><circle cx=\"150\" cy=\"100\" r=\"5\"/></g>"+
+"<g fill=\"currentColor\" font-size=\"13\"><text x=\"92\" y=\"142\">longueur = 1</text><text x=\"156\" y=\"120\">hauteur = 1</text><text x=\"158\" y=\"66\">g′(−1) = 1</text><text x=\"200\" y=\"94\">g′(0) = 0</text><text x=\"280\" y=\"168\">x</text></g></svg>"+
+"<ul><li>La dérivée de g en 0 est <b>nulle</b>, car la tangente est une ligne horizontale.</li>"+
+"<li>La dérivée de g en −1 est <b>positive</b>, car la tangente est une droite qui croît (hauteur 1 pour une longueur 1, donc g′(−1) = 1).</li></ul>"+
+"<p style=\"color:var(--muted);font-size:.9rem\">Schéma illustratif : la courbe n’est pas à l’échelle.</p>"},
+{t:"Expression littérale de la dérivée",s:"Dérivée (suite)",h:
+"<h2>Expression littérale de la dérivée d’une fonction</h2>"+
+"<p>On a vu comment schématiser la dérivée avec un graphe. Voyons maintenant comment l’exprimer par une expression <b>globale</b> et non plus en un seul point.</p>"+
+"<p>On sait représenter une fonction en un point (f(1), f(0), f(−1)) ou de manière globale (f(x) = 2x), ce qui permet de la calculer en n’importe quel point. Cela s’applique aussi à la dérivée.</p>"+
+"<div class=\"formula\">Pour f(x) = 2x, on a f′(x) = 2</div>"+
+"<p>On vient de donner l’expression littérale de la dérivée de f : pour n’importe quel point x en abscisse, la dérivée de f en ce point vaut 2.</p>"+
+"<h3>Quelques règles</h3><ul>"+
+"<li>Si f(x) = a·x, alors f′(x) = a</li>"+
+"<li>Si f(x) = x<sup>a</sup>, alors f′(x) = a·x<sup>a−1</sup></li>"+
+"<li>Si f(x) = a (une constante), alors la dérivée est nulle.</li></ul>"+
+"<h3>Exemples d’application</h3><ul><li>f(x) = 5x donne f′(x) = 5</li><li>f(x) = x² donne f′(x) = 2x</li><li>f(x) = x³ donne f′(x) = 3x²</li><li>f(x) = 7 donne f′(x) = 0</li></ul>"},
+{t:"Pourquoi la dérivée est importante",s:"Dérivée (applications)",h:
+"<h2>Pourquoi la dérivée est une notion importante</h2>"+
+"<p>Vous pensiez que la dérivée ne servait qu’à avoir des maux de tête en mathématiques ? Que nenni…</p>"+
+"<p>La dérivée est une notion centrale pour comprendre la position, la vitesse et l’accélération.</p>"+
+"<div class=\"formula\">La vitesse d’un corps est la dérivée de sa position.<br>L’accélération d’un corps est la dérivée de sa vitesse.</div>"+
+"<p>Exemple de corps : une voiture.</p>"+
+"<h3>Les équations différentielles</h3>"+
+"<p>La dérivée intervient aussi dans la résolution d’équations dites « différentielles », c’est-à-dire des équations faisant intervenir une fonction et sa (ou ses) dérivée(s). Elles interviennent :</p>"+
+"<ul><li>en <b>mécanique</b> : description de la position d’un pendule ;</li><li>en <b>électronique</b> : création de filtres laissant passer une gamme de fréquences au sein des composants d’une radio, par exemple ;</li><li>de manière générale dans tout <b>système chaotique</b> : prévision de la météo, par exemple.</li></ul>"},
+{t:"Les intégrales : l’aire sous la courbe",s:"Intégrales",h:
+"<h2>Les intégrales : l’idée en une image</h2>"+
+"<p>Une <b>intégrale</b> sert à mesurer une <b>aire</b> : celle qui se trouve entre la courbe d’une fonction f et l’axe des abscisses, pour x allant d’une valeur a à une valeur b.</p>"+
+"<svg class=\"graph\" viewBox=\"0 0 300 200\" role=\"img\" aria-label=\"Aire sous la courbe de f entre les abscisses 1 et 6\"><g stroke=\"currentColor\" stroke-width=\"1.5\" fill=\"none\"><path d=\"M10 160H290M30 10V170\"/></g>"+
+"<path d=\"M70 90C110 40 150 50 170 90S230 110 250 80V160H70Z\" fill=\"var(--accent)\" fill-opacity=\".25\"/>"+
+"<path d=\"M70 90C110 40 150 50 170 90S230 110 250 80\" stroke=\"var(--accent)\" stroke-width=\"3.5\" fill=\"none\"/>"+
+"<g stroke=\"var(--line)\" stroke-dasharray=\"4\"><path d=\"M70 90V160M250 80V160\"/></g>"+
+"<g fill=\"currentColor\" font-size=\"13\"><text x=\"66\" y=\"178\">1</text><text x=\"246\" y=\"178\">6</text><text x=\"128\" y=\"36\" fill=\"var(--accent)\">f</text><text x=\"112\" y=\"140\">aire</text><text x=\"282\" y=\"178\">x</text></g></svg>"+
+"<h3>Comment l’écrire ?</h3>"+
+"<div class=\"formula\">∫<sub>a</sub><sup>b</sup> f(x) dx = aire entre f et l’axe des abscisses, de a à b</div>"+
+"<ul><li>Le symbole ∫ est le symbole de l’intégrale : un « S » étiré, comme « somme » (on additionne plein de petites tranches d’aire).</li>"+
+"<li>a est la borne du bas, b la borne du haut.</li>"+
+"<li>dx rappelle que la variable est x.</li></ul>"+
+"<p>Dans le cours : l’aire pour un segment allant de 1 à 6 s’écrit ∫<sub>1</sub><sup>6</sup> f(x) dx. On dit que c’est l’<b>intégrale de f entre les abscisses 1 et 6</b>.</p>"+
+"<p>Si la courbe passe sous l’axe des abscisses, la partie correspondante compte négativement.</p>"},
+{t:"Primitive et calcul d’une intégrale",s:"Intégrales (suite)",h:
+"<h2>Primitive et intégrale : comment calculer ?</h2>"+
+"<h3>La primitive, c’est la dérivée à l’envers</h3>"+
+"<p>On a vu qu’on peut <b>dériver</b> une fonction : de x², on passe à 2x. La <b>primitive</b> fait le chemin inverse : de 2x, on remonte à x².</p>"+
+"<div class=\"formula\">F est une primitive de f lorsque F′(x) = f(x)</div>"+
+"<ul><li>(x²)′ = 2x, donc x² est une primitive de 2x.</li><li>(5x)′ = 5, donc 5x est une primitive de 5.</li><li>(x³)′ = 3x², donc x³ est une primitive de 3x².</li></ul>"+
+"<p>On dit bien <b>UNE</b> primitive : x² + 3 est aussi une primitive de 2x, car la dérivée d’une constante est nulle. Une fonction a donc une infinité de primitives, qui diffèrent d’une constante.</p>"+
+"<h3>Quelques règles (celles de la dérivée, à l’envers)</h3><ul>"+
+"<li>f(x) = a (constante) : F(x) = a·x</li><li>f(x) = x : F(x) = x² / 2</li><li>f(x) = x<sup>n</sup> : F(x) = x<sup>n+1</sup> / (n + 1), si n ≠ −1</li></ul>"+
+"<h3>Le lien avec l’intégrale</h3>"+
+"<div class=\"formula\">∫<sub>a</sub><sup>b</sup> f(x) dx = F(b) − F(a), où F est UNE primitive de f</div>"+
+"<p>Dans le cours : ∫<sub>1</sub><sup>6</sup> f(x) dx = F(6) − F(1). On calcule en trois temps : 1) on trouve une primitive F ; 2) on calcule F(b) et F(a) ; 3) on soustrait.</p>"+
+"<p>Peu importe la primitive choisie : la constante s’annule dans la soustraction.</p>"+
+"<h3>Exemples</h3><ul>"+
+"<li>∫<sub>0</sub><sup>3</sup> 2x dx : F(x) = x², donc 3² − 0² = <b>9</b>. Vérification : c’est l’aire d’un triangle de base 3 et de hauteur 6, soit 3 × 6 / 2 = 9.</li>"+
+"<li>∫<sub>1</sub><sup>6</sup> 4 dx : F(x) = 4x, donc 24 − 4 = <b>20</b>. C’est l’aire d’un rectangle de 5 sur 4.</li>"+
+"<li>∫<sub>1</sub><sup>2</sup> x² dx : F(x) = x³ / 3, donc 8/3 − 1/3 = <b>7/3</b>.</li></ul>"+
+"<h3>À quoi ça sert ?</h3><p>La position d’une voiture est une primitive de sa vitesse : en intégrant la vitesse entre deux instants, on obtient la distance parcourue.</p>"},
+];
+var UPCOMING=[];
+var EXOS=[
+{c:"Fonctions",q:"Soit f(x) = 2x. Quelle est l’image de 3 par f ?",o:["5","6","1,5","9"],a:1,e:"L’image de 3 est f(3) = 2 × 3 = 6."},
+{c:"Fonctions",q:"Soit f(x) = 2x. Quel est l’antécédent de 10 par f ?",o:["5","20","12","8"],a:0,e:"On cherche x tel que 2x = 10, donc x = 5."},
+{c:"Fonctions",q:"Soit f(x) = 2x. Combien vaut f(−1) ?",o:["2","−1","−2","0,5"],a:2,e:"f(−1) = 2 × (−1) = −2."},
+{c:"Fonctions",q:"La représentation graphique de f(x) = 2x est une droite qui monte de gauche à droite. Que peut-on dire de f ?",o:["Elle est strictement décroissante","Elle est constante","Elle est strictement croissante","Elle a deux antécédents de 2"],a:2,e:"Quand x augmente, f(x) augmente toujours : f est strictement croissante. Comme le graphe est une droite, chaque valeur a un unique antécédent."},
+{c:"Dérivée",q:"Soit f(x) = 5x. Quelle est la dérivée f′(x) ?",o:["5x","5","x","0"],a:1,e:"Si f(x) = a·x, alors f′(x) = a. Ici a = 5, donc f′(x) = 5."},
+{c:"Dérivée",q:"Soit f(x) = x³. Quelle est la dérivée f′(x) ?",o:["x²","3x³","3x²","2x²"],a:2,e:"Si f(x) = xᵃ, alors f′(x) = a·xᵃ⁻¹. Ici a = 3, donc f′(x) = 3x²."},
+{c:"Dérivée",q:"Soit f(x) = 7, une constante. Que vaut f′(x) ?",o:["7","0","1","7x"],a:1,e:"La dérivée d’une constante est nulle."},
+{c:"Dérivée",q:"En un point, la tangente à la courbe est une ligne horizontale. Que dire de la dérivée en ce point ?",o:["Elle est positive","Elle est négative","Elle est nulle","Elle vaut 1"],a:2,e:"Une tangente horizontale a une hauteur nulle : le rapport hauteur / longueur vaut 0, donc la dérivée est nulle."},
+{c:"Dérivée",q:"En un point, la tangente à la courbe est une droite qui monte de gauche à droite. Que dire de la dérivée en ce point ?",o:["Elle est négative","Elle est nulle","Elle est impossible à connaître","Elle est positive"],a:3,e:"Une tangente qui croît correspond à une dérivée positive. Une tangente qui descend correspondrait à une dérivée négative."},
+{c:"Dérivée",q:"Soit f(x) = x². Combien vaut f′(3) ?",o:["3","6","9","2"],a:1,e:"f′(x) = 2x, donc f′(3) = 2 × 3 = 6."},
+{c:"Dérivée",q:"Quel lien existe-t-il entre la position d’une voiture et sa vitesse ?",o:["La vitesse est la dérivée de la position","La position est la dérivée de la vitesse","La vitesse est la dérivée de l’accélération","Il n’y a aucun lien"],a:0,e:"La vitesse d’un corps est la dérivée de sa position, et son accélération est la dérivée de sa vitesse."},
+{c:"Intégrales",q:"F est une primitive de f signifie que…",o:["F′(x) = f(x)", "f′(x) = F(x)", "F(x) = f(x)", "F(x) = 0"],a:0,e:"Une primitive est une fonction dont la dérivée est f : c’est la dérivée « à l’envers »."},
+{c:"Intégrales",q:"Quelle est une primitive de f(x) = 2x ?",o:["x²", "2", "x", "2x²"],a:0,e:"(x²)′ = 2x. D’autres réponses comme x² + 5 conviendraient aussi : une primitive est définie à une constante près."},
+{c:"Intégrales",q:"Quelle est une primitive de f(x) = 5 ?",o:["5x", "5", "x⁵", "0"],a:0,e:"(5x)′ = 5."},
+{c:"Intégrales",q:"Une fonction a…",o:["une infinité de primitives, qui diffèrent d’une constante", "une seule primitive", "exactement deux primitives", "aucune primitive"],a:0,e:"Si F est une primitive, F + k l’est aussi pour toute constante k, car la dérivée d’une constante est nulle."},
+{c:"Intégrales",q:"∫ de a à b de f(x) dx est égal à…",o:["F(b) − F(a)", "F(a) − F(b)", "F(b) + F(a)", "f(b) − f(a)"],a:0,e:"Avec F une primitive de f, l’intégrale vaut F(b) − F(a). Dans le cours : F(6) − F(1)."},
+{c:"Intégrales",q:"Calculer l’intégrale de 0 à 3 de 2x dx.",o:["9", "6", "3", "18"],a:0,e:"F(x) = x², donc F(3) − F(0) = 9 − 0 = 9. C’est bien l’aire du triangle de base 3 et de hauteur 6."},
+{c:"Intégrales",q:"Quelle est l’aire sous f(x) = 4 entre les abscisses 1 et 6 ?",o:["20", "24", "4", "5"],a:0,e:"F(x) = 4x, donc F(6) − F(1) = 24 − 4 = 20. C’est un rectangle de 5 sur 4."},
+{c:"Intégrales",q:"Calculer l’intégrale de 1 à 2 de x² dx.",o:["7/3", "1", "3", "8/3"],a:0,e:"F(x) = x³ / 3, donc F(2) − F(1) = 8/3 − 1/3 = 7/3."}
+];
+var $=function(s){return document.querySelector(s)};
+var curTab="",pos={};
+function setTab(t,push){
+ if(["cours","exercices","programme","calculatrice","pdfs"].indexOf(t)<0)t="cours";if(t===curTab)return;pos[curTab]=window.scrollY;
+ document.querySelectorAll(".view").forEach(function(v){v.classList.toggle("hide",v.id!==t)});
+ document.querySelectorAll("nav button").forEach(function(b){if(b.dataset.tab===t)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+ if(push&&location.hash!=="#"+t)location.hash=t;
+ curTab=t;window.scrollTo(0,pos[t]||0);
+}
+document.addEventListener("click",function(e){
+ var b=e.target.closest("[data-tab],[data-go]");if(!b)return;
+ if(b.dataset.go){setTab("cours",true);showCourse(+b.dataset.go.split("-")[1]);return}
+ setTab(b.dataset.tab,true);
+});
+window.addEventListener("hashchange",function(){setTab(location.hash.slice(1),false)});
+var cur=0;
+function showCourse(i,noScroll){
+ cur=i;var c=COURSES[i];
+ $("#lesson").innerHTML=c.h+"<div class=\"pager\"><button class=\"cta alt\" "+(i?"":"disabled style=\"opacity:.4\"")+" id=\"prev\">Cours précédent</button><button class=\"cta\" id=\"next\">"+(i<COURSES.length-1?"Cours suivant":"Aller aux exercices")+"</button></div>";
+ $("#prev").onclick=function(){if(cur>0)showCourse(cur-1)};
+ $("#next").onclick=function(){if(cur<COURSES.length-1)showCourse(cur+1);else setTab("exercices",true)};
+ document.querySelectorAll("#toc button").forEach(function(b,k){if(k===i)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
+ $("#tocLbl").textContent="Cours "+(i+1)+"/"+COURSES.length+" · "+c.t;$("#toc").classList.remove("open");$("#tocBtn").setAttribute("aria-expanded","false");
+ if(!noScroll)(matchMedia("(max-width:760px)").matches?$("#tocBtn"):$("#lesson")).scrollIntoView({block:"start"});
+}
+(function(){
+ var t=$("#toc");
+ COURSES.forEach(function(c,i){var b=document.createElement("button");b.innerHTML=c.t+"<small>"+c.s+"</small>";b.onclick=function(){showCourse(i)};t.appendChild(b)});
+ UPCOMING.forEach(function(u){var b=document.createElement("button");b.disabled=true;b.style.opacity=".55";b.innerHTML=u+"<small>Bientôt</small>";t.appendChild(b)});
+ showCourse(0,true);
+})();
+$("#tocBtn").onclick=function(){var o=$("#toc").classList.toggle("open");this.setAttribute("aria-expanded",o?"true":"false");if(o)this.scrollIntoView({block:"start"})};
+function machine(){
+ var n=+$("#mx").value;$("#mxv").textContent=n;
+ $("#mIn").textContent=n?"🥖".repeat(n):"∅";
+ $("#mOut").textContent=n?"🥖".repeat(2*n):"∅";
+}
+$("#mx").addEventListener("input",machine);machine();
+var score=0,done=0,filt="";
+function renderExos(){
+ var L=EXOS.filter(function(x){return !filt||x.c===filt});score=0;done=0;$("#sc").textContent=0;$("#tot").textContent=L.length;
+ var box=$("#exos");box.innerHTML="";
+ L.forEach(function(x,i){
+  var d=document.createElement("div");d.className="card";
+  d.innerHTML="<span class=\"tag\">"+x.c+"</span><p style=\"margin:10px 0 0\"><b>Question "+(i+1)+".</b> "+x.q+"</p><div class=\"opts\"></div><div class=\"expl hide\"></div>";
+  var o=d.querySelector(".opts");
+  x.o.forEach(function(txt,k){
+   var b=document.createElement("button");b.textContent=txt;
+   b.onclick=function(){
+    o.querySelectorAll("button").forEach(function(z,j){z.disabled=true;if(j===x.a)z.classList.add("good")});
+    if(k===x.a)score++;else b.classList.add("bad");
+    done++;$("#sc").textContent=score;
+    var ex=d.querySelector(".expl");ex.classList.remove("hide");
+    ex.innerHTML="<b>"+(k===x.a?"Bonne réponse. ":"Pas tout à fait. ")+"</b>"+x.e;
+    if(done===L.length)$("#sc").parentNode.insertAdjacentHTML("beforeend"," <b> Terminé !</b>");
+   };
+   o.appendChild(b);
+  });
+  box.appendChild(d);
+ });
+}
+$("#reset").onclick=function(){renderExos();window.scrollTo(0,0)};
+var cats=["Tous"].concat(EXOS.map(function(x){return x.c}).filter(function(c,i,a){return a.indexOf(c)===i}));
+cats.forEach(function(c){var b=document.createElement("button");b.className="chip";b.textContent=c;b.setAttribute("aria-pressed",c==="Tous"?"true":"false");b.onclick=function(){filt=c==="Tous"?"":c;document.querySelectorAll(".chip[aria-pressed]").forEach(function(z){z.setAttribute("aria-pressed",z===b?"true":"false")});renderExos()};$("#chips").appendChild(b)});
+renderExos();
+var H2C="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",JSP="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",libs={},DL=null;
+try{if(window.claude&&claude.use)claude.use("downloads").then(function(d){DL=d}).catch(function(){})}catch(x){}
+function loadJS(u){return libs[u]||(libs[u]=new Promise(function(ok,ko){var e=document.createElement("script");e.src=u;e.onload=ok;e.onerror=function(){delete libs[u];ko(new Error("load"))};document.head.appendChild(e)}))}
+function slug(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+var LIGHT={"var(--accent)":"#1456d6","var(--line)":"#cfe0f7","var(--ok)":"#0d7a4a","var(--muted)":"#4a5f82"};
+function pdfHTML(i){var c=COURSES[i],h=c.h.replace(/var\(--(accent|line|ok|muted)\)/g,function(m){return LIGHT[m]}).replace(/currentColor/g,"#0b1e3d");
+ return "<div class=\"pbrand\">Spé Maths <b>B</b> — Cours "+(i+1)+"/"+COURSES.length+" · "+c.s+"</div>"+h}
+function blankRow(ctx,y,w){var d=ctx.getImageData(0,y,w,1).data;for(var j=0;j<d.length;j+=4){if(d[j]<250||d[j+1]<250||d[j+2]<250)return false}return true}
+async function makePdf(i){
+ await loadJS(H2C);await loadJS(JSP);
+ var box=document.createElement("div");box.className="pdfdoc";box.innerHTML=pdfHTML(i);document.body.appendChild(box);
+ try{
+  var cv=await html2canvas(box,{scale:2,backgroundColor:"#ffffff",logging:false,onclone:function(d){var e=d.querySelector(".pdfdoc");e.style.left="0";e.style.top="0"}});
+  var pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4",compress:true}),W=cv.width,T=cv.height,mm=W/210,ph=Math.floor(269*mm),ctx=cv.getContext("2d"),y=0,pg=[];
+  while(y<T){var end=Math.min(y+ph,T);
+   if(end<T){for(var k=end;k>end-320&&k>y+200;k--){if(blankRow(ctx,k,W)){end=k;break}}}
+   pg.push([y,end]);y=end}
+  pg.forEach(function(r,n){if(n)pdf.addPage();var h=r[1]-r[0],s=document.createElement("canvas");s.width=W;s.height=h;var x=s.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,W,h);x.drawImage(cv,0,r[0],W,h,0,0,W,h);
+   pdf.addImage(s.toDataURL("image/jpeg",0.92),"JPEG",0,14,210,h/mm);pdf.setFontSize(9);pdf.setTextColor(120);pdf.text("Spe Maths B - Cours "+(i+1)+" - page "+(n+1)+"/"+pg.length,105,291,{align:"center"})});
+  return pdf.output("blob");
+ }finally{box.remove()}}
+function saveFile(name,blob){
+ if(DL)return DL.save({filename:name,data:blob});
+ var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},4000);return Promise.resolve()}
+(function(){var L=$("#pdfList");
+ COURSES.forEach(function(c,i){
+  var d=document.createElement("div");d.className="card pcard";
+  d.innerHTML="<span class=\"tag\">Cours "+(i+1)+"</span><b>"+c.t+"</b><small>"+c.s+"</small>";
+  var b=document.createElement("button");b.type="button";b.className="cta";b.textContent="Télécharger le PDF";
+  var st=document.createElement("span");st.className="pst";st.setAttribute("role","status");
+  b.onclick=async function(){
+   b.disabled=true;b.textContent="Création du PDF…";st.textContent="";
+   try{var blob=await makePdf(i);await saveFile("SpeMathsB-cours-"+String(i+1).padStart(2,"0")+"-"+slug(c.t)+".pdf",blob);st.textContent="PDF prêt."}
+   catch(e){st.textContent=e&&e.code==="declined"?"Téléchargement annulé.":"Impossible de créer le PDF. Vérifiez votre connexion et réessayez."}
+   b.disabled=false;b.textContent="Télécharger le PDF"};
+  d.appendChild(b);d.appendChild(st);L.appendChild(d)})})();
+var USU=[];
+$("#usuList").innerHTML="<p>Aucun exercice usuel pour le moment.</p>";
+(function(){var b=$("#usuList");
+ USU.forEach(function(g){var h=document.createElement("h2");h.textContent=g.g;b.appendChild(h);
+  g.items.forEach(function(x){var d=document.createElement("div");d.className="card";
+   d.innerHTML="<span class=\"tag\">"+g.g+"</span><p style=\"margin:10px 0 0\"><b>"+x.t+".</b> "+x.q+"</p>"+(x.a?"<details class=\"corr\"><summary>Voir la correction</summary><div class=\"expl\">"+x.a+"</div></details>":"");
+   b.appendChild(d)})});
+ document.querySelectorAll(".seg button").forEach(function(t){t.onclick=function(){
+  document.querySelectorAll(".seg button").forEach(function(z){z.setAttribute("aria-selected",z===t?"true":"false")});
+  $("#exQcm").classList.toggle("hide",t.dataset.sub!=="qcm");$("#exUsu").classList.toggle("hide",t.dataset.sub!=="usu");window.scrollTo(0,0)}})})();
+var ans=0,deg=true;
+function rz(r){return Math.abs(r)<1e-12?0:r}
+var F={sqrt:Math.sqrt,ln:Math.log,log:Math.log10,exp:Math.exp,abs:Math.abs,
+sin:function(x){return rz(Math.sin(deg?x*Math.PI/180:x))},cos:function(x){return rz(Math.cos(deg?x*Math.PI/180:x))},tan:function(x){return rz(Math.tan(deg?x*Math.PI/180:x))}};
+function fact(n){if(n<0||n%1||n>170)throw 0;var r=1;for(var i=2;i<=n;i++)r*=i;return r}
+function calc(s){
+ var p=0;s=s.toLowerCase().replace(/\s+/g,"").replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-").replace(/π/g,"pi").replace(/√/g,"sqrt").replace(/rép/g,"ans").replace(/,/g,".");
+ function expr(){var v=term(),o,r;while(s[p]==="+"||s[p]==="-"){o=s[p++];r=term();v=o==="+"?v+r:v-r}return v}
+ function term(){var v=unary(),r;for(;;){var c=s[p];if(c==="*"||c==="/"){p++;r=unary();v=c==="*"?v*r:v/r}else if(c==="("||(c&&/[a-z]/.test(c))){v*=unary()}else break}return v}
+ function unary(){if(s[p]==="-"){p++;return -unary()}if(s[p]==="+"){p++;return unary()}return power()}
+ function power(){var v=post();if(s[p]==="^"){p++;v=Math.pow(v,unary())}return v}
+ function post(){var v=atom();for(;;){if(s[p]==="!"){p++;v=fact(v)}else if(s[p]==="%"){p++;v/=100}else break}return v}
+ function atom(){var m,rest=s.slice(p);
+  if(s[p]==="("){p++;var v=expr();if(s[p]!==")")throw 0;p++;return v}
+  if(m=rest.match(/^(\d+\.?\d*|\.\d+)(e[+-]?\d+)?/)){p+=m[0].length;return parseFloat(m[0])}
+  if(m=rest.match(/^[a-z]+/)){var n=m[0];p+=n.length;
+   if(n==="pi")return Math.PI;if(n==="e")return Math.E;if(n==="ans")return ans;
+   var f=F[n];if(!f||s[p]!=="(")throw 0;p++;var a=expr();if(s[p]!==")")throw 0;p++;return f(a)}
+  throw 0}
+ var r=expr();if(p<s.length)throw 0;return r}
+function fmt(v){if(!isFinite(v))throw 0;return String(parseFloat(v.toPrecision(12))).replace(".",",")}
+var ci=$("#ci"),co=$("#co"),cs=$("#csci"),hs=$("#hist");
+function run(){var q=ci.value.trim();if(!q)return;
+ try{var v=calc(q),r=fmt(v);ans=v;co.textContent=r;
+  if(v!==0){var pr=v.toExponential(8).split("e");cs.innerHTML="Notation scientifique : "+String(parseFloat(pr[0])).replace(".",",")+" × 10<sup>"+(+pr[1])+"</sup>"}else cs.textContent="";
+  var li=document.createElement("li"),b=document.createElement("button");b.className="chip";b.textContent=q+" = "+r;b.onclick=function(){ci.value=q};li.appendChild(b);hs.insertBefore(li,hs.firstChild);while(hs.children.length>6)hs.removeChild(hs.lastChild)}
+ catch(e){co.textContent="Expression invalide";cs.textContent=""}}
+var KEYS=[["Deg","deg"],["AC","ac"],["⌫","bs"],["(","("],[")",")"],["sin","sin("],["cos","cos("],["tan","tan("],["√","√("],["^","^"],["7","7"],["8","8"],["9","9"],["÷","÷"],["ln","ln("],["4","4"],["5","5"],["6","6"],["×","×"],["log","log("],["1","1"],["2","2"],["3","3"],["−","−"],["π","π"],["0","0"],[",",","],["×10ˣ","×10^("],["+","+"],["=","eq"],["e","e"],["Rép","Rép"],["x!","!"],["%","%"],["exp","exp("]];
+KEYS.forEach(function(k){var b=document.createElement("button");b.type="button";b.textContent=k[0];
+ if("÷×−+^".indexOf(k[0])>=0)b.className="op";if(k[1]==="eq")b.className="eq";
+ b.onclick=function(){var c=k[1];
+  if(c==="deg"){deg=!deg;b.textContent=deg?"Deg":"Rad";return}
+  if(c==="ac"){ci.value="";co.textContent="0";cs.textContent="";return}
+  if(c==="eq"){run();return}
+  var st=ci.selectionStart,en=ci.selectionEnd;if(document.activeElement!==ci){st=en=ci.value.length}
+  if(c==="bs"){if(st===en&&st>0)st--;ci.setRangeText("",st,en,"end");return}
+  ci.setRangeText(c,st,en,"end")};
+ $("#keys").appendChild(b)});
+ci.addEventListener("keydown",function(e){if(e.key==="Enter")run()});
+var PH="00a9289487c52eb0367e7978bdeb0e3480d898a20e76320dff8390cd4cce4790",ALLOWED=[];
+async function sha(t){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
+function norm(n){return n.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ")}
+function unlock(n){document.body.classList.remove("locked");var l=$("#logout");l.classList.remove("hide");l.textContent="Déconnexion";var sp=document.createElement("span");sp.className="nm";sp.textContent=" ("+n+")";l.appendChild(sp);window.scrollTo(0,0)}
+function lock(){document.body.classList.add("locked");$("#logout").classList.add("hide");$("#lu").value="";$("#lp").value="";$("#lu").focus()}
+async function login(){var u=$("#lu").value.trim(),p=$("#lp").value,e=$("#le");
+ if(!/^[A-Za-zÀ-ÖØ-öø-ÿ'’ -]{2,40}$/.test(u)){e.textContent="Entrez votre prénom comme identifiant.";return}
+ try{var ok=(await sha("qcmb|"+p))===PH;
+  if(ok&&ALLOWED.length){ok=ALLOWED.indexOf(await sha("qcmb-id|"+norm(u)))>=0}
+  if(!ok){e.textContent="Identifiant ou mot de passe incorrect.";$("#lp").value="";return}
+ }catch(x){e.textContent="Connexion impossible sur ce navigateur.";return}
+ e.textContent="";$("#lp").value="";
+ try{sessionStorage.setItem("spemb-user",u)}catch(x){}
+ unlock(u)}
+$("#lb").onclick=login;
+["#lu","#lp"].forEach(function(s){$(s).addEventListener("keydown",function(e){if(e.key==="Enter")login()})});
+$("#logout").onclick=function(){try{sessionStorage.removeItem("spemb-user")}catch(x){}lock()};
+try{var su=sessionStorage.getItem("spemb-user");if(su)unlock(su);else $("#lu").focus()}catch(x){$("#lu").focus()}
+var root=document.documentElement,tb=$("#theme");
+function dark(){var t=root.dataset.theme;return t?t==="dark":matchMedia("(prefers-color-scheme:dark)").matches}
+function label(){tb.textContent=dark()?"Mode clair":"Mode sombre"}
+try{var s=localStorage.getItem("spemb-theme");if(s)root.dataset.theme=s}catch(e){}
+label();
+tb.onclick=function(){var n=dark()?"light":"dark";root.dataset.theme=n;try{localStorage.setItem("spemb-theme",n)}catch(e){}label()};
+setTab(location.hash.slice(1),false);
+</script>
+</body>
+</html>

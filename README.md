@@ -8,7 +8,7 @@ Le site propose des cours courts appuyés sur des exemples concrets, des exercic
 
 ## Ce que contient le site
 
-Le site tient dans un seul fichier, `QCMed_pour_les_futurs_B.html`. Il comporte cinq onglets.
+Le site tient dans un seul fichier, `index.html`. Il comporte cinq onglets.
 
 ### Cours
 
@@ -38,6 +38,10 @@ Un PDF par chapitre de cours, généré à la demande et téléchargeable, pour 
 ### Programme
 
 Rappel de la structure de l'épreuve et détail du programme de mathématiques, avec un repère « cours disponible » sur chaque point déjà couvert. Les cours sont ajoutés au fur et à mesure.
+
+## Sections liées
+
+L'onglet Cours propose deux liens vers des sections séparées, chacune dans son propre fichier : **Réviser la spé maths du B** (`SpeMathsB.html`) et **Réviser la spé maths du A** (`SpeMathsA.html`). Elles reprennent les mêmes onglets (Cours, Exercices, Calculatrice, Programme, PDFs). Chacune propose un lien « Retour au site QCM B ». Les trois fichiers doivent se trouver dans le même dossier.
 
 ## Confort d'utilisation
 
